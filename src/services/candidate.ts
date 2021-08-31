@@ -24,6 +24,7 @@ export default class CandidateService {
           skills:req.body.skills
       });
       console.log(candidateRecord);
+      // Need to update the data in the user model also need to remove console logs once upadted the method properly
       return { candidateRecord }  
     }
     catch (e) {
