@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import middlewares from '../middlewares';
 import jwt_decode from 'jwt-decode'
 import { Container } from 'typedi';
@@ -15,14 +15,28 @@ export default (app: Router) => {
   * Method to get full profile of a given user 
   */
   route.post('/role', middlewares.attachRole);
-    
+
   /*
    * Method to get full profile of a given user
    * Middleware isAuth = To check wether the user is autheticated or not
    * Middleware isRole = To match the role with the mongoDb and to get the user id from the mongo and match the role
    */ 
   
-  route.get('/user', middlewares.isAuth, middlewares.fullProfile);
+  route.get('/user', middlewares.isAuth, async (req: Request, res: Response) => {
+      
+    var userDetails= {
+      ['cognito:groups']:null
+    }
+
+    userDetails = await jwt_decode(req.header('authorization'));
+
+    const candidateServiceInstance = Container.get(CandidateService);
+
+    const { candidateRecord } = await candidateServiceInstance.GetCandidate(userDetails);           
+    
+    return res.json({ "success" : true , user: candidateRecord }).status(200);
+
+  });
 
 
 

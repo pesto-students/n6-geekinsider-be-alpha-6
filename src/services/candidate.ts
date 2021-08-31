@@ -31,4 +31,22 @@ export default class CandidateService {
       throw e;
     }
   }
+
+  public async GetCandidate(token): Promise<{ candidateRecord: ICandidate }> {
+    try{
+      console.log("Submitting the Candidate Details");
+
+      // sanity check for data skill count has to be applied each skill not greater then 100 char and array size not greater then 50.
+      // sanity check for user whatsapp Number , jobtitle not more the 100 char, about not more then 1000 characters 
+      // as it is both good for the recruiter to read and the candidate to describe in the reading aspect for the profile
+      const candidateRecord = await this.candidateModel.findById(token.sub);
+      console.log(candidateRecord);
+      
+      // Need to update the data in the user model also need to remove console logs once upadted the method properly
+      return { candidateRecord }  
+    }
+    catch (e) {
+      throw e;
+    }
+  }
 }

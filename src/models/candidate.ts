@@ -21,6 +21,9 @@ const Candidate = new mongoose.Schema(
     location:{
       type: String
     },
+    githubUrl:{
+      type: String
+    },
     skills:[],  // we will hav eto add a limiting condition to the skills so as to advoid data flow conjestion
     aboutid: {
       type: String
