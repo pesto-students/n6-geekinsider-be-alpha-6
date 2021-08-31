@@ -5,8 +5,8 @@ export interface ICandidate {
     jobtitle: string;
     location: string;
     skills:[];
-    exp:number;
-    ctc: number;
+    exp: string;
+    ctc: string;
     githubUrl: string;
     aboutid: string; // about is corresponds to the id of the about section which will be used for better filtering in the search engine  
 }

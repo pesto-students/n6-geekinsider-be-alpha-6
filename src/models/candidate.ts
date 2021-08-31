@@ -25,10 +25,10 @@ const Candidate = new mongoose.Schema(
       type: String
     },
     ctc:{
-      type: Number
+      type: String
     },
     exp:{
-      type: Number
+      type: String
     },
     skills:[],  // we will hav eto add a limiting condition to the skills so as to advoid data flow conjestion
     aboutid: {
