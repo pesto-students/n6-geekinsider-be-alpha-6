@@ -4,7 +4,10 @@ export interface ICandidate {
     whatsappNumber: string;
     jobtitle: string;
     location: string;
-    skills:[];  
+    skills:[];
+    exp:number;
+    ctc: number;
+    githubUrl: string;
     aboutid: string; // about is corresponds to the id of the about section which will be used for better filtering in the search engine  
 }
   

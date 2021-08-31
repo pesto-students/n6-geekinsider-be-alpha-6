@@ -15,7 +15,7 @@ const Candidate = new mongoose.Schema(
     whatsappNumber: {
       type: String
     },
-    jobtitle:{
+    jobTitle:{
       type: String
     },
     location:{
@@ -23,6 +23,12 @@ const Candidate = new mongoose.Schema(
     },
     githubUrl:{
       type: String
+    },
+    ctc:{
+      type: Number
+    },
+    exp:{
+      type: Number
     },
     skills:[],  // we will hav eto add a limiting condition to the skills so as to advoid data flow conjestion
     aboutid: {

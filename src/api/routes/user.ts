@@ -33,8 +33,22 @@ export default (app: Router) => {
     const candidateServiceInstance = Container.get(CandidateService);
 
     const { candidateRecord } = await candidateServiceInstance.GetCandidate(userDetails);           
-    
-    return res.json({ "success" : true , user: candidateRecord }).status(200);
+
+    // here we need to call another service th
+
+    const candidateInfo = {
+      'name':candidateRecord.name,
+      'jobtitle':candidateRecord.jobtitle,
+      'githubUrl':candidateRecord.githubUrl,
+      'skills':candidateRecord.skills,
+      // 'about':candidateRecord.aboutid,
+      'whatsappNumber':candidateRecord.whatsappNumber,
+      'exp':candidateRecord.exp,
+      'ctc':candidateRecord.ctc,
+      'location':candidateRecord.location
+    };
+
+    return res.json({ "success" : true , user: candidateInfo }).status(200);
 
   });
 
@@ -58,7 +72,7 @@ export default (app: Router) => {
     {
       try
       {
-        console.log("Adding the user to a group");
+        console.log("Getting the user info");
         var userDetails= {
           ['cognito:groups']:null
         }
@@ -68,7 +82,7 @@ export default (app: Router) => {
         if(userDetails['cognito:groups'][0] == 'userCandidate'){      //middlewares.submitCandidate(req, res, next, userDetails)
 
           const candidateServiceInstance = Container.get(CandidateService);
-          const { candidateRecord } = await candidateServiceInstance.SetCandidatRole(userDetails,req);    
+          const { candidateRecord } = await candidateServiceInstance.SetCandidate(userDetails,req);    
           if(candidateRecord._id == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
           {
               return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
@@ -80,7 +94,7 @@ export default (app: Router) => {
         if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
         {        
           const candidateServiceInstance = Container.get(CandidateService);
-          const { candidateRecord } = await candidateServiceInstance.SetCandidatRole(userDetails,req);    
+          const { candidateRecord } = await candidateServiceInstance.SetCandidate(userDetails,req);    
           if(candidateRecord._id == null)                             //console.log(console.log(userRecord)) // to see the userRecord in the debug logs
           {
               return res.sendStatus(401);                             // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
@@ -92,7 +106,7 @@ export default (app: Router) => {
       }
       catch(e)
       {
-        console.log("Failed to set the role");
+        console.log("Failed to add the user data");
         return res.sendStatus(500);
       }
 
