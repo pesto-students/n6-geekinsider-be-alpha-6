@@ -1,26 +1,73 @@
 import jwt_decode from 'jwt-decode'
+import { Container } from 'typedi';
+import mongoose from 'mongoose';
+import { ICandidate } from '@/interfaces/ICandidate';
 
-const submitCandidate = (req, res, next, token) => {
-  /**
-   * @TODO Edge and Internet Explorer do some weird things with the headers
-   * So I believe that this should handle more 'edge' cases ;)
-   */
-  try {
-    var userDetails = jwt_decode(req.header.Authorization);
-    
-    if(userDetails['cognito:groups'][0] == "userCandidate")
-    {
-      //console.log("User exits in a defined group");
-      return next();
-    } else {
-      //console.log("User is Unauthorised to perform the action");
-      return res.sendStatus(401);
-    }
-  }
-  catch (e) {
-    return next(e);
-  }
+
+const submitCandidate = async (req, res, next, token) => {
+
+  // console.log('Calling Sign-Up endpoint with body: %o', req.body );
+  // try 
+  // {
+  //   const candidateServiceInstance = Container.get(CandidateService);
+  //   const { candidateRecord } = await candidateServiceInstance.SetCandidatRole(token,req);
+  //   // Then we need to updae the about table.
+  //   // And pass the about id to the candidate table.
+  //   if(candidateRecord._id == null)
+  //   {
+  //       //console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+  //       return res.sendStatus(401);
+  //       // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
+  //   }
+  //   else{
+  //       //console.log("User role set successfully in Mongo Db");           // successful response             
+  //       return res.sendStatus(200)
+  //   }
+  // } catch (e) {
+  //   console.log('🔥 error: %o', e);
+  //   return next(e);
+  // }
+
 };
 
 
 export default submitCandidate;
+
+
+  // // need to apply a check wether a candidate info exits for a given email id if yes then only update action is possible.
+  // console.log("Submitting the Candidate Details");
+  // /**
+  //  * @TODO Edge and Internet Explorer do some weird things with the headers
+  //  * So I believe that this should handle more 'edge' cases ;)
+  //  */
+  // try {
+
+  //   // sanity check for data skill count has to be applied each skill not greater then 100 char and array size not greater then 50.
+  //   // sanity check for user whatsapp Number , jobtitle not more the 100 char, about not more then 1000 characters 
+  //   // as it is both good for the recruiter to read and the candidate to describe in the reading aspect for the profile
+  //   const Candidate = Container.get('candidateModel') as mongoose.Model<ICandidate & mongoose.Document>;
+  //   const candidateRecord = await Candidate.create({
+  //       _id: token.email,  // cognitoUsername will be used as the id parameter for the user table.
+  //       whatsappNumber: req.body.whatsappNumber,
+  //       jobtitle:req.body.jobtitle,
+  //       skills:req.body.skills,
+  //       name: req.body.skills,
+  //       location: req.body.location
+  //   })
+
+  //   // Then we need to updae the about table.
+  //   // And pass the about id to the candidate table.
+  //   if(candidateRecord._id == null)
+  //   {
+  //       //console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+  //       return res.sendStatus(401);
+  //       // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
+  //   }
+  //   else{
+  //       //console.log("User role set successfully in Mongo Db");           // successful response             
+  //       return res.sendStatus(200)
+  //   }
+  // }
+  // catch (e) {
+  //   return next(e);
+  // }

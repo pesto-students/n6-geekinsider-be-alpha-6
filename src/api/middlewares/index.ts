@@ -3,7 +3,7 @@ import isAuth from './isAuth';
 import isRole from './isRole';
 import attachRole from './attachRole';
 import submitCandidate from './submitCandidate'
-import submitRecruiter from './submitRecruiter'
+import submitCompany from './submitCompany'
 import fullProfile from './fullProfile'
 import getTokenDetails from './getTokenDetails';
 
@@ -14,6 +14,6 @@ export default {
   getTokenDetails,
   attachRole,
   submitCandidate,
-  submitRecruiter,
+  submitCompany,
   fullProfile
 };

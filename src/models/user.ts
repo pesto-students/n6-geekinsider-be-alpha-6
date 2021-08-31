@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 
 const User = new mongoose.Schema(
   {
-    _id: {
-      type: String,   // This will the cognito user name itself which will be used as an id paramter
-      required: true,
-      unique: true
-    },
+    // _id: {
+    //   type: String,   // This will the cognito user name itself which will be used as an id paramter
+    //   required: true,
+    //   unique: true
+    // },
     email: {
       type: String,
       required: true,

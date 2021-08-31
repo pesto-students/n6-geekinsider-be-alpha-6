@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 
 const Candidate = new mongoose.Schema(
   {     
-    _id: { 
-      type: String,     // this will be used as email id attribute
-      required: true,
-      unique : true
-    },
+    // _id: { 
+    //   type: String,     // this will be used as email id attribute
+    //   required: true,
+    //   unique : true
+    // },
     name:{
       type: String,
       required: true
@@ -16,6 +16,9 @@ const Candidate = new mongoose.Schema(
       type: String
     },
     jobtitle:{
+      type: String
+    },
+    location:{
       type: String
     },
     skills:[],  // we will hav eto add a limiting condition to the skills so as to advoid data flow conjestion

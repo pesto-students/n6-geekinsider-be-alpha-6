@@ -3,16 +3,19 @@ import mongoose from 'mongoose';
 
 const Company = new mongoose.Schema(
   {
-    _id: { 
-        type: String,     // this will be used as email id attribute
-        required: true,
-        unique : true
-    },
-        name:{
+    // _id: { 
+    //     type: String,     // this will be used as email id attribute
+    //     required: true,
+    //     unique : true
+    // },
+    name:{
         type: String,
         required: true
     },
-        whatsappNumber: {
+    whatsappNumber: {
+        type: String
+    },
+    location:{
         type: String
     },
     preferredIndustry: {
