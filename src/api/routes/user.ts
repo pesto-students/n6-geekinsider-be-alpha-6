@@ -55,7 +55,7 @@ export default (app: Router) => {
 
           const candidateServiceInstance = Container.get(CandidateService);
           const { candidateRecord } = await candidateServiceInstance.SetCandidatRole(userDetails,req);    
-          if(candidateRecord._id == null)     // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+          if(candidateRecord._id == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
           {
               return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
           }

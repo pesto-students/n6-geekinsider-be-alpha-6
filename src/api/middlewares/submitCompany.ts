@@ -10,7 +10,7 @@ const submitCompany = async (req, res, next, token) => {
    */
   try {
     // need to apply a check wether a candidate info exits for a given email id if yes then only update action is possible.
-    console.log("Submitting the Candidate Details");
+    console.log("Submitting the Company Details");
 
     // sanity check for data skill count has to be applied each skill not greater then 100 char and array size not greater then 50.
     // sanity check for user whatsapp Number , jobtitle not more the 100 char, about not more then 1000 characters 

@@ -16,7 +16,7 @@ export default class CandidateService {
       // sanity check for user whatsapp Number , jobtitle not more the 100 char, about not more then 1000 characters 
       // as it is both good for the recruiter to read and the candidate to describe in the reading aspect for the profile
       const candidateRecord = await this.candidateModel.create({
-          //_id: token.sub,  // cognitoUsername will be used as the id parameter for the user table.
+          _id: token.sub,  // cognitoUsername will be used as the id parameter for the user table.
           name: req.body.name,
           whatsappNumber: req.body.whatsappNumber,
           jobtitle:req.body.jobtitle,
