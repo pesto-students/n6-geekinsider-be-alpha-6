@@ -14,7 +14,7 @@ export default (app: Router) => {
   /*
   * Method to get full profile of a given user 
   */
-  route.post('/assign-role', middlewares.attachRole);
+  route.post('/role', middlewares.attachRole);
     
   /*
    * Method to get full profile of a given user
@@ -22,17 +22,16 @@ export default (app: Router) => {
    * Middleware isRole = To match the role with the mongoDb and to get the user id from the mongo and match the role
    */ 
   
-  route.get('/get-user', middlewares.isAuth, middlewares.fullProfile);
+  route.get('/user', middlewares.isAuth, middlewares.fullProfile);
 
 
-  //middlewares.isRole we will this middle ware to see the different actions
 
   /*
    * Method to get full profile of a given user 
    */
   route.post(
-    '/add-user',
-    // celebrate({
+    '/user',
+    // celebrate({                                            // we will use this celebrate to add the validation for the routes
     //   body: Joi.object({
     //     name: Joi.string().required(),
     //     whatsappNumber: Joi.string(),
@@ -52,24 +51,29 @@ export default (app: Router) => {
   
         userDetails = await jwt_decode(req.header('authorization'));
   
-        if(userDetails['cognito:groups'][0] == 'userCandidate'){
-          //middlewares.submitCandidate(req, res, next, userDetails)
+        if(userDetails['cognito:groups'][0] == 'userCandidate'){      //middlewares.submitCandidate(req, res, next, userDetails)
+
           const candidateServiceInstance = Container.get(CandidateService);
           const { candidateRecord } = await candidateServiceInstance.SetCandidatRole(userDetails,req);    
-          if(candidateRecord._id == null)
+          if(candidateRecord._id == null)     // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
           {
-              //console.log(console.log(userRecord)) // to see the userRecord in the debug logs
-              return res.sendStatus(401);
-              // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
+              return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
           }
           else{
-              //console.log("User role set successfully in Mongo Db");           // successful response             
-              return res.sendStatus(200)
+              return res.sendStatus(200)      //console.log("User role set successfully in Mongo Db");           // successful response             
           }
         }
-        
-        if(userDetails['cognito:groups'][0] == 'userRecruiter'){
-          middlewares.submitCompany(req, res, next, userDetails)
+        if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
+        {        
+          const candidateServiceInstance = Container.get(CandidateService);
+          const { candidateRecord } = await candidateServiceInstance.SetCandidatRole(userDetails,req);    
+          if(candidateRecord._id == null)                             //console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+          {
+              return res.sendStatus(401);                             // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
+          }
+          else{
+              return res.sendStatus(200)                              //console.log("User role set successfully in Mongo Db");           // successful response             
+          }
         }
       }
       catch(e)
@@ -81,7 +85,7 @@ export default (app: Router) => {
     });
 
 
-    route.post('/update-user', middlewares.isAuth, async (req, res, next) => 
+    route.put('/user', middlewares.isAuth, async (req, res, next) => 
     {
 
     });
