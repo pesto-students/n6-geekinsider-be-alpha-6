@@ -81,7 +81,7 @@ const attachRole = async (req, res, next) => {
                 }
                 else{
                     //console.log("User role set successfully in Mongo Db");           // successful response             
-                    return res.sendStatus(200)
+                    return res.json({ "success" : true }).status(200);
                 }
             }
         });

@@ -30,25 +30,58 @@ export default (app: Router) => {
 
     userDetails = await jwt_decode(req.header('authorization'));
 
-    const candidateServiceInstance = Container.get(CandidateService);
+    if(userDetails['cognito:groups'][0] == 'userCandidate'){      //middlewares.submitCandidate(req, res, next, userDetails)
 
-    const { candidateRecord } = await candidateServiceInstance.GetCandidate(userDetails);           
+      console.log("fetching the userdetails the of the candiadte");
 
-    // here we need to call another service th
+      userDetails = await jwt_decode(req.header('authorization'));
 
-    const candidateInfo = {
-      'name':candidateRecord.name,
-      'jobtitle':candidateRecord.jobtitle,
-      'githubUrl':candidateRecord.githubUrl,
-      'skills':candidateRecord.skills,
-      // 'about':candidateRecord.aboutid,
-      'whatsappNumber':candidateRecord.whatsappNumber,
-      'exp':candidateRecord.exp,
-      'ctc':candidateRecord.ctc,
-      'location':candidateRecord.location
-    };
+      const candidateServiceInstance = Container.get(CandidateService);
 
-    return res.json({ "success" : true , user: candidateInfo }).status(200);
+      const { candidateRecord } = await candidateServiceInstance.GetCandidate(userDetails);           
+
+      // here we need to call another service th
+
+      const candidateInfo = {
+        'name':candidateRecord.name,
+        'jobtitle':candidateRecord.jobtitle,
+        'githubUrl':candidateRecord.githubUrl,
+        'skills':candidateRecord.skills,
+        // 'about':candidateRecord.aboutid,
+        'whatsappNumber':candidateRecord.whatsappNumber,
+        'exp':candidateRecord.exp,
+        'ctc':candidateRecord.ctc,
+        'location':candidateRecord.location
+      };
+
+      return res.json({ "success" : true , user: candidateInfo }).status(200);
+
+    }
+    if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
+    {        
+      console.log("fetching the userdetails the of the company");
+
+      userDetails = await jwt_decode(req.header('authorization'));
+
+      const companyServiceInstance = Container.get(CompanyService);
+
+      const { companyRecord } = await companyServiceInstance.GetCompany(userDetails);           
+
+      // here we need to call another service th
+
+      const companyInfo = {
+        'name':companyRecord.name,
+        'whatsappNumber':companyRecord.whatsappNumber,
+        'preferredIndustry':companyRecord.preferredIndustry,
+        'location':companyRecord.location,
+        'skills':companyRecord.skills,
+        // 'about':candidateRecord.aboutid,
+        'empSize':companyRecord.empSize,
+        'site':companyRecord.site,
+      };
+
+      return res.json({ "success" : true , user: companyInfo }).status(200);    
+    }
 
   });
 
@@ -90,7 +123,7 @@ export default (app: Router) => {
               return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
           }
           else{
-              return res.sendStatus(200)      //console.log("User role set successfully in Mongo Db");           // successful response             
+            return res.json({ "success" : true }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
           }
         }
         if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
@@ -105,7 +138,7 @@ export default (app: Router) => {
               return res.sendStatus(401);                             // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
           }
           else{
-              return res.sendStatus(200)                              //console.log("User role set successfully in Mongo Db");           // successful response             
+            return res.json({ "success" : true }).status(200);        //console.log("User role set successfully in Mongo Db");           // successful response             
           }
         }
       }
