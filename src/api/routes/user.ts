@@ -14,7 +14,7 @@ export default (app: Router) => {
   /*
   * Method to get full profile of a given user 
   */
-  route.post('/role', middlewares.attachRole);
+  route.post('/auth', middlewares.attachRole);
 
   /*
    * Method to get full profile of a given user
@@ -38,7 +38,7 @@ export default (app: Router) => {
 
       const candidateServiceInstance = Container.get(CandidateService);
 
-      const { candidateRecord } = await candidateServiceInstance.GetCandidate(userDetails);           
+      const { candidateRecord , aboutRecord } = await candidateServiceInstance.GetCandidate(userDetails);           
 
       // here we need to call another service th
 
@@ -47,7 +47,7 @@ export default (app: Router) => {
         'jobtitle':candidateRecord.jobtitle,
         'githubUrl':candidateRecord.githubUrl,
         'skills':candidateRecord.skills,
-        // 'about':candidateRecord.aboutid,
+        'about':aboutRecord.about,
         'whatsappNumber':candidateRecord.whatsappNumber,
         'exp':candidateRecord.exp,
         'ctc':candidateRecord.ctc,
@@ -65,8 +65,8 @@ export default (app: Router) => {
 
       const companyServiceInstance = Container.get(CompanyService);
 
-      const { companyRecord } = await companyServiceInstance.GetCompany(userDetails);           
-
+      const { companyRecord, aboutRecord } = await companyServiceInstance.GetCompany(userDetails);           
+      
       // here we need to call another service th
 
       const companyInfo = {
@@ -75,7 +75,7 @@ export default (app: Router) => {
         'preferredIndustry':companyRecord.preferredIndustry,
         'location':companyRecord.location,
         'skills':companyRecord.skills,
-        // 'about':candidateRecord.aboutid,
+        'about':aboutRecord.about,
         'empSize':companyRecord.empSize,
         'site':companyRecord.site,
       };

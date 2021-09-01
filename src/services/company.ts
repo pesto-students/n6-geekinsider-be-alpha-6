@@ -16,6 +16,7 @@ export default class CompanyService {
       var skills = req.body.skills.split(",")
 
       const aboutRecord = await this.aboutModel.create({
+        _id: token.sub,
         about: req.body.about
       });
 
@@ -43,7 +44,7 @@ export default class CompanyService {
     }
   }
 
-  public async GetCompany(token): Promise<{ companyRecord: ICompany }> {
+  public async GetCompany(token): Promise<{ companyRecord: ICompany  , aboutRecord: IAbout }> {
     try{
       console.log("Submitting the Company Details");
 
@@ -52,9 +53,11 @@ export default class CompanyService {
       // as it is both good for the recruiter to read and the candidate to describe in the reading aspect for the profile
       const companyRecord = await this.companyModel.findById(token.sub);
       console.log(companyRecord);
-      
+
+      const aboutRecord = await this.aboutModel.findById(token.sub);
+
       // Need to update the data in the user model also need to remove console logs once upadted the method properly
-      return { companyRecord }  
+      return { companyRecord , aboutRecord }  
     }
     catch (e) {
       throw e;
