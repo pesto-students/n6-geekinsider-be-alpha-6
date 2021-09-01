@@ -6,9 +6,11 @@ import express from 'express';
 
 import Logger from './loaders/logger';
 
+import bodyParser from 'body-parser';
+
 async function startServer() {
   const app = express();
-
+  app.use(bodyParser.urlencoded({ extended: true }));
   /**
    * A little hack here
    * Import/Export can only be used in 'top-level code'

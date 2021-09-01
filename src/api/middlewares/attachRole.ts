@@ -71,6 +71,7 @@ const attachRole = async (req, res, next) => {
                 const userRecord = await UserModel.create({
                     _id: userDetails.sub,  // cognitoUsername will be used as the id parameter for the user table.
                     email: userDetails.email,
+                    role: req.body.groupName
                 })
                 if(userRecord._id == null)
                 {

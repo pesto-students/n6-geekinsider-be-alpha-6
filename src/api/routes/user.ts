@@ -4,7 +4,7 @@ import jwt_decode from 'jwt-decode'
 import { Container } from 'typedi';
 import { celebrate, Joi } from 'celebrate';
 import CandidateService from './../../services/candidate';
-
+import CompanyService from './../../services/company';
 
 const route = Router();
 
@@ -23,7 +23,7 @@ export default (app: Router) => {
    */ 
   
   route.get('/user', middlewares.isAuth, async (req: Request, res: Response) => {
-      
+    
     var userDetails= {
       ['cognito:groups']:null
     }
@@ -76,10 +76,12 @@ export default (app: Router) => {
         var userDetails= {
           ['cognito:groups']:null
         }
-  
+        
         userDetails = await jwt_decode(req.header('authorization'));
   
         if(userDetails['cognito:groups'][0] == 'userCandidate'){      //middlewares.submitCandidate(req, res, next, userDetails)
+
+          console.log("filling up the candiadte information ");
 
           const candidateServiceInstance = Container.get(CandidateService);
           const { candidateRecord } = await candidateServiceInstance.SetCandidate(userDetails,req);    
@@ -93,9 +95,12 @@ export default (app: Router) => {
         }
         if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
         {        
-          const candidateServiceInstance = Container.get(CandidateService);
-          const { candidateRecord } = await candidateServiceInstance.SetCandidate(userDetails,req);    
-          if(candidateRecord['_id'] == null)                             //console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+
+          console.log("filling up the recruiter information ");
+
+          const companyServiceInstance = Container.get(CompanyService);
+          const { companyRecord } = await companyServiceInstance.SetCompany(userDetails,req);    
+          if(companyRecord['_id'] == null)                             //console.log(console.log(userRecord)) // to see the userRecord in the debug logs
           {
               return res.sendStatus(401);                             // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
           }

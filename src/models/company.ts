@@ -25,6 +25,12 @@ const Company = new mongoose.Schema(
     aboutid: {
         type: String
     },
+    empSize:{
+        type: Number
+    },
+    site:{
+        type: String 
+    }
   },
 );
 

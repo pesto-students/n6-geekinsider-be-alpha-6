@@ -4,9 +4,11 @@
 	"description": "",
 	"order": [
 		"3ae9af76-4f2f-396b-0ab9-131653768904",
+		"7d26898c-1c4d-36a1-0dee-60df374263ed",
 		"8981a307-dc69-6ee1-ed54-458e0bf8e7b5",
-		"4eee2f66-7b61-7726-e009-33f24dc161bc",
-		"2462aa62-7e10-a1ad-a89c-0f3ebd21dd85"
+		"2462aa62-7e10-a1ad-a89c-0f3ebd21dd85",
+		"8d0d1544-a0f6-0ee0-b6cd-79f0d065abf2",
+		"b84f074b-5b22-692b-1184-ff8294a1472f"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -16,11 +18,11 @@
 	"requests": [
 		{
 			"id": "2462aa62-7e10-a1ad-a89c-0f3ebd21dd85",
-			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJmMmQ5ZWNmZS1hYTQwLTQ3Y2ItYmVmMi04YTkwYzQ5MDFiYTYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfZmlEbWpsNWhQIiwiY29nbml0bzp1c2VybmFtZSI6ImYyZDllY2ZlLWFhNDAtNDdjYi1iZWYyLThhOTBjNDkwMWJhNiIsIm9yaWdpbl9qdGkiOiI3NmYwOWYzZi02ZjI5LTRhNjEtODEwMy1lMjU1YmZkMTRkNDEiLCJhdWQiOiI1MXIwajJvajFtYmkxNHQ5MWVoZDc1NWhndCIsImV2ZW50X2lkIjoiMzAwMDgwNjgtYmVkOS00ZjA5LWJiNmItMjQ2MzY2M2NjMzZhIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE2MzAzMzEzNTAsImV4cCI6MTYzMDMzNDk1MCwiaWF0IjoxNjMwMzMxMzUwLCJqdGkiOiI3MGU3ZmQyZi1hNmE3LTQyMDktYWFhNy1hNmI3YTZhNDZmMTMiLCJlbWFpbCI6InZrazk3NkBnbWFpbC5jb20ifQ.WHCZyoNh30MQlFy3MfKKeRlkFwSzmItncF4Mm3ttVBTbgTG6cJ-eo45Lqcv1xgmtSuMXxDLu9Ik03Mn3YZ1sGCCLxZwDpKKIqC6yA-ZBidbz84-cNigvu6cy6hPYZCczvb64PYZHcpuVSEbCN3UVE5FhX50S0Q5ZReF5xL7Oe0nRSEa1v_-X-0W3eU2W4bX_p9IF74cWkmHQNVkK9YpGN9ykrwUaVYp6WX0Hke6xS2cie8vtsN9ZcJwZmDPIp4CSZ2p5GauKZy8ftEi9sH4xn6iTaw_cJToNBAJQ1t43yvvb1WMym3EErLvVmQZ5KysWUFqaMfb5HJ0-PL9rKdn8Hw\nContent-Type: application/json\n",
+			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhYzlhMGZmNS0wODQzLTQ3MmYtYWM4Ny0xNTdhMzIyYTk1OGMiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiYWM5YTBmZjUtMDg0My00NzJmLWFjODctMTU3YTMyMmE5NThjIiwib3JpZ2luX2p0aSI6ImY5YWRhZWYzLTMyN2ItNDNkMC1iNzE4LTE0MzM1Yjc5Yjc4MSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjExNTIwMTMzLWFlMDItNGZkOS1iZDdkLTY1ZjhlZGQ0OGZlOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNDMzNDkwLCJleHAiOjE2MzA0MzcwOTAsImlhdCI6MTYzMDQzMzQ5MCwianRpIjoiZWE4Mzk2NzQtZDhmYi00Y2UyLTkyZWItODRiN2Y3YTZjZDNkIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.ktIGMH-KbdX62iShVuV-CGFeZPi27YP9ADoaIJy29crPIH8FxMVLw_GEo6uga0g3LSI636JBwWPuBW7nuHoY-mWeUjlgPX5hzBEYriy3xbAXPO4-km3mE7AXquOFUpewtNscfjKBDOyaLlgf-HuQMCcHLKwuuWbWaIdWyuT8RBALQ6VqhrK2dj6mnwmPAgx1xgpCIyGnfLAp2m88Auvdbjcyf82EFw29HRqpN1xRgcgvAN1RlcMG1nVAgqGv0F-PL_CtgBX1gGKOoJDdMB9Q-aKc3hAFYqslK3w8q4gC9YrFCLIhmMUZ9QKWgAaROzauRJesNJaxw-XLd8HNPZNtzA\nContent-Type: application/json\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJmMmQ5ZWNmZS1hYTQwLTQ3Y2ItYmVmMi04YTkwYzQ5MDFiYTYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfZmlEbWpsNWhQIiwiY29nbml0bzp1c2VybmFtZSI6ImYyZDllY2ZlLWFhNDAtNDdjYi1iZWYyLThhOTBjNDkwMWJhNiIsIm9yaWdpbl9qdGkiOiI3NmYwOWYzZi02ZjI5LTRhNjEtODEwMy1lMjU1YmZkMTRkNDEiLCJhdWQiOiI1MXIwajJvajFtYmkxNHQ5MWVoZDc1NWhndCIsImV2ZW50X2lkIjoiMzAwMDgwNjgtYmVkOS00ZjA5LWJiNmItMjQ2MzY2M2NjMzZhIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE2MzAzMzEzNTAsImV4cCI6MTYzMDMzNDk1MCwiaWF0IjoxNjMwMzMxMzUwLCJqdGkiOiI3MGU3ZmQyZi1hNmE3LTQyMDktYWFhNy1hNmI3YTZhNDZmMTMiLCJlbWFpbCI6InZrazk3NkBnbWFpbC5jb20ifQ.WHCZyoNh30MQlFy3MfKKeRlkFwSzmItncF4Mm3ttVBTbgTG6cJ-eo45Lqcv1xgmtSuMXxDLu9Ik03Mn3YZ1sGCCLxZwDpKKIqC6yA-ZBidbz84-cNigvu6cy6hPYZCczvb64PYZHcpuVSEbCN3UVE5FhX50S0Q5ZReF5xL7Oe0nRSEa1v_-X-0W3eU2W4bX_p9IF74cWkmHQNVkK9YpGN9ykrwUaVYp6WX0Hke6xS2cie8vtsN9ZcJwZmDPIp4CSZ2p5GauKZy8ftEi9sH4xn6iTaw_cJToNBAJQ1t43yvvb1WMym3EErLvVmQZ5KysWUFqaMfb5HJ0-PL9rKdn8Hw",
+					"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhYzlhMGZmNS0wODQzLTQ3MmYtYWM4Ny0xNTdhMzIyYTk1OGMiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiYWM5YTBmZjUtMDg0My00NzJmLWFjODctMTU3YTMyMmE5NThjIiwib3JpZ2luX2p0aSI6ImY5YWRhZWYzLTMyN2ItNDNkMC1iNzE4LTE0MzM1Yjc5Yjc4MSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjExNTIwMTMzLWFlMDItNGZkOS1iZDdkLTY1ZjhlZGQ0OGZlOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNDMzNDkwLCJleHAiOjE2MzA0MzcwOTAsImlhdCI6MTYzMDQzMzQ5MCwianRpIjoiZWE4Mzk2NzQtZDhmYi00Y2UyLTkyZWItODRiN2Y3YTZjZDNkIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.ktIGMH-KbdX62iShVuV-CGFeZPi27YP9ADoaIJy29crPIH8FxMVLw_GEo6uga0g3LSI636JBwWPuBW7nuHoY-mWeUjlgPX5hzBEYriy3xbAXPO4-km3mE7AXquOFUpewtNscfjKBDOyaLlgf-HuQMCcHLKwuuWbWaIdWyuT8RBALQ6VqhrK2dj6mnwmPAgx1xgpCIyGnfLAp2m88Auvdbjcyf82EFw29HRqpN1xRgcgvAN1RlcMG1nVAgqGv0F-PL_CtgBX1gGKOoJDdMB9Q-aKc3hAFYqslK3w8q4gC9YrFCLIhmMUZ9QKWgAaROzauRJesNJaxw-XLd8HNPZNtzA",
 					"description": "",
 					"enabled": true
 				},
@@ -31,7 +33,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:3000/api/users/add-user",
+			"url": "http://localhost:3000/api/users/user",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -43,12 +45,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1630381362497,
+			"time": 1630436633591,
 			"name": "http://localhost:3000/api/users/add-user",
 			"description": "",
 			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
 			"responses": [],
-			"rawModeData": "{\r\n\t\"name\" : \"Vishal Kothari\",\r\n\t\"whatsappNumber\" : \"+919769030229\",\r\n\t\"jobtitle\":\"Associate Software Engineer\",\r\n\t\"location\":\"Mumbai, India\",\r\n\t\"skills\":\"['React','Node','Python','C']\"\r\n}"
+			"rawModeData": "{\r\n\t\"name\" : \"Vishal Kothari\",\r\n\t\"whatsappNumber\" : \"+919769030229\",\r\n\t\"jobTitle\":\"Associate Software Engineer\",\r\n\t\"location\":\"Mumbai, India\",\r\n\t\"skills\":\"['React','Node','Python','C']\",\r\n\t\"githubUrl\": \"vishaljkk\",\r\n\t\"ctc\":7,\r\n\t\"exp\":1\r\n}\r\n"
 		},
 		{
 			"id": "3ae9af76-4f2f-396b-0ab9-131653768904",
@@ -79,48 +81,48 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1629854484999,
-			"name": "http://localhost:5000/api/users/set-group Depreccated",
+			"name": "http://localhost:5000/api/users/role candidate",
 			"description": "",
 			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
 			"responses": [],
 			"rawModeData": "{\n\t\"groupName\": \"userCandidate\"\t\n}"
 		},
 		{
-			"id": "4eee2f66-7b61-7726-e009-33f24dc161bc",
-			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJmMmQ5ZWNmZS1hYTQwLTQ3Y2ItYmVmMi04YTkwYzQ5MDFiYTYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfZmlEbWpsNWhQIiwiY29nbml0bzp1c2VybmFtZSI6ImYyZDllY2ZlLWFhNDAtNDdjYi1iZWYyLThhOTBjNDkwMWJhNiIsIm9yaWdpbl9qdGkiOiI3NmYwOWYzZi02ZjI5LTRhNjEtODEwMy1lMjU1YmZkMTRkNDEiLCJhdWQiOiI1MXIwajJvajFtYmkxNHQ5MWVoZDc1NWhndCIsImV2ZW50X2lkIjoiMzAwMDgwNjgtYmVkOS00ZjA5LWJiNmItMjQ2MzY2M2NjMzZhIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE2MzAzMzEzNTAsImV4cCI6MTYzMDMzNDk1MCwiaWF0IjoxNjMwMzMxMzUwLCJqdGkiOiI3MGU3ZmQyZi1hNmE3LTQyMDktYWFhNy1hNmI3YTZhNDZmMTMiLCJlbWFpbCI6InZrazk3NkBnbWFpbC5jb20ifQ.WHCZyoNh30MQlFy3MfKKeRlkFwSzmItncF4Mm3ttVBTbgTG6cJ-eo45Lqcv1xgmtSuMXxDLu9Ik03Mn3YZ1sGCCLxZwDpKKIqC6yA-ZBidbz84-cNigvu6cy6hPYZCczvb64PYZHcpuVSEbCN3UVE5FhX50S0Q5ZReF5xL7Oe0nRSEa1v_-X-0W3eU2W4bX_p9IF74cWkmHQNVkK9YpGN9ykrwUaVYp6WX0Hke6xS2cie8vtsN9ZcJwZmDPIp4CSZ2p5GauKZy8ftEi9sH4xn6iTaw_cJToNBAJQ1t43yvvb1WMym3EErLvVmQZ5KysWUFqaMfb5HJ0-PL9rKdn8Hw\nContent-Type: application/json\n",
+			"id": "7d26898c-1c4d-36a1-0dee-60df374263ed",
+			"headers": "Content-Type: application/json\nAuthorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5YjRkNjE3NS05NmM5LTRhZWMtOWU0ZS0xNThkZTI1YWNkMmEiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiOWI0ZDYxNzUtOTZjOS00YWVjLTllNGUtMTU4ZGUyNWFjZDJhIiwib3JpZ2luX2p0aSI6IjRjNjAwYzJjLTJmNzUtNDU0MS05ZjU2LTk5MzA2ZmY3ZGMxOSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6ImE4ZTcwZTU5LWZkOWYtNDI3Yy04Nzc2LWNiOGQ3YmEwOWFlNyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjI5ODUzMjc5LCJleHAiOjE2Mjk4NTY4NzksImlhdCI6MTYyOTg1MzI3OSwianRpIjoiN2E3YjM5ZTAtOWVmZi00YzhiLTg1ZDYtYmRhNjE2ODQ4ODhiIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.taNznWl70jA3VmX9vy9U-jsSJ1cLZE0FUYnzhDFSGAc0XhPJzfrAEIz2fxQSKKz0-GDb5_8o3bqMY7LLi-WPz9lEB-QJRnj5bH1L8F_p2UXMt1I88XpsjgUMNbtM2nchwa_bqwFmfLMqpB9NnjjtTpZVQGELGKLCmQOUnBWhavGMUVCX0RwYi7GZ3sJ2Do0St0BGa08_tFhC8UtyUF1w2_kmc3_Gb2KDvJZL_4-WPOaVWl_NUTEFiPcgsHy2674D84ed9cOBQ5Dz8StnQiPRXJhPbVv60CXhhqksAfYTxJfBY3ijkF2UHv_-kNS1D8wivmW9ExCA_MeUdRng1ri0Lw\n",
 			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJmMmQ5ZWNmZS1hYTQwLTQ3Y2ItYmVmMi04YTkwYzQ5MDFiYTYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfZmlEbWpsNWhQIiwiY29nbml0bzp1c2VybmFtZSI6ImYyZDllY2ZlLWFhNDAtNDdjYi1iZWYyLThhOTBjNDkwMWJhNiIsIm9yaWdpbl9qdGkiOiI3NmYwOWYzZi02ZjI5LTRhNjEtODEwMy1lMjU1YmZkMTRkNDEiLCJhdWQiOiI1MXIwajJvajFtYmkxNHQ5MWVoZDc1NWhndCIsImV2ZW50X2lkIjoiMzAwMDgwNjgtYmVkOS00ZjA5LWJiNmItMjQ2MzY2M2NjMzZhIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE2MzAzMzEzNTAsImV4cCI6MTYzMDMzNDk1MCwiaWF0IjoxNjMwMzMxMzUwLCJqdGkiOiI3MGU3ZmQyZi1hNmE3LTQyMDktYWFhNy1hNmI3YTZhNDZmMTMiLCJlbWFpbCI6InZrazk3NkBnbWFpbC5jb20ifQ.WHCZyoNh30MQlFy3MfKKeRlkFwSzmItncF4Mm3ttVBTbgTG6cJ-eo45Lqcv1xgmtSuMXxDLu9Ik03Mn3YZ1sGCCLxZwDpKKIqC6yA-ZBidbz84-cNigvu6cy6hPYZCczvb64PYZHcpuVSEbCN3UVE5FhX50S0Q5ZReF5xL7Oe0nRSEa1v_-X-0W3eU2W4bX_p9IF74cWkmHQNVkK9YpGN9ykrwUaVYp6WX0Hke6xS2cie8vtsN9ZcJwZmDPIp4CSZ2p5GauKZy8ftEi9sH4xn6iTaw_cJToNBAJQ1t43yvvb1WMym3EErLvVmQZ5KysWUFqaMfb5HJ0-PL9rKdn8Hw",
-					"description": "",
-					"enabled": true
-				},
 				{
 					"key": "Content-Type",
 					"value": "application/json",
 					"description": "",
 					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5YjRkNjE3NS05NmM5LTRhZWMtOWU0ZS0xNThkZTI1YWNkMmEiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiOWI0ZDYxNzUtOTZjOS00YWVjLTllNGUtMTU4ZGUyNWFjZDJhIiwib3JpZ2luX2p0aSI6IjRjNjAwYzJjLTJmNzUtNDU0MS05ZjU2LTk5MzA2ZmY3ZGMxOSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6ImE4ZTcwZTU5LWZkOWYtNDI3Yy04Nzc2LWNiOGQ3YmEwOWFlNyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjI5ODUzMjc5LCJleHAiOjE2Mjk4NTY4NzksImlhdCI6MTYyOTg1MzI3OSwianRpIjoiN2E3YjM5ZTAtOWVmZi00YzhiLTg1ZDYtYmRhNjE2ODQ4ODhiIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.taNznWl70jA3VmX9vy9U-jsSJ1cLZE0FUYnzhDFSGAc0XhPJzfrAEIz2fxQSKKz0-GDb5_8o3bqMY7LLi-WPz9lEB-QJRnj5bH1L8F_p2UXMt1I88XpsjgUMNbtM2nchwa_bqwFmfLMqpB9NnjjtTpZVQGELGKLCmQOUnBWhavGMUVCX0RwYi7GZ3sJ2Do0St0BGa08_tFhC8UtyUF1w2_kmc3_Gb2KDvJZL_4-WPOaVWl_NUTEFiPcgsHy2674D84ed9cOBQ5Dz8StnQiPRXJhPbVv60CXhhqksAfYTxJfBY3ijkF2UHv_-kNS1D8wivmW9ExCA_MeUdRng1ri0Lw",
+					"description": "",
+					"enabled": true
 				}
 			],
-			"url": "http://localhost:3000/api/users/assign-role",
+			"url": "http://localhost:5000/api/users/set-group",
 			"queryParams": [],
+			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
 			"method": "POST",
-			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
 			"data": [],
 			"dataMode": "raw",
-			"name": "http://localhost:3000/api/users/assign-role",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1630338556341,
-			"version": 2,
-			"responses": [],
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"rawModeData": "{\n\t\"groupName\" : \"userCandidate\"\n}"
+			"time": 1629854484999,
+			"name": "http://localhost:5000/api/users/role recruiter",
+			"description": "",
+			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "3ae9af76-4f2f-396b-0ab9-131653768904",
+			"rawModeData": "{\n\t\"groupName\": \"userCandidate\"\t\n}"
 		},
 		{
 			"id": "8981a307-dc69-6ee1-ed54-458e0bf8e7b5",
@@ -156,6 +158,80 @@
 			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
 			"responses": [],
 			"rawModeData": "{}"
+		},
+		{
+			"id": "8d0d1544-a0f6-0ee0-b6cd-79f0d065abf2",
+			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhYzlhMGZmNS0wODQzLTQ3MmYtYWM4Ny0xNTdhMzIyYTk1OGMiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiYWM5YTBmZjUtMDg0My00NzJmLWFjODctMTU3YTMyMmE5NThjIiwib3JpZ2luX2p0aSI6ImY5YWRhZWYzLTMyN2ItNDNkMC1iNzE4LTE0MzM1Yjc5Yjc4MSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjExNTIwMTMzLWFlMDItNGZkOS1iZDdkLTY1ZjhlZGQ0OGZlOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNDMzNDkwLCJleHAiOjE2MzA0MzcwOTAsImlhdCI6MTYzMDQzMzQ5MCwianRpIjoiZWE4Mzk2NzQtZDhmYi00Y2UyLTkyZWItODRiN2Y3YTZjZDNkIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.ktIGMH-KbdX62iShVuV-CGFeZPi27YP9ADoaIJy29crPIH8FxMVLw_GEo6uga0g3LSI636JBwWPuBW7nuHoY-mWeUjlgPX5hzBEYriy3xbAXPO4-km3mE7AXquOFUpewtNscfjKBDOyaLlgf-HuQMCcHLKwuuWbWaIdWyuT8RBALQ6VqhrK2dj6mnwmPAgx1xgpCIyGnfLAp2m88Auvdbjcyf82EFw29HRqpN1xRgcgvAN1RlcMG1nVAgqGv0F-PL_CtgBX1gGKOoJDdMB9Q-aKc3hAFYqslK3w8q4gC9YrFCLIhmMUZ9QKWgAaROzauRJesNJaxw-XLd8HNPZNtzA\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhYzlhMGZmNS0wODQzLTQ3MmYtYWM4Ny0xNTdhMzIyYTk1OGMiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiYWM5YTBmZjUtMDg0My00NzJmLWFjODctMTU3YTMyMmE5NThjIiwib3JpZ2luX2p0aSI6ImY5YWRhZWYzLTMyN2ItNDNkMC1iNzE4LTE0MzM1Yjc5Yjc4MSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjExNTIwMTMzLWFlMDItNGZkOS1iZDdkLTY1ZjhlZGQ0OGZlOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNDMzNDkwLCJleHAiOjE2MzA0MzcwOTAsImlhdCI6MTYzMDQzMzQ5MCwianRpIjoiZWE4Mzk2NzQtZDhmYi00Y2UyLTkyZWItODRiN2Y3YTZjZDNkIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.ktIGMH-KbdX62iShVuV-CGFeZPi27YP9ADoaIJy29crPIH8FxMVLw_GEo6uga0g3LSI636JBwWPuBW7nuHoY-mWeUjlgPX5hzBEYriy3xbAXPO4-km3mE7AXquOFUpewtNscfjKBDOyaLlgf-HuQMCcHLKwuuWbWaIdWyuT8RBALQ6VqhrK2dj6mnwmPAgx1xgpCIyGnfLAp2m88Auvdbjcyf82EFw29HRqpN1xRgcgvAN1RlcMG1nVAgqGv0F-PL_CtgBX1gGKOoJDdMB9Q-aKc3hAFYqslK3w8q4gC9YrFCLIhmMUZ9QKWgAaROzauRJesNJaxw-XLd8HNPZNtzA",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/users/user",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1630436633591,
+			"name": "http://localhost:3000/api/users/add-user copy",
+			"description": "",
+			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "2462aa62-7e10-a1ad-a89c-0f3ebd21dd85",
+			"rawModeData": "{\r\n\t\"name\" : \"Vishal Kothari\",\r\n\t\"whatsappNumber\" : \"+919769030229\",\r\n\t\"jobTitle\":\"Associate Software Engineer\",\r\n\t\"location\":\"Mumbai, India\",\r\n\t\"skills\":\"['React','Node','Python','C']\",\r\n\t\"githubUrl\": \"vishaljkk\",\r\n\t\"ctc\":7,\r\n\t\"exp\":1\r\n}\r\n"
+		},
+		{
+			"id": "b84f074b-5b22-692b-1184-ff8294a1472f",
+			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhYzlhMGZmNS0wODQzLTQ3MmYtYWM4Ny0xNTdhMzIyYTk1OGMiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiYWM5YTBmZjUtMDg0My00NzJmLWFjODctMTU3YTMyMmE5NThjIiwib3JpZ2luX2p0aSI6ImY5YWRhZWYzLTMyN2ItNDNkMC1iNzE4LTE0MzM1Yjc5Yjc4MSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjExNTIwMTMzLWFlMDItNGZkOS1iZDdkLTY1ZjhlZGQ0OGZlOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNDMzNDkwLCJleHAiOjE2MzA0MzcwOTAsImlhdCI6MTYzMDQzMzQ5MCwianRpIjoiZWE4Mzk2NzQtZDhmYi00Y2UyLTkyZWItODRiN2Y3YTZjZDNkIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.ktIGMH-KbdX62iShVuV-CGFeZPi27YP9ADoaIJy29crPIH8FxMVLw_GEo6uga0g3LSI636JBwWPuBW7nuHoY-mWeUjlgPX5hzBEYriy3xbAXPO4-km3mE7AXquOFUpewtNscfjKBDOyaLlgf-HuQMCcHLKwuuWbWaIdWyuT8RBALQ6VqhrK2dj6mnwmPAgx1xgpCIyGnfLAp2m88Auvdbjcyf82EFw29HRqpN1xRgcgvAN1RlcMG1nVAgqGv0F-PL_CtgBX1gGKOoJDdMB9Q-aKc3hAFYqslK3w8q4gC9YrFCLIhmMUZ9QKWgAaROzauRJesNJaxw-XLd8HNPZNtzA\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhYzlhMGZmNS0wODQzLTQ3MmYtYWM4Ny0xNTdhMzIyYTk1OGMiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiYWM5YTBmZjUtMDg0My00NzJmLWFjODctMTU3YTMyMmE5NThjIiwib3JpZ2luX2p0aSI6ImY5YWRhZWYzLTMyN2ItNDNkMC1iNzE4LTE0MzM1Yjc5Yjc4MSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjExNTIwMTMzLWFlMDItNGZkOS1iZDdkLTY1ZjhlZGQ0OGZlOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNDMzNDkwLCJleHAiOjE2MzA0MzcwOTAsImlhdCI6MTYzMDQzMzQ5MCwianRpIjoiZWE4Mzk2NzQtZDhmYi00Y2UyLTkyZWItODRiN2Y3YTZjZDNkIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.ktIGMH-KbdX62iShVuV-CGFeZPi27YP9ADoaIJy29crPIH8FxMVLw_GEo6uga0g3LSI636JBwWPuBW7nuHoY-mWeUjlgPX5hzBEYriy3xbAXPO4-km3mE7AXquOFUpewtNscfjKBDOyaLlgf-HuQMCcHLKwuuWbWaIdWyuT8RBALQ6VqhrK2dj6mnwmPAgx1xgpCIyGnfLAp2m88Auvdbjcyf82EFw29HRqpN1xRgcgvAN1RlcMG1nVAgqGv0F-PL_CtgBX1gGKOoJDdMB9Q-aKc3hAFYqslK3w8q4gC9YrFCLIhmMUZ9QKWgAaROzauRJesNJaxw-XLd8HNPZNtzA",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/users/user",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1630436628656,
+			"name": "http://localhost:3000/api/users/add-user copy",
+			"description": "",
+			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"name\" : \"Vishal Kothari\",\r\n\t\"whatsappNumber\" : \"+919769030229\",\r\n\t\"jobtitle\":\"Associate Software Engineer\",\r\n\t\"location\":\"Mumbai, India\",\r\n\t\"skills\":\"['React','Node','Python','C']\"\r\n}"
 		}
 	]
 }
