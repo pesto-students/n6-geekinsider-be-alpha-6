@@ -2,8 +2,7 @@ export interface IJob {
     companyName: string;
     jobTitle: string;
     jobLocation: string;
-    jobStatus:string;
+    jobStatus:boolean;
     jobDescription: string;
-    canApplied: [];
 }
   

@@ -6,7 +6,6 @@ const Job = new mongoose.Schema(
     _id: { 
         type: String,     // this will be used as email id attribute
         required: true,
-        unique : true
     },
     companyName:{
         type: String,
@@ -20,6 +19,7 @@ const Job = new mongoose.Schema(
     },
     jobStatus: {
         type: Boolean,
+        default: true
     },
     jobAboutid: {
         type: String

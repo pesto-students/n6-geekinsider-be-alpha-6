@@ -30,27 +30,23 @@ export default (app: Router) => {
             
             userDetails = await jwt_decode(req.headers.authorization);            
             console.log("checking the cognito user role");
-            
+
             if( userDetails['cognito:groups'][0] != 'userRecruiter' )
             {
                 return res.sendStatus(401);         
             }
-
+            console.log("the username validation has crossed");
             const jobServiceInstance = Container.get(JobService);
-            const { jobRecord } = await jobServiceInstance.CreateJob(userDetails, req);
+            const jobRecord = await jobServiceInstance.CreateJob(userDetails, req);
+
+            console.log(jobRecord)
             
-            if(jobRecord['_id'] == null)                           
-            {
-                return res.sendStatus(401);    
-            }
-            else
-            {
-                var createdJobdetail = {
-                    'jobTitle' : jobRecord.jobTitle,
-                    'jobLocation' : jobRecord.jobLocation,
-                }
-                return res.json({ "success" : true , "jobDetail" : createdJobdetail }).status(200);     
-            }
+            // var createdJobdetail = {
+            //     'jobTitle' : jobRecord.jobTitle,
+            //     'jobLocation' : jobRecord.jobLocation,
+            // }
+            return res.json({ "success" : true , "jobDetail" : jobRecord }).status(200);     
+            
         }
         catch(e)
         {
