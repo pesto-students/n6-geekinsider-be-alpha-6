@@ -1,19 +1,17 @@
-import attachCurrentUser from './attachCurrentUser';
 import isAuth from './isAuth';
-import isRole from './isRole';
+import isCandidate from './isCandidate';
+import isCompany from './isCompany';
 import attachRole from './attachRole';
-import submitCandidate from './submitCandidate'
-import submitCompany from './submitCompany'
-import fullProfile from './fullProfile'
-import getTokenDetails from './getTokenDetails';
+
+/*
+ *  Middleware isAuth = To check wether the user is autheticated or not.
+ *  Middleware isRole = To match the role with the mongoDb and to get the user id from the mongo and match the role.
+ *  Middleware attachRole = To attach role to a given user.
+ */ 
 
 export default {
-  attachCurrentUser,
   isAuth,
-  isRole,
-  getTokenDetails,
-  attachRole,
-  submitCandidate,
-  submitCompany,
-  fullProfile
+  isCandidate,
+  isCompany,
+  attachRole
 };

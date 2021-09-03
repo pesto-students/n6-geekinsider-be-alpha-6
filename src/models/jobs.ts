@@ -8,31 +8,24 @@ const Job = new mongoose.Schema(
         required: true,
         unique : true
     },
-    name:{
+    companyName:{
         type: String,
         required: true
     },
-    whatsappNumber: {
+    jobTitle: {
         type: String
     },
-    location:{
+    jobLocation:{
         type: String
     },
-    preferredIndustry: {
-        type: String,
+    jobStatus: {
+        type: Boolean,
     },
-    skills:[],  // we will hav eto add a limiting condition to the skills so as to advoid data flow conjestion
-    aboutid: {
+    jobAboutid: {
         type: String
     },
-    empSize:{
-        type: Number
-    },
-    site:{
-        type: String 
-    }
+    canApplied:[],  // we will hav eto add a limiting condition to the skills so as to advoid data flow conjestion
   },
 );
-
 
 export default mongoose.model<IJob & mongoose.Document>('Job', Job);

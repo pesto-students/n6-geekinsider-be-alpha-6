@@ -8,4 +8,5 @@ export interface ICompany {         // This will be used for the recruiter to fi
     aboutid: string;                // about is corresponds to the id of the about section which will be used for better filtering in the search engine  
     empSize: number;
     site: string;                   // This will be used to store the site of the company
+    jobcount: number;
 }

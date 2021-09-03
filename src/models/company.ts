@@ -30,7 +30,12 @@ const Company = new mongoose.Schema(
     },
     site:{
         type: String 
-    }
+    },
+    jobcount:{
+        type: Number,
+        default: 0
+    },
+    jobs:[],
   },
 );
 

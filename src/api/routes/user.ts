@@ -9,84 +9,17 @@ import CompanyService from './../../services/company';
 const route = Router();
 
 export default (app: Router) => {
+  /*
+  * Under the User Route we have both condidate and recruiter profile routes 
+  */
   app.use('/users', route);
 
   /*
-  * Method to get full profile of a given user 
+  * Method to attach role to a user
   */
   route.post('/auth', middlewares.attachRole);
 
-  /*
-   * Method to get full profile of a given user
-   * Middleware isAuth = To check wether the user is autheticated or not
-   * Middleware isRole = To match the role with the mongoDb and to get the user id from the mongo and match the role
-   */ 
   
-  route.get('/user', middlewares.isAuth, async (req: Request, res: Response) => {
-    
-    var userDetails= {
-      ['cognito:groups']:null
-    }
-
-    userDetails = await jwt_decode(req.header('authorization'));
-
-    if(userDetails['cognito:groups'][0] == 'userCandidate'){      //middlewares.submitCandidate(req, res, next, userDetails)
-
-      console.log("fetching the userdetails the of the candiadte");
-
-      userDetails = await jwt_decode(req.header('authorization'));
-
-      const candidateServiceInstance = Container.get(CandidateService);
-
-      const { candidateRecord , aboutRecord } = await candidateServiceInstance.GetCandidate(userDetails);           
-
-      // here we need to call another service th
-
-      const candidateInfo = {
-        'name':candidateRecord.name,
-        'jobtitle':candidateRecord.jobtitle,
-        'githubUrl':candidateRecord.githubUrl,
-        'skills':candidateRecord.skills,
-        'about':aboutRecord.about,
-        'whatsappNumber':candidateRecord.whatsappNumber,
-        'exp':candidateRecord.exp,
-        'ctc':candidateRecord.ctc,
-        'location':candidateRecord.location
-      };
-
-      return res.json({ "success" : true , user: candidateInfo }).status(200);
-
-    }
-    if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
-    {        
-      console.log("fetching the userdetails the of the company");
-
-      userDetails = await jwt_decode(req.header('authorization'));
-
-      const companyServiceInstance = Container.get(CompanyService);
-
-      const { companyRecord, aboutRecord } = await companyServiceInstance.GetCompany(userDetails);           
-      
-      // here we need to call another service th
-
-      const companyInfo = {
-        'name':companyRecord.name,
-        'whatsappNumber':companyRecord.whatsappNumber,
-        'preferredIndustry':companyRecord.preferredIndustry,
-        'location':companyRecord.location,
-        'skills':companyRecord.skills,
-        'about':aboutRecord.about,
-        'empSize':companyRecord.empSize,
-        'site':companyRecord.site,
-      };
-
-      return res.json({ "success" : true , user: companyInfo }).status(200);    
-    }
-
-  });
-
-
-
   /*
    * Method to get full profile of a given user 
    */
@@ -111,7 +44,7 @@ export default (app: Router) => {
         }
         
         userDetails = await jwt_decode(req.header('authorization'));
-  
+
         if(userDetails['cognito:groups'][0] == 'userCandidate'){      //middlewares.submitCandidate(req, res, next, userDetails)
 
           console.log("filling up the candiadte information ");
@@ -147,21 +80,87 @@ export default (app: Router) => {
         console.log("Failed to add the user data");
         return res.sendStatus(500);
       }
-
     });
 
 
+    /*
+    * Method to get full profile of a given user
+    */ 
+  
+    route.get('/user', middlewares.isAuth, async (req: Request, res: Response) => {
+      
+      var userDetails= {
+        ['cognito:groups']:null
+      }
+
+      userDetails = await jwt_decode(req.header('authorization'));
+
+      if(userDetails['cognito:groups'][0] == 'userCandidate'){      //middlewares.submitCandidate(req, res, next, userDetails)
+
+        console.log("fetching the userdetails the of the candiadte");
+
+        userDetails = await jwt_decode(req.header('authorization'));
+
+        const candidateServiceInstance = Container.get(CandidateService);
+
+        const { candidateRecord , aboutRecord } = await candidateServiceInstance.GetCandidate(userDetails);           
+
+        // here we need to call another service th
+
+        const candidateInfo = {
+          'name':candidateRecord.name,
+          'jobtitle':candidateRecord.jobtitle,
+          'githubUrl':candidateRecord.githubUrl,
+          'skills':candidateRecord.skills,
+          'about':aboutRecord.about,
+          'whatsappNumber':candidateRecord.whatsappNumber,
+          'exp':candidateRecord.exp,
+          'ctc':candidateRecord.ctc,
+          'location':candidateRecord.location
+        };
+
+        return res.json({ "success" : true , user: candidateInfo }).status(200);
+
+      }
+      if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
+      {        
+        console.log("fetching the userdetails the of the company");
+
+        userDetails = await jwt_decode(req.header('authorization'));
+
+        const companyServiceInstance = Container.get(CompanyService);
+
+        const { companyRecord, aboutRecord } = await companyServiceInstance.GetCompany(userDetails);           
+        
+        // here we need to call another service th
+
+        const companyInfo = {
+          'name':companyRecord.name,
+          'whatsappNumber':companyRecord.whatsappNumber,
+          'preferredIndustry':companyRecord.preferredIndustry,
+          'location':companyRecord.location,
+          'skills':companyRecord.skills,
+          'about':aboutRecord.about,
+          'empSize':companyRecord.empSize,
+          'site':companyRecord.site,
+        };
+
+        return res.json({ "success" : true , user: companyInfo }).status(200);    
+      }
+
+    });
+
+  
     route.put('/user', middlewares.isAuth, async (req, res, next) => 
     {
 
     });
 
-
-  /* Method to get the profile of a given user
-   * if can then can get recruiter
-   * if Recruiter then can get Candidate
-   */
-  // route.get('/:userid', middlewares.isAuth, middlewares.isRole, (req: Request, res: Response) => {
-  //   return res.json({ user: req.currentUser }).status(200);
-  // });
+    /* Method to get the profile of a given user
+    * if can then can get recruiter
+    * if Recruiter then can get Candidate
+    */
+    // route.get('/:userid', middlewares.isAuth, middlewares.isRole, (req: Request, res: Response) => {
+    //   return res.json({ user: req.currentUser }).status(200);
+    // });
 };

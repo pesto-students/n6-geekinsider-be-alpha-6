@@ -1,10 +1,8 @@
 const Verifier = require('verify-cognito-token');
+import config from '../../config'
 
-var awsRegion = "";
-awsRegion = process.env.REGION.toString()
-
-var userPoolId = "";
-userPoolId = process.env.USER_POOL_ID.toString()
+const awsRegion = config.awsconf.REGION; 
+const userPoolId = config.awsconf.USER_POOL_ID;
 
 /*
  * set the params for the cognito authentication
@@ -33,6 +31,7 @@ const isAuth = (req, res, next) => {
     try {
       //console.log("Validating the user ...");
       var verifier = new Verifier(params);
+      console.log(req.headers.authorization);
       verifier.verify(req.headers.authorization)
       .then(result =>{
         if(result == false)
@@ -48,7 +47,7 @@ const isAuth = (req, res, next) => {
       });    
     }
     catch(e) {
-      //console.log("Entered the catch block");
+      console.log("Entered the catch block");
       res.sendStatus(401);
       return next(e)
     }
@@ -60,3 +59,10 @@ const isAuth = (req, res, next) => {
 
 
 export default isAuth;
+
+
+// var userPoolId = "";
+// userPoolId = process.env.USER_POOL_ID.toString()
+
+// var awsRegion = "";
+// awsRegion = process.env.REGION.toString()
