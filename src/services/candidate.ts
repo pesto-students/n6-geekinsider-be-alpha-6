@@ -2,6 +2,7 @@ import { Service, Inject } from 'typedi';
 import { ICandidate } from './../interfaces/ICandidate';
 import { IAbout } from './../interfaces/IAbout';
 import mongoose from 'mongoose';
+
 @Service()
 export default class CandidateService {
   constructor(
