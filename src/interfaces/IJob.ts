@@ -4,5 +4,6 @@ export interface IJob {
     jobLocation: string;
     jobStatus:boolean;
     jobDescription: string;
+    skills: string;
 }
   

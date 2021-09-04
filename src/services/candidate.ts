@@ -30,7 +30,7 @@ export default class CandidateService {
         _id: token.sub,  // cognitoUsername will be used as the id parameter for the user table.
         name: req.body.name,
         whatsappNumber: req.body.whatsappNumber,
-        jobTitle:req.body.jobtitle,
+        jobTitle:req.body.jobTitle,
         location: req.body.location,
         skills:skills,
         githubUrl: req.body.githubUrl,

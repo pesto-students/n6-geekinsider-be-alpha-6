@@ -11,6 +11,10 @@ const Job = new mongoose.Schema(
         type: String,
         required: true
     },
+    companyId:{
+        type: String,
+        required: true
+    },
     jobTitle: {
         type: String
     },
@@ -21,6 +25,7 @@ const Job = new mongoose.Schema(
         type: Boolean,
         default: true
     },
+    skills:[],
     jobAboutid: {
         type: String
     },

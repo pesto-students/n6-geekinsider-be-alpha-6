@@ -2,7 +2,7 @@ export interface ICandidate {
     //_id: string;    // email id will be used as unique attribute for a given user
     name: string;
     whatsappNumber: string;
-    jobtitle: string;
+    jobTitle: string;
     location: string;
     skills:[];
     exp: string;

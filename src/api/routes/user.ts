@@ -55,9 +55,8 @@ export default (app: Router) => {
           {
               return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
           }
-          else
-          {
-              return res.json({ "success" : true }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+          else{
+            return res.json({ "success" : true }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
           }
         }
         if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
@@ -67,21 +66,19 @@ export default (app: Router) => {
 
           const companyServiceInstance = Container.get(CompanyService);
           const { companyRecord } = await companyServiceInstance.SetCompany(userDetails,req);    
-          
           if(companyRecord['_id'] == null)                             //console.log(console.log(userRecord)) // to see the userRecord in the debug logs
           {
               return res.sendStatus(401);                             // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
           }
-          else
-          {
-              return res.json({ "success" : true }).status(200);        //console.log("User role set successfully in Mongo Db");           // successful response             
+          else{
+            return res.json({ "success" : true }).status(200);        //console.log("User role set successfully in Mongo Db");           // successful response             
           }
         }
       }
       catch(e)
       {
-          console.log("Failed to add the user data");
-          return res.sendStatus(500);
+        console.log("Failed to add the user data");
+        return res.sendStatus(500);
       }
     });
 

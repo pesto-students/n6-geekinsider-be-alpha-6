@@ -31,7 +31,7 @@ const Company = new mongoose.Schema(
     site:{
         type: String 
     },
-    jobcount:{
+    jobCount:{
         type: Number,
         default: 0
     },

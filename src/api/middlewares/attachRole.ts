@@ -50,7 +50,8 @@ const attachRole = async (req, res, next) => {
         await cognitoidentityserviceprovider.adminAddUserToGroup(groupParam, async function(err) {
             if (err) {
                 return res.sendStatus(401)                                               //console.log("Un-Authorised acccess is seen");
-            } else 
+            } 
+            else 
             {                                                                            //console.log("User role set successfully in Cognito");           // successful response           //console.log("Firing up the db query to add user to the mongodb");
                 const UserModel = Container.get('userModel') as mongoose.Model<IUser & mongoose.Document>;
                 const userRecord = await UserModel.create({
