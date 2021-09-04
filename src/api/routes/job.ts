@@ -70,13 +70,17 @@ export default (app: Router) => {
         // {
         //     return res.sendStatus(401);         
         // }
-         
-        var cname = req.query.cname;
-        console.log(cname);
-
-        var tmpSkills = req.query.skills.toString()
-        var skills = tmpSkills.split(',');
-        console.log(skills);
+        var cname; 
+        var skills;
+        if(req.query.cname != null)
+        {
+            cname = req.query.cname;    
+        }
+        if(req.query.skills != null)
+        {
+            var tmpSkills = req.query.skills.toString()
+            skills = tmpSkills.split(',');
+        }
 
         // var jobtitle = req.query.jobtitle;
         // console.log(jobtitle);
@@ -107,7 +111,7 @@ export default (app: Router) => {
         }
         
         // route for job based on their id's
-        if(cname == null && skills == null && userDetails['cognito:groups'][0] != 'userRecruiter'){
+        if(cname == null && skills == null && userDetails['cognito:groups'][0] == 'userRecruiter'){
             const jobServiceInstance = Container.get(JobService);
             jobRecords = await jobServiceInstance.GetJobsList(userDetails);    
         }
