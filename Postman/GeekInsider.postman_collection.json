@@ -10,7 +10,9 @@
 		"8d0d1544-a0f6-0ee0-b6cd-79f0d065abf2",
 		"b84f074b-5b22-692b-1184-ff8294a1472f",
 		"daee4d47-4942-8926-d452-e4d85a012b64",
-		"0ce715ec-f4f6-672f-9146-e11a3f46dd0a"
+		"0ce715ec-f4f6-672f-9146-e11a3f46dd0a",
+		"8dece8ef-92f5-7fb3-81c8-38a5f9710d6a",
+		"0756a877-b77d-2af5-edec-d236c0c3ee94"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -18,6 +20,50 @@
 	"owner": "12579919",
 	"public": false,
 	"requests": [
+		{
+			"id": "0756a877-b77d-2af5-edec-d236c0c3ee94",
+			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2YmQxMWEyOS0xZTQ0LTQyODUtODg2Yi1kNmJiN2VjY2I4ODkiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyUmVjcnVpdGVyIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiNmJkMTFhMjktMWU0NC00Mjg1LTg4NmItZDZiYjdlY2NiODg5Iiwib3JpZ2luX2p0aSI6ImNmMWMxZWRhLWU2NjMtNGEyYy1hMTAzLWI0ZmE4ZTM0Y2NlYSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjBkNTA2MTkwLTcyYjMtNDZhMS04Mjc4LTM1ZDNhNjJlMzMwNiIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNzU1MzQ5LCJleHAiOjE2MzA3NTg5NDksImlhdCI6MTYzMDc1NTM0OSwianRpIjoiYjhkMTUzNWEtYmU0Yy00ZGM0LWJlODEtNWQ4ODkxNDExMWFlIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.rnh3aUoELHagMjkI-20p9q5czMJhyg01yhAoxR0orvNV53-yevpDlaifISoPaadC90WeCWIKD0A3Bn3ip4dDFiEX_QhRdBb7BJMXjec3aIo7tzV38fd7BzUrOROEBN1xtHddPftJJvm_0k-E1l7N0LBftWhCbqxWjHyFLbcmlw08guY0YpJxZfKvsDal1G6vDEmL47F4MPf56bqwrlGbZ2Aljt6-fuwbfTxDNzYal7Jc62y6ERHwHicnJ30eca7XZZDje3xnwIPLUPAgNNJSzyRhRL05YgkMGOOVIlxSewTqCuB5Bc2BTGus2dvhjab7bnII7bz3skQ9ya6uQuQinw\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2YmQxMWEyOS0xZTQ0LTQyODUtODg2Yi1kNmJiN2VjY2I4ODkiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyUmVjcnVpdGVyIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiNmJkMTFhMjktMWU0NC00Mjg1LTg4NmItZDZiYjdlY2NiODg5Iiwib3JpZ2luX2p0aSI6ImNmMWMxZWRhLWU2NjMtNGEyYy1hMTAzLWI0ZmE4ZTM0Y2NlYSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjBkNTA2MTkwLTcyYjMtNDZhMS04Mjc4LTM1ZDNhNjJlMzMwNiIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNzU1MzQ5LCJleHAiOjE2MzA3NTg5NDksImlhdCI6MTYzMDc1NTM0OSwianRpIjoiYjhkMTUzNWEtYmU0Yy00ZGM0LWJlODEtNWQ4ODkxNDExMWFlIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.rnh3aUoELHagMjkI-20p9q5czMJhyg01yhAoxR0orvNV53-yevpDlaifISoPaadC90WeCWIKD0A3Bn3ip4dDFiEX_QhRdBb7BJMXjec3aIo7tzV38fd7BzUrOROEBN1xtHddPftJJvm_0k-E1l7N0LBftWhCbqxWjHyFLbcmlw08guY0YpJxZfKvsDal1G6vDEmL47F4MPf56bqwrlGbZ2Aljt6-fuwbfTxDNzYal7Jc62y6ERHwHicnJ30eca7XZZDje3xnwIPLUPAgNNJSzyRhRL05YgkMGOOVIlxSewTqCuB5Bc2BTGus2dvhjab7bnII7bz3skQ9ya6uQuQinw",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/jobs/job?skills=Python,React",
+			"queryParams": [
+				{
+					"key": "skills",
+					"value": "Python,React",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1630762561062,
+			"name": "http://localhost:3000/api/users/add-user Job based on company name copy",
+			"description": "",
+			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"skill\" : \"React\",\r\n\t\"skill\" : \"Node\"\r\n}"
+		},
 		{
 			"id": "0ce715ec-f4f6-672f-9146-e11a3f46dd0a",
 			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2YmQxMWEyOS0xZTQ0LTQyODUtODg2Yi1kNmJiN2VjY2I4ODkiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyUmVjcnVpdGVyIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiNmJkMTFhMjktMWU0NC00Mjg1LTg4NmItZDZiYjdlY2NiODg5Iiwib3JpZ2luX2p0aSI6ImU0M2IzNjUxLTdiNjMtNDRiOS04Yzk1LWZjOWZmNzRiODAwOCIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjkzMTEwYWY1LTVmYTgtNDc4MS05YjhiLWRhYjU1NmEzNWJjNyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNzM1NTMzLCJleHAiOjE2MzA3MzkxMzMsImlhdCI6MTYzMDczNTUzMywianRpIjoiNDdkNDFjMTMtMTU4Yy00YmYxLWE2OTgtNWRmY2UyMjEyNDQ0IiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.l1xsZ4mVvnf0L15yDimrVRiSczWX2C0wGyrE6TQlmOI6kj3YM9kVHjhkvbl4sMTgvamjJzKxLczMkG8psRHZ9XIa1QhBthrn8AYim-s5NqW1qCbPBj6VwPhbBYiGtxZo6jPpcSSj4c_1E9yCvwq2VHVFqM3FMcPtMEptCXEk08nX4zRB2hj5zNyznsooiwT1Oq9sT6-DhQjLfcKawhcLAH0xTATHQurvdVZ9yVBXux1vw9YV6K3WbIp9FzVutJDkSKmUcNbgKgZ34ubFGQUloOfXAbwdVSFW8TEy1wLYsLFOAh5oBMGbCiX5Z23POJUe83yKCqesEli3af7rAcq_dw\nContent-Type: application/json\n",
@@ -48,7 +94,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1630738416568,
-			"name": "http://localhost:3000/api/users/add-user copy copy copy",
+			"name": "http://localhost:3000/api/jobs/job add job",
 			"description": "",
 			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
 			"responses": [],
@@ -230,6 +276,50 @@
 			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"name\" : \"Vishal Kothari\",\r\n\t\"whatsappNumber\" : \"+919769030229\",\r\n\t\"preferredIndustry\":\"IT\",\r\n\t\"location\":\"Mumbai, India\",\r\n\t\"skills\":\"React,Node,Python,C\",\r\n\t\"about\": \"The dream door to the gateway for the IT industry\",              \r\n    \"empSize\": 300,\r\n    \"site\": \"Theundoubted.in\"\r\n}\r\n"
+		},
+		{
+			"id": "8dece8ef-92f5-7fb3-81c8-38a5f9710d6a",
+			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJkZDFmMDBkOS01ZDY1LTRmMTgtYjdmMS00NWQ1YTE5NmY5MjIiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGQxZjAwZDktNWQ2NS00ZjE4LWI3ZjEtNDVkNWExOTZmOTIyIiwib3JpZ2luX2p0aSI6ImU2MzlmZDRiLTg5MDktNGVjNi04ZTZhLTRlMDVkNjNjNjY1YSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjhjODc3YzA3LWY3ZTYtNGU2My04N2UzLTk4NWRiNmNkNGFhYSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNzQwMjE0LCJleHAiOjE2MzA3NDM4MTQsImlhdCI6MTYzMDc0MDIxNCwianRpIjoiZGYxNDEzZmUtNjNiZi00NGRjLTlhZmMtMGViZmVlMzEzZTMwIiwiZW1haWwiOiJ2a2s5NzZAZ21haWwuY29tIn0.Q7rH3FDF2GmKir2Am8LrcVxnxLU7C3zDwaGvKZXABC5V3D6y9ifKunz1ruu0AQdNl9lRWaUvHovx8sqczZJpRZyRaIs1hWzB-fO5-teo4eaH00jaLiORyBYWwuiK0LUrbGLcOTmP6qq_Ox8oPvIdqfwkUVHafQCh5jKThUgPoyukyW8pkeh1AaAcjxTfOhKaoVe8J1JewgRGacC1nnRRSAb0b6WT6QonETSB_8s5OsRD2NLfaJPxeMXk5FXpnY6gu-ASVb0SXf5wCSWhOCPy7vqi0i5Tl2EzcN6SN6yC7mzHsrKSGPIbeoIQHcgowltmqOTjHJLKBobNHo2KoEJ-8w\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJkZDFmMDBkOS01ZDY1LTRmMTgtYjdmMS00NWQ1YTE5NmY5MjIiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGQxZjAwZDktNWQ2NS00ZjE4LWI3ZjEtNDVkNWExOTZmOTIyIiwib3JpZ2luX2p0aSI6ImU2MzlmZDRiLTg5MDktNGVjNi04ZTZhLTRlMDVkNjNjNjY1YSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjhjODc3YzA3LWY3ZTYtNGU2My04N2UzLTk4NWRiNmNkNGFhYSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNzQwMjE0LCJleHAiOjE2MzA3NDM4MTQsImlhdCI6MTYzMDc0MDIxNCwianRpIjoiZGYxNDEzZmUtNjNiZi00NGRjLTlhZmMtMGViZmVlMzEzZTMwIiwiZW1haWwiOiJ2a2s5NzZAZ21haWwuY29tIn0.Q7rH3FDF2GmKir2Am8LrcVxnxLU7C3zDwaGvKZXABC5V3D6y9ifKunz1ruu0AQdNl9lRWaUvHovx8sqczZJpRZyRaIs1hWzB-fO5-teo4eaH00jaLiORyBYWwuiK0LUrbGLcOTmP6qq_Ox8oPvIdqfwkUVHafQCh5jKThUgPoyukyW8pkeh1AaAcjxTfOhKaoVe8J1JewgRGacC1nnRRSAb0b6WT6QonETSB_8s5OsRD2NLfaJPxeMXk5FXpnY6gu-ASVb0SXf5wCSWhOCPy7vqi0i5Tl2EzcN6SN6yC7mzHsrKSGPIbeoIQHcgowltmqOTjHJLKBobNHo2KoEJ-8w",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/jobs/job?cname=amazon",
+			"queryParams": [
+				{
+					"key": "cname",
+					"value": "amazon",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1630746185524,
+			"name": "http://localhost:3000/api/users/add-user Job based on company name",
+			"description": "",
+			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"companyName\" : \"ABC\",\r\n\t\"jobtitle\":\"Associate Software Engineer\",\r\n\t\"jobLocation\":\"Mumbai, India\",\r\n\t\"jobStatus\":0\r\n}"
 		},
 		{
 			"id": "b84f074b-5b22-692b-1184-ff8294a1472f",

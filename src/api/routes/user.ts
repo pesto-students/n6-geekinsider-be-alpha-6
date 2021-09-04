@@ -109,7 +109,7 @@ export default (app: Router) => {
 
         const candidateInfo = {
           'name':candidateRecord.name,
-          'jobtitle':candidateRecord.jobtitle,
+          'jobtitle':candidateRecord.jobTitle,
           'githubUrl':candidateRecord.githubUrl,
           'skills':candidateRecord.skills,
           'about':aboutRecord.about,

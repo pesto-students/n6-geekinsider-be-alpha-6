@@ -31,7 +31,7 @@ const isAuth = (req, res, next) => {
     try {
       //console.log("Validating the user ...");
       var verifier = new Verifier(params);
-      //console.log(req.headers.authorization);
+      console.log(req.headers.authorization);
       verifier.verify(req.headers.authorization)
       .then(result =>{
         if(result == false)
