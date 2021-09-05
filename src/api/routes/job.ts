@@ -177,7 +177,6 @@ export default (app: Router) => {
     
     });
 
-
     /*
     * Method to get jobs by company name.
     */  

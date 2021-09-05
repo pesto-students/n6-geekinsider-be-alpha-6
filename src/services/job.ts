@@ -234,6 +234,37 @@ export default class JobService {
         }
     }
 
+    public async GetUserBySkill(token): Promise<any> {
+        try
+        {
+            // const jobRecord = await this.jobModel.find(token.sub);                                                        // console.log("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     
+            var query = { 'companyId': token.sub };
+            console.log(query);
+            const jobRecord = await this.jobModel.find(query);          
+            console.log(jobRecord);
+            var jobList = [];
+            var i=0;
+            for(;i<jobRecord.length;i++)
+            {
+                var job = {
+                    companyName: jobRecord[i].companyName,
+                    jobTitle: jobRecord[i].jobTitle,
+                    jobLocation: jobRecord[i].jobLocation,
+                    jobStatus: jobRecord[i].jobStatus,
+                    skills: jobRecord[i].skills,
+                    jobslug: jobRecord[i].jobslug,
+                    ctc: jobRecord[i].ctc,
+                    exp: jobRecord[i].exp 
+                }
+                jobList.push(job);
+            }
+            console.log(job);
+            return jobList;                                                                                                          // Need to update the data in the user model also need to remove console logs once upadted the method properly
+        }
+        catch (e) {
+            throw e;
+        }
+    }
 
     public async GetJobsListCan(token): Promise<any> {
         try

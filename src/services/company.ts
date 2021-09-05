@@ -6,6 +6,7 @@ import { IAbout } from './../interfaces/IAbout';
 export default class CompanyService {
   constructor(
     @Inject('companyModel') private companyModel: Models.CompanyModel,
+    @Inject('candidateModel') private candidateModel: Models.CandidateModel,
     @Inject('aboutModel') private aboutModel: Models.AboutModel,
   ){
   }
@@ -40,6 +41,26 @@ export default class CompanyService {
     }
     catch (e) {
       console.log(e);
+      throw e;
+    }
+  }
+
+
+  public async GetCanList(token): Promise<any> {
+    try
+    {
+      console.log("Submitting the Company Details");
+
+      const companyRecord = await this.companyModel.findById(token.sub);
+      console.log(companyRecord);
+
+      var query = {skills: {$in: companyRecord.skills}}
+      const candidateRecord = await this.candidateModel.find(query);
+
+      // Need to update the data in the user model also need to remove console logs once upadted the method properly
+      return candidateRecord  
+    }
+    catch (e) {
       throw e;
     }
   }

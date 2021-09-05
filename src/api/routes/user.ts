@@ -82,10 +82,59 @@ export default (app: Router) => {
       }
     });
 
+    route.get('/getcans', middlewares.isAuth, async (req: Request, res: Response) =>{
+
+      var userDetails= {
+        ['cognito:groups']:null
+      }
+      
+      userDetails = await jwt_decode(req.header('authorization'));
+
+      if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
+      {        
+        console.log("Fetching userdetails of recommended candidate");
+
+        userDetails = await jwt_decode(req.header('authorization'));
+
+        const companyServiceInstance = Container.get(CompanyService);
+
+        const candidateRecords = await companyServiceInstance.GetCanList(userDetails);           
+        
+        // var i = 0; 
+        // var canRecords = [];
+        // for(;i<candidateRecords.length;i++) 
+        // {
+        //   canRecords[i] = {
+        //     candidateRecords[i]['skills']
+        //   }
+        // }
+
+        // console.log(candidateRecord);
+
+        // here we need to call another service th
+
+        // const companyInfo = {
+        //   'name':companyRecord.name,
+        //   'whatsappNumber':companyRecord.whatsappNumber,
+        //   'preferredIndustry':companyRecord.preferredIndustry,
+        //   'location':companyRecord.location,
+        //   'skills':companyRecord.skills,
+        //   'about':aboutRecord.about,
+        //   'empSize':companyRecord.empSize,
+        //   'site':companyRecord.site,
+        // };
+
+        // const candidateList="";
+        return res.json({ "success" : true , user: candidateRecords }).status(200);    
+      }
+
+
+
+    })
 
     /*
-    * Method to get full profile of a given user
-    */ 
+     *   Method to get full profile of a given user
+     */ 
   
     route.get('/user', middlewares.isAuth, async (req: Request, res: Response) => {
       
@@ -150,7 +199,8 @@ export default (app: Router) => {
 
     });
 
-  
+    // GetJobByCan
+
     route.put('/user', middlewares.isAuth, async (req, res, next) => 
     {
 

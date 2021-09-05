@@ -48,6 +48,18 @@ export default class CandidateService {
     }
   }
 
+  public async GetRecoCanList(token): Promise<any> {
+    try
+    {
+      const candidateRecords = await this.candidateModel.find(token.sub);
+            
+      return candidateRecords;                                        // Need to update the data in the user model also need to remove console logs once upadted the method properly
+    }
+    catch (e) {
+      throw e;
+    }
+  }
+  
   public async GetCandidate(token): Promise<{ candidateRecord: ICandidate , aboutRecord: IAbout }> {
     try
     {
