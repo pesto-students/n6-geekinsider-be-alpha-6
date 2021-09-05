@@ -154,6 +154,31 @@ export default (app: Router) => {
     });
 
     /*
+     * Method to get jobs by trend. GetJobByTrend.
+     */  
+    route.get('/trend', async (req: Request, res: Response) => {
+               
+        var jobRecords;
+
+        var userDetails = await jwt_decode(req.header('authorization'));
+
+        const jobServiceInstance = Container.get(JobService);
+
+        jobRecords = await jobServiceInstance.GetJobByTrend(userDetails);
+        
+        if(jobRecords == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+        {
+            return res.json({ "success" : true, "jobRecord" : [] }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+        }
+        else
+        {
+            return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+        }
+    
+    });
+
+
+    /*
     * Method to get jobs by company name.
     */  
     route.get('/job', async (req: Request, res: Response) => {

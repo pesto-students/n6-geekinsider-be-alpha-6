@@ -168,6 +168,40 @@ export default class JobService {
         }
     }
 
+    public async GetJobByTrend(userDetails): Promise<any>
+    {
+        try
+        {
+            const candidateRecord = await this.candidateModel.findById(userDetails.sub);
+
+            var skills = candidateRecord.skills;
+
+            const jobRecord = await this.jobModel.find({skills: {$in: skills}})
+
+            var jobList = [];
+            var i=0;
+
+            for(;i<jobRecord.length;i++)
+            {
+                var job = {
+                    companyName: jobRecord[i].companyName,
+                    jobTitle: jobRecord[i].jobTitle,
+                    jobLocation: jobRecord[i].jobLocation,
+                    jobStatus: jobRecord[i].jobStatus,
+                    skills: jobRecord[i].skills,
+                    jobslug: jobRecord[i].jobslug,
+                    ctc: jobRecord[i].ctc,
+                    exp: jobRecord[i].exp                
+                }        
+                jobList.push(job);
+            }
+            return jobRecord;                                                                                                          // Need to update the data in the user model also need to remove console logs once upadted the method properly
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+
     public async GetJobsListRe(token): Promise<any> {
         try
         {
