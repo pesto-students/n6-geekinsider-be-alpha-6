@@ -16,7 +16,8 @@
 		"a388cc13-bda8-f6ed-1966-c5b8521f5ec0",
 		"cb124acd-06c2-2714-a0d5-1f3e97acc014",
 		"bae4265e-850b-72f5-52f2-eedb63158000",
-		"acb12f90-2b84-601a-9494-f7822642c4ea"
+		"acb12f90-2b84-601a-9494-f7822642c4ea",
+		"02e3f09a-fd92-602b-00c9-977e0cb8a71e"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -24,6 +25,142 @@
 	"owner": "12579919",
 	"public": false,
 	"requests": [
+		{
+			"id": "02e3f09a-fd92-602b-00c9-977e0cb8a71e",
+			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2YmQxMWEyOS0xZTQ0LTQyODUtODg2Yi1kNmJiN2VjY2I4ODkiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyUmVjcnVpdGVyIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiNmJkMTFhMjktMWU0NC00Mjg1LTg4NmItZDZiYjdlY2NiODg5Iiwib3JpZ2luX2p0aSI6ImJkODhiNTdlLTg3NjUtNDZhYy04MTFiLTRkOWQ2OGVlOGM5MyIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6Ijg4Zjk2ODYzLWJkODEtNGNjMS04ZmQxLTMxM2NkYTYwNzhkYyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwODQ1OTg0LCJleHAiOjE2MzA4NDk1ODQsImlhdCI6MTYzMDg0NTk4NCwianRpIjoiOWIzNzM3NWUtMjQ1OS00ZjY4LWI1YTgtZTZjZDBjNDEwNWY0IiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.OX7SgJvCsus1vrBOu1G6y0JnA9h_eyoiJCe21-ciL1j389hu1DElSuKEbnwzRgzGWfb4ScPTIN7JreUwTz9OLJyWpl2jGd0Ymac-GgXjCmBCropgEJlmOh-G_rXs8UfwxEt9u4Kitc1-JnBCnSHhs_ds3nLwOPzfw9bQ8gd7JAyNa5f05SjyRRUU45X5TjVH5PjBeEJ425ZFgew6QdXlQWHkdgU-C8QAw5JKNmV66-090x9nxElsGQWXp2ZHTPmvusdWnSdWbuDufHf6rkc-k1xHFD3QUsAarmssLZofAuDdTCcymB66QjAXqiT3JebXmdXkWNiIcIQyvgYnLTpJzg\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2YmQxMWEyOS0xZTQ0LTQyODUtODg2Yi1kNmJiN2VjY2I4ODkiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyUmVjcnVpdGVyIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiNmJkMTFhMjktMWU0NC00Mjg1LTg4NmItZDZiYjdlY2NiODg5Iiwib3JpZ2luX2p0aSI6ImJkODhiNTdlLTg3NjUtNDZhYy04MTFiLTRkOWQ2OGVlOGM5MyIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6Ijg4Zjk2ODYzLWJkODEtNGNjMS04ZmQxLTMxM2NkYTYwNzhkYyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwODQ1OTg0LCJleHAiOjE2MzA4NDk1ODQsImlhdCI6MTYzMDg0NTk4NCwianRpIjoiOWIzNzM3NWUtMjQ1OS00ZjY4LWI1YTgtZTZjZDBjNDEwNWY0IiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.OX7SgJvCsus1vrBOu1G6y0JnA9h_eyoiJCe21-ciL1j389hu1DElSuKEbnwzRgzGWfb4ScPTIN7JreUwTz9OLJyWpl2jGd0Ymac-GgXjCmBCropgEJlmOh-G_rXs8UfwxEt9u4Kitc1-JnBCnSHhs_ds3nLwOPzfw9bQ8gd7JAyNa5f05SjyRRUU45X5TjVH5PjBeEJ425ZFgew6QdXlQWHkdgU-C8QAw5JKNmV66-090x9nxElsGQWXp2ZHTPmvusdWnSdWbuDufHf6rkc-k1xHFD3QUsAarmssLZofAuDdTCcymB66QjAXqiT3JebXmdXkWNiIcIQyvgYnLTpJzg",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/users/getcans",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1630846030048,
+			"name": "http://localhost:3000/api/users/add-user Get job details by reco copy copy",
+			"description": "",
+			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 63,
+					"headers": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "1095",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 05 Sep 2021 11:08:31 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"447-eXle7+05Xb/sVj83BG7SHXFyu/I\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=5",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"success\":true,\"jobRecord\":[{\"jobStatus\":true,\"skills\":[\"React\",\"AWS\",\"Python\",\"C\"],\"canApplied\":[],\"_id\":\"6bd11a29-1e44-4285-886b-d6bb7eccb889-16\",\"companyName\":\"Vishal Kothari\",\"jobTitle\":\"Associate Software Engineer\",\"jobLocation\":\"Mumbai, India\",\"companyId\":\"6bd11a29-1e44-4285-886b-d6bb7eccb889\",\"jobslug\":\"Vishal Kothari-Associate Software Engineer16\",\"ctc\":7,\"exp\":4,\"__v\":0},{\"jobStatus\":true,\"skills\":[\"React\",\"AWS\",\"Python\",\"C\"],\"canApplied\":[],\"_id\":\"6bd11a29-1e44-4285-886b-d6bb7eccb889-17\",\"companyName\":\"Vishal Kothari\",\"jobTitle\":\"Associate Software Engineer\",\"jobLocation\":\"Mumbai, India\",\"companyId\":\"6bd11a29-1e44-4285-886b-d6bb7eccb889\",\"jobslug\":\"Vishal Kothari-Associate Software Engineer17\",\"ctc\":7,\"exp\":4,\"__v\":0},{\"jobStatus\":true,\"skills\":[\"React\",\"AWS\",\"Python\",\"C\"],\"canApplied\":[],\"_id\":\"6bd11a29-1e44-4285-886b-d6bb7eccb889-18\",\"companyName\":\"Vishal Kothari\",\"jobTitle\":\"Associate Software Engineer\",\"jobLocation\":\"Mumbai, India\",\"companyId\":\"6bd11a29-1e44-4285-886b-d6bb7eccb889\",\"jobslug\":\"Vishal Kothari-Associate Software Engineer18\",\"ctc\":7,\"exp\":4,\"__v\":0}]}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "http://localhost:3000/api/users/add-user Get job details of agiven job copy copy",
+					"id": "5974f879-f69e-d7a7-20ff-a6cb6bd3bfd6",
+					"request": "02e3f09a-fd92-602b-00c9-977e0cb8a71e",
+					"requestObject": {
+						"url": "http://localhost:3000/api/jobs/reco",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Authorization",
+								"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJkZDFmMDBkOS01ZDY1LTRmMTgtYjdmMS00NWQ1YTE5NmY5MjIiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGQxZjAwZDktNWQ2NS00ZjE4LWI3ZjEtNDVkNWExOTZmOTIyIiwib3JpZ2luX2p0aSI6ImRiNTczZjY2LTJjNTgtNDdlMi05YjhlLTBhMzFkMzg5OWNmNSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6ImZhNDY3ZGRkLTFiMzItNDA5Yi05ODQ1LTA3NWRiNjE2MDU4NCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwODM5OTk4LCJleHAiOjE2MzA4NDM1OTgsImlhdCI6MTYzMDgzOTk5OCwianRpIjoiMzM4MGIzMjYtZTg5Yi00YzY5LTgzZDctNTIwOGY5YmQ1OTIzIiwiZW1haWwiOiJ2a2s5NzZAZ21haWwuY29tIn0.WNDhzPVLGkKT8R3Jjg0dgSFj-3K8EtGHWGTBCn0z7cGAInUut8GvYZcZqJ-9FNH84YVQHENapWQtHMxeWhjJhGAaf5g7mT8Ze28WYIuWknIeUHI1rlQLDripoO-RqFIZQd40oBgoZDjpG8imkLGM977Se_5daSHd-R3mg0QB7SdNsMsV-jyUIf3WoIcnejw7F43PWP5YQLeyzJuEzjn4qsc1RAfZbt61ob3sOp6Y3t2d_aL6IWj1v4gaJAYxyQ5HHgactDtNo4JUbHiOQFHEXnZ6nz6se8E6oQJe29EwrEk2h6KQYSJzybP4IHWdfjLTPjq-InsD9NjJA4ryimftsg",
+								"description": "",
+								"enabled": true,
+								"warning": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true,
+								"warning": ""
+							}
+						],
+						"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJkZDFmMDBkOS01ZDY1LTRmMTgtYjdmMS00NWQ1YTE5NmY5MjIiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyQ2FuZGlkYXRlIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGQxZjAwZDktNWQ2NS00ZjE4LWI3ZjEtNDVkNWExOTZmOTIyIiwib3JpZ2luX2p0aSI6ImRiNTczZjY2LTJjNTgtNDdlMi05YjhlLTBhMzFkMzg5OWNmNSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJDYW5kaWRhdGVHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6ImZhNDY3ZGRkLTFiMzItNDA5Yi05ODQ1LTA3NWRiNjE2MDU4NCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwODM5OTk4LCJleHAiOjE2MzA4NDM1OTgsImlhdCI6MTYzMDgzOTk5OCwianRpIjoiMzM4MGIzMjYtZTg5Yi00YzY5LTgzZDctNTIwOGY5YmQ1OTIzIiwiZW1haWwiOiJ2a2s5NzZAZ21haWwuY29tIn0.WNDhzPVLGkKT8R3Jjg0dgSFj-3K8EtGHWGTBCn0z7cGAInUut8GvYZcZqJ-9FNH84YVQHENapWQtHMxeWhjJhGAaf5g7mT8Ze28WYIuWknIeUHI1rlQLDripoO-RqFIZQd40oBgoZDjpG8imkLGM977Se_5daSHd-R3mg0QB7SdNsMsV-jyUIf3WoIcnejw7F43PWP5YQLeyzJuEzjn4qsc1RAfZbt61ob3sOp6Y3t2d_aL6IWj1v4gaJAYxyQ5HHgactDtNo4JUbHiOQFHEXnZ6nz6se8E6oQJe29EwrEk2h6KQYSJzybP4IHWdfjLTPjq-InsD9NjJA4ryimftsg\nContent-Type: application/json\n",
+						"data": "{\r\n\t\"skill\" : \"React\",\r\n\t\"skill\" : \"Node\"\r\n}",
+						"method": "GET",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\r\n\t\"skill\" : \"React\",\r\n\t\"skill\" : \"Node\"\r\n}"
+		},
 		{
 			"id": "0756a877-b77d-2af5-edec-d236c0c3ee94",
 			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2YmQxMWEyOS0xZTQ0LTQyODUtODg2Yi1kNmJiN2VjY2I4ODkiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyUmVjcnVpdGVyIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiNmJkMTFhMjktMWU0NC00Mjg1LTg4NmItZDZiYjdlY2NiODg5Iiwib3JpZ2luX2p0aSI6ImNmMWMxZWRhLWU2NjMtNGEyYy1hMTAzLWI0ZmE4ZTM0Y2NlYSIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjBkNTA2MTkwLTcyYjMtNDZhMS04Mjc4LTM1ZDNhNjJlMzMwNiIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNzU1MzQ5LCJleHAiOjE2MzA3NTg5NDksImlhdCI6MTYzMDc1NTM0OSwianRpIjoiYjhkMTUzNWEtYmU0Yy00ZGM0LWJlODEtNWQ4ODkxNDExMWFlIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.rnh3aUoELHagMjkI-20p9q5czMJhyg01yhAoxR0orvNV53-yevpDlaifISoPaadC90WeCWIKD0A3Bn3ip4dDFiEX_QhRdBb7BJMXjec3aIo7tzV38fd7BzUrOROEBN1xtHddPftJJvm_0k-E1l7N0LBftWhCbqxWjHyFLbcmlw08guY0YpJxZfKvsDal1G6vDEmL47F4MPf56bqwrlGbZ2Aljt6-fuwbfTxDNzYal7Jc62y6ERHwHicnJ30eca7XZZDje3xnwIPLUPAgNNJSzyRhRL05YgkMGOOVIlxSewTqCuB5Bc2BTGus2dvhjab7bnII7bz3skQ9ya6uQuQinw\nContent-Type: application/json\n",
@@ -393,7 +530,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:3000/api/jobs/reco",
+			"url": "http://localhost:3000/api/jobs/trend",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -405,7 +542,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1630840517582,
+			"time": 1630841573833,
 			"name": "http://localhost:3000/api/users/add-user Get job details by reco copy",
 			"description": "",
 			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
@@ -510,8 +647,6 @@
 					}
 				}
 			],
-			"isFromCollection": true,
-			"collectionRequestId": "bae4265e-850b-72f5-52f2-eedb63158000",
 			"rawModeData": "{\r\n\t\"skill\" : \"React\",\r\n\t\"skill\" : \"Node\"\r\n}"
 		},
 		{
