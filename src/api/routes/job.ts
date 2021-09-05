@@ -61,7 +61,7 @@ export default (app: Router) => {
     
 
     /*
-    * GetJobDescription.
+    * Get Job Description .
     */  
     route.get('/jobdetaildesc', async (req: Request, res: Response) => {
 
@@ -69,12 +69,13 @@ export default (app: Router) => {
             ['cognito:groups']:null
         }
         
-        userDetails = await jwt_decode(req.header('authorization'));
-  
         var cname = req.query.cname; 
         var title = req.query.title;
     
         var aboutRecord;
+        
+        userDetails = await jwt_decode(req.header('authorization'));
+  
         console.log(cname, title);
     
         if(req.query.cname != null && req.query.title)
@@ -106,7 +107,7 @@ export default (app: Router) => {
        
         const jobslug = req.query.jobid;
         var jobRecords;
-       
+
         if(jobslug != null)
         {
             console.log("Fetching the job id : ",jobslug);
@@ -124,6 +125,32 @@ export default (app: Router) => {
             }
        
         }
+    });
+
+    /*
+     * Method to get jobs by recommendation..
+     */  
+    route.get('/reco', async (req: Request, res: Response) => {
+       
+        console.log("Fetching the job id");
+        
+        var jobRecords;
+
+        var userDetails = await jwt_decode(req.header('authorization'));
+
+        const jobServiceInstance = Container.get(JobService);
+        jobRecords = await jobServiceInstance.GetJobByReco(userDetails);
+        
+        //console.log(jobRecords);
+        if(jobRecords == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+        {
+            return res.json({ "success" : true, "jobRecord" : [] }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+        }
+        else
+        {
+            return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+        }
+    
     });
 
     /*

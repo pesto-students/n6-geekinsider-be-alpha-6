@@ -127,6 +127,47 @@ export default class JobService {
         }
     }
 
+    public async GetJobByReco(userDetails): Promise<any>
+    {
+        try
+        {
+            const candidateRecord = await this.candidateModel.findById(userDetails.sub);
+            var skills = candidateRecord.skills;
+
+            // below both the methods are valid for quering a search in mongo using moongoose for multiple search in inside an aaray of object
+            const jobRecord = await this.jobModel.find({skills: {$in: skills}})
+
+            //const jobRecord = this.jobModel.find(skillQueryString);
+
+            //console.log(jobRecord);
+            var jobList = [];
+            var i=0;
+
+            //console.log(jobRecord);
+            for(;i<jobRecord.length;i++)
+            {
+                // console.log(jobRecord)
+                var job = {
+                    companyName: jobRecord[i].companyName,
+                    jobTitle: jobRecord[i].jobTitle,
+                    jobLocation: jobRecord[i].jobLocation,
+                    jobStatus: jobRecord[i].jobStatus,
+                    skills: jobRecord[i].skills,
+                    jobslug: jobRecord[i].jobslug,
+                    ctc: jobRecord[i].ctc,
+                    exp: jobRecord[i].exp                
+                }        
+                jobList.push(job);
+            }
+            //console.log(jobList);
+            //return jobList
+            return jobRecord;                                                                                                          // Need to update the data in the user model also need to remove console logs once upadted the method properly
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+
     public async GetJobsListRe(token): Promise<any> {
         try
         {
