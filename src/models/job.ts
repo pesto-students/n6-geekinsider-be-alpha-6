@@ -7,6 +7,12 @@ const Job = new mongoose.Schema(
         type: String,     // this will be used as email id attribute
         required: true,
     },
+    exp:{
+        type: Number,
+    },
+    ctc:{
+        type: Number,
+    },
     companyName:{
         type: String,
         required: true
@@ -28,6 +34,9 @@ const Job = new mongoose.Schema(
     skills:[],
     jobAboutid: {
         type: String
+    },
+    jobslug:{
+        type:String
     },
     canApplied:[],  // we will hav eto add a limiting condition to the skills so as to advoid data flow conjestion
   },

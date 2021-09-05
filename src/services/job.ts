@@ -52,14 +52,16 @@ export default class JobService {
                 jobLocation: req.body.jobLocation,
                 aboutid: token.sub+"-"+count,
                 companyId: companyRecord._id,
-                skills: skills
+                skills: skills,
+                jobslug: companyRecord.name+"-"+req.body.jobTitle+count, 
+                ctc: req.body.ctc,
+                exp: req.body.exp
             });
 
             //count = count+1;
 
             // The job model indesrted in the Db is
             console.log(jobRecord);
-            
             
             const updatedCompanyRecord = await this.companyModel.findOneAndUpdate({
                 _id: token.sub
@@ -76,7 +78,10 @@ export default class JobService {
                 jobLocation: req.body.jobLocation,
                 jobStatus: true,
                 jobDescription : req.body.jobDescription,
-                skills: jobRecord.skills
+                skills: jobRecord.skills,
+                jobslug: jobRecord.jobslug,
+                ctc: req.body.ctc,
+                exp: req.body.exp
             }
 
             // returning the job object
@@ -88,7 +93,7 @@ export default class JobService {
         }
     }
 
-    public async GetJobsListBasedOnCompanyName(cname): Promise<any>{
+    public async GetJobsListBasedOnCompanyName(cname): Promise<any> {
         try
         {
             // const jobRecord = await this.jobModel.find(token.sub);                                                        // console.log("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     
@@ -107,7 +112,10 @@ export default class JobService {
                     jobTitle: jobRecord[i].jobTitle,
                     jobLocation: jobRecord[i].jobLocation,
                     jobStatus: jobRecord[i].jobStatus,
-                    skills: jobRecord[i].skills                
+                    skills: jobRecord[i].skills,
+                    jobslug: jobRecord[i].jobslug,
+                    ctc: jobRecord[i].ctc,
+                    exp: jobRecord[i].exp                
                 }        
                 jobList.push(job);
             }
@@ -119,7 +127,7 @@ export default class JobService {
         }
     }
 
-    public async GetJobsList(token): Promise<any> {
+    public async GetJobsListRe(token): Promise<any> {
         try
         {
             // const jobRecord = await this.jobModel.find(token.sub);                                                        // console.log("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     
@@ -136,7 +144,44 @@ export default class JobService {
                     jobTitle: jobRecord[i].jobTitle,
                     jobLocation: jobRecord[i].jobLocation,
                     jobStatus: jobRecord[i].jobStatus,
-                    skills: jobRecord[i].skills                
+                    skills: jobRecord[i].skills,
+                    jobslug: jobRecord[i].jobslug,
+                    ctc: jobRecord[i].ctc,
+                    exp: jobRecord[i].exp 
+                }
+                jobList.push(job);
+            }
+            console.log(job);
+            return jobList;                                                                                                          // Need to update the data in the user model also need to remove console logs once upadted the method properly
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+
+
+    public async GetJobsListCan(token): Promise<any> {
+        try
+        {
+            console.log("Fetching job list for recruiter");
+            // const jobRecord = await this.jobModel.find(token.sub);                                                        // console.log("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     
+            var query = { 'companyId': token.sub };
+            // console.log(query);
+            var jobRecord = await this.jobModel.find(query);          
+            console.log(jobRecord);
+            var jobList = [];
+            var i=0;
+            for(;i<jobRecord.length;i++)
+            {
+                var job = {
+                    companyName: jobRecord[i].companyName,
+                    jobTitle: jobRecord[i].jobTitle,
+                    jobLocation: jobRecord[i].jobLocation,
+                    jobStatus: jobRecord[i].jobStatus,
+                    skills: jobRecord[i].skills,
+                    jobslug: jobRecord[i].jobslug,
+                    ctc: jobRecord[i].ctc,
+                    exp: jobRecord[i].exp                
                 }
                 jobList.push(job);
             }
@@ -148,58 +193,102 @@ export default class JobService {
     }
 
 
-    public GetJobsListBasedOnSkill(skills): Promise<any>{
+    public async GetJobDescription(companyName, jobTitle): Promise<any>
+    {
+        try
+        {
+            const jobRecord = await this.jobModel.findOne({ companyName : companyName, jobTitle : jobTitle })
+            const aboutRecord = await this.aboutModel.findOne({ _id : jobRecord._id })
+            return aboutRecord ;
+        }
+        catch(e)
+        {
+            console.log(e)
+        }
+    }
+
+    public async GetJobDescriptionBySlug(jobslug): Promise<any>
+    {
+        try
+        {
+            var query = { jobslug: jobslug };
+            const jobRecord = await this.jobModel.findOne(query);
+            console.log(jobRecord);
+            const jobDetail = {
+                companyName: jobRecord.companyName,
+                jobTitle: jobRecord.jobTitle,
+                jobLocation: jobRecord.jobLocation,
+                skills: jobRecord.skills,
+                ctc: jobRecord.ctc,
+                exp: jobRecord.exp
+            }
+        
+            return jobDetail ;
+        }
+        catch(e)
+        {
+            console.log(e)
+        }
+    }
+    
+
+    public async GetJobsListBasedOnSkill(skills): Promise<any>{
         try
         {
             // const jobRecord = await this.jobModel.find(token.sub);                                                        // console.log("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     
-            var skillQuery="{";
+            // var skillQuery="{";
             
-            var skillKey = "\"skills\":\"";
-            var skillEnd = "\"}";
-            var i=0;
-            if(skills.length == 1)
-            {
-                skillQuery = skillQuery+"\"skills\":\""+skills[i]+"\"}";
-            }
-            else
-            {
-                for(; i < skills.length ; i++)
-                {
-                    if(i == skills.length-1)
-                    {
-                        skillQuery = skillQuery+skillKey+skills[i]+skillEnd;    
-                    }
-                    else{
-                        skillQuery = skillQuery+skillKey+skills[i]+"\",";
-                    }
+            // var skillKey = "\"skills\":\"";
+            // var skillEnd = "\"}";
+            // var i=0;
+            // if(skills.length == 1)
+            // {
+            //     skillQuery = skillQuery+"\"skills\":\""+skills[i]+"\"}";
+            // }
+            // else
+            // {
+            //     for(; i < skills.length ; i++)
+            //     {
+            //         if(i == skills.length-1)
+            //         {
+            //             skillQuery = skillQuery+skillKey+skills[i]+skillEnd;    
+            //         }
+            //         else{
+            //             skillQuery = skillQuery+skillKey+skills[i]+"\",";
+            //         }
 
-                }
-            }
-            console.log(skillQuery);
-            var skillQueryString = JSON.parse(skillQuery);
+            //     }
+            // }
+            // console.log(skillQuery);
+            // var skillQueryString = JSON.parse(skillQuery);
             
-            console.log(skillQueryString);
+            // console.log(skillQueryString);
 
             // below both the methods are valid for quering a search in mongo using moongoose for multiple search in inside an aaray of object
-            const jobRecord = this.jobModel.find({skills: {$in: skills}})
+            const jobRecord = await this.jobModel.find({skills: {$in: skills}})
             //const jobRecord = this.jobModel.find(skillQueryString);
 
             //console.log(jobRecord);
             var jobList = [];
             var i=0;
+
+            //console.log(jobRecord);
             for(;i<jobRecord.length;i++)
             {
-                console.log(jobRecord[i])
+                // console.log(jobRecord)
                 var job = {
                     companyName: jobRecord[i].companyName,
                     jobTitle: jobRecord[i].jobTitle,
                     jobLocation: jobRecord[i].jobLocation,
                     jobStatus: jobRecord[i].jobStatus,
-                    skills: jobRecord[i].skills                
+                    skills: jobRecord[i].skills,
+                    jobslug: jobRecord[i].jobslug,
+                    ctc: jobRecord[i].ctc,
+                    exp: jobRecord[i].exp                
                 }        
                 jobList.push(job);
             }
-            console.log(jobList);
+            //console.log(jobList);
             //return jobList
             return jobRecord;                                                                                                          // Need to update the data in the user model also need to remove console logs once upadted the method properly
         }
@@ -207,43 +296,6 @@ export default class JobService {
             throw e;
         }
     }
-
-
 }      
     
   
-
-// public async GetJobDescription(token): Promise<{ jobRecord: IJob }> {
-//   try
-//   {
-//       const candidateRecord = await this.candidateModel.findById(token.sub);                                                        // console.log("Fetching the Candidate Details");
-//                                                                                                                                       //var ObjectId = mongoose.Types.ObjectId;                              
-//                                                                                                                                       //var query = { '_id': new ObjectId(candidateRecord.aboutid.toString()) };
-//       const aboutRecord = await this.aboutModel.findById(token.sub);
-//       console.log(aboutRecord, candidateRecord);                                                                                    // const aboutRecord = await this.aboutModel.find({ "_id": mongoose.Types.ObjectId(candidateRecord['aboutid']) });                          //console.log(aboutRecord);
-            
-//       return { jobRecord }                                                                                                          // Need to update the data in the user model also need to remove console logs once upadted the method properly
-//   }
-//   catch (e) {
-//     throw e;
-//   }
-// }
-
-// public async GetJobs(token): Promise<{ jobRecord: IJob }> {
-//   try
-//   {
-//       console.log("Fetching the Candidate Details");
-
-//       const candidateRecord = await this.candidateModel.findById(token.sub);
-
-//       const aboutRecord = await this.aboutModel.findById(token.sub);
-    
-//       console.log(aboutRecord, candidateRecord);
-    
-//       return { jobRecord }                                                                                                  // Need to update the data in the user model also need to remove console logs once upadted the method properly
-//   }
-//   catch (e) {
-//     throw e;
-//   }
-// }
-

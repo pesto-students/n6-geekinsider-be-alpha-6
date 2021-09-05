@@ -12,7 +12,9 @@
 		"daee4d47-4942-8926-d452-e4d85a012b64",
 		"0ce715ec-f4f6-672f-9146-e11a3f46dd0a",
 		"8dece8ef-92f5-7fb3-81c8-38a5f9710d6a",
-		"0756a877-b77d-2af5-edec-d236c0c3ee94"
+		"0756a877-b77d-2af5-edec-d236c0c3ee94",
+		"a388cc13-bda8-f6ed-1966-c5b8521f5ec0",
+		"cb124acd-06c2-2714-a0d5-1f3e97acc014"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -322,6 +324,57 @@
 			"rawModeData": "{\r\n\t\"companyName\" : \"ABC\",\r\n\t\"jobtitle\":\"Associate Software Engineer\",\r\n\t\"jobLocation\":\"Mumbai, India\",\r\n\t\"jobStatus\":0\r\n}"
 		},
 		{
+			"id": "a388cc13-bda8-f6ed-1966-c5b8521f5ec0",
+			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2YmQxMWEyOS0xZTQ0LTQyODUtODg2Yi1kNmJiN2VjY2I4ODkiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyUmVjcnVpdGVyIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiNmJkMTFhMjktMWU0NC00Mjg1LTg4NmItZDZiYjdlY2NiODg5Iiwib3JpZ2luX2p0aSI6IjlmZmYyYzk5LTgwNmUtNDJiMi1hNTU1LWI1NTMzYzY4OWYxMyIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6ImU2YzUzN2NlLTJjNTQtNGUzMS04MTg2LWIyMmJhMjUwZWYwOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwODAwMzM0LCJleHAiOjE2MzA4MDM5MzQsImlhdCI6MTYzMDgwMDMzNCwianRpIjoiYjBiNGNjYWQtZmQ2Yy00MzY2LTg4OWItMThmY2FlODhiMzExIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.Xbfe4XVQTNxDS5N6SMc3bnvnPNa-RMzg6nvYkR-gFuu6OWMwGZcS9kHOfnKfZfmsTFcDeeES-c64LcGtVK65iLXmh8e8b9R2sijzRYRrwvcezCjo5u1HKEKXmATigzKrKAohINW17JfdlM0OgLI3wMf7LsTvm4AOEVGQgmGokd2yYd2P9RAfxD6zaZF0gXARo30VcjkOA0k86fpJ4GxMQU5hHlZq_lvOVVf2A7Y8uPF0A3F-YIeheJDJ710mq0-h33DAgbaPZ5BUbg6rLK8P3hsnE1CNvCNJaY2g4OQgd6cKMh9jBIWSe1aFGbs1aragbIRbDjytUboGg_Ca5TaTPQ\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2YmQxMWEyOS0xZTQ0LTQyODUtODg2Yi1kNmJiN2VjY2I4ODkiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyUmVjcnVpdGVyIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiNmJkMTFhMjktMWU0NC00Mjg1LTg4NmItZDZiYjdlY2NiODg5Iiwib3JpZ2luX2p0aSI6IjlmZmYyYzk5LTgwNmUtNDJiMi1hNTU1LWI1NTMzYzY4OWYxMyIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6ImU2YzUzN2NlLTJjNTQtNGUzMS04MTg2LWIyMmJhMjUwZWYwOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwODAwMzM0LCJleHAiOjE2MzA4MDM5MzQsImlhdCI6MTYzMDgwMDMzNCwianRpIjoiYjBiNGNjYWQtZmQ2Yy00MzY2LTg4OWItMThmY2FlODhiMzExIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.Xbfe4XVQTNxDS5N6SMc3bnvnPNa-RMzg6nvYkR-gFuu6OWMwGZcS9kHOfnKfZfmsTFcDeeES-c64LcGtVK65iLXmh8e8b9R2sijzRYRrwvcezCjo5u1HKEKXmATigzKrKAohINW17JfdlM0OgLI3wMf7LsTvm4AOEVGQgmGokd2yYd2P9RAfxD6zaZF0gXARo30VcjkOA0k86fpJ4GxMQU5hHlZq_lvOVVf2A7Y8uPF0A3F-YIeheJDJ710mq0-h33DAgbaPZ5BUbg6rLK8P3hsnE1CNvCNJaY2g4OQgd6cKMh9jBIWSe1aFGbs1aragbIRbDjytUboGg_Ca5TaTPQ",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/jobs/jobdetail?cname=Vishal Kothari&title=Associate Software Engineer",
+			"queryParams": [
+				{
+					"key": "cname",
+					"value": "Vishal Kothari",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "title",
+					"value": "Associate Software Engineer",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1630808650106,
+			"name": "http://localhost:3000/api/users/add-user Get job details of agiven job",
+			"description": "",
+			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"skill\" : \"React\",\r\n\t\"skill\" : \"Node\"\r\n}"
+		},
+		{
 			"id": "b84f074b-5b22-692b-1184-ff8294a1472f",
 			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2YmQxMWEyOS0xZTQ0LTQyODUtODg2Yi1kNmJiN2VjY2I4ODkiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyUmVjcnVpdGVyIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiNmJkMTFhMjktMWU0NC00Mjg1LTg4NmItZDZiYjdlY2NiODg5Iiwib3JpZ2luX2p0aSI6ImU0M2IzNjUxLTdiNjMtNDRiOS04Yzk1LWZjOWZmNzRiODAwOCIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6IjkzMTEwYWY1LTVmYTgtNDc4MS05YjhiLWRhYjU1NmEzNWJjNyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwNzM1NTMzLCJleHAiOjE2MzA3MzkxMzMsImlhdCI6MTYzMDczNTUzMywianRpIjoiNDdkNDFjMTMtMTU4Yy00YmYxLWE2OTgtNWRmY2UyMjEyNDQ0IiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.l1xsZ4mVvnf0L15yDimrVRiSczWX2C0wGyrE6TQlmOI6kj3YM9kVHjhkvbl4sMTgvamjJzKxLczMkG8psRHZ9XIa1QhBthrn8AYim-s5NqW1qCbPBj6VwPhbBYiGtxZo6jPpcSSj4c_1E9yCvwq2VHVFqM3FMcPtMEptCXEk08nX4zRB2hj5zNyznsooiwT1Oq9sT6-DhQjLfcKawhcLAH0xTATHQurvdVZ9yVBXux1vw9YV6K3WbIp9FzVutJDkSKmUcNbgKgZ34ubFGQUloOfXAbwdVSFW8TEy1wLYsLFOAh5oBMGbCiX5Z23POJUe83yKCqesEli3af7rAcq_dw\nContent-Type: application/json\n",
 			"headerData": [
@@ -356,6 +409,49 @@
 			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
 			"responses": [],
 			"rawModeData": "{\r\n\t\"name\" : \"Vishal Kothari\",\r\n\t\"whatsappNumber\" : \"+919769030229\",\r\n\t\"jobtitle\":\"Associate Software Engineer\",\r\n\t\"location\":\"Mumbai, India\",\r\n\t\"skills\":\"['React','Node','Python','C']\"\r\n}"
+		},
+		{
+			"id": "cb124acd-06c2-2714-a0d5-1f3e97acc014",
+			"headers": "Authorization: eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2YmQxMWEyOS0xZTQ0LTQyODUtODg2Yi1kNmJiN2VjY2I4ODkiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyUmVjcnVpdGVyIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiNmJkMTFhMjktMWU0NC00Mjg1LTg4NmItZDZiYjdlY2NiODg5Iiwib3JpZ2luX2p0aSI6IjlmZmYyYzk5LTgwNmUtNDJiMi1hNTU1LWI1NTMzYzY4OWYxMyIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6ImU2YzUzN2NlLTJjNTQtNGUzMS04MTg2LWIyMmJhMjUwZWYwOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwODAwMzM0LCJleHAiOjE2MzA4MDM5MzQsImlhdCI6MTYzMDgwMDMzNCwianRpIjoiYjBiNGNjYWQtZmQ2Yy00MzY2LTg4OWItMThmY2FlODhiMzExIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.Xbfe4XVQTNxDS5N6SMc3bnvnPNa-RMzg6nvYkR-gFuu6OWMwGZcS9kHOfnKfZfmsTFcDeeES-c64LcGtVK65iLXmh8e8b9R2sijzRYRrwvcezCjo5u1HKEKXmATigzKrKAohINW17JfdlM0OgLI3wMf7LsTvm4AOEVGQgmGokd2yYd2P9RAfxD6zaZF0gXARo30VcjkOA0k86fpJ4GxMQU5hHlZq_lvOVVf2A7Y8uPF0A3F-YIeheJDJ710mq0-h33DAgbaPZ5BUbg6rLK8P3hsnE1CNvCNJaY2g4OQgd6cKMh9jBIWSe1aFGbs1aragbIRbDjytUboGg_Ca5TaTPQ\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJraWQiOiJwSlNzRENGaVczQUxMMUt0bnFjVGlBb2xUZUdDV1Q4N1dPSGFvSTdIV3FBPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2YmQxMWEyOS0xZTQ0LTQyODUtODg2Yi1kNmJiN2VjY2I4ODkiLCJjb2duaXRvOmdyb3VwcyI6WyJ1c2VyUmVjcnVpdGVyIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJjb2duaXRvOnByZWZlcnJlZF9yb2xlIjoiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9maURtamw1aFAiLCJjb2duaXRvOnVzZXJuYW1lIjoiNmJkMTFhMjktMWU0NC00Mjg1LTg4NmItZDZiYjdlY2NiODg5Iiwib3JpZ2luX2p0aSI6IjlmZmYyYzk5LTgwNmUtNDJiMi1hNTU1LWI1NTMzYzY4OWYxMyIsImNvZ25pdG86cm9sZXMiOlsiYXJuOmF3czppYW06OjMxNzUzMTAxMjg4MTpyb2xlXC91cy1lYXN0LTFfZmlEbWpsNWhQLXVzZXJSZWNydWl0ZXJHcm91cFJvbGUiXSwiYXVkIjoiNTFyMGoyb2oxbWJpMTR0OTFlaGQ3NTVoZ3QiLCJldmVudF9pZCI6ImU2YzUzN2NlLTJjNTQtNGUzMS04MTg2LWIyMmJhMjUwZWYwOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjMwODAwMzM0LCJleHAiOjE2MzA4MDM5MzQsImlhdCI6MTYzMDgwMDMzNCwianRpIjoiYjBiNGNjYWQtZmQ2Yy00MzY2LTg4OWItMThmY2FlODhiMzExIiwiZW1haWwiOiJ2aXNoYWwua2tAc29tYWl5YS5lZHUifQ.Xbfe4XVQTNxDS5N6SMc3bnvnPNa-RMzg6nvYkR-gFuu6OWMwGZcS9kHOfnKfZfmsTFcDeeES-c64LcGtVK65iLXmh8e8b9R2sijzRYRrwvcezCjo5u1HKEKXmATigzKrKAohINW17JfdlM0OgLI3wMf7LsTvm4AOEVGQgmGokd2yYd2P9RAfxD6zaZF0gXARo30VcjkOA0k86fpJ4GxMQU5hHlZq_lvOVVf2A7Y8uPF0A3F-YIeheJDJ710mq0-h33DAgbaPZ5BUbg6rLK8P3hsnE1CNvCNJaY2g4OQgd6cKMh9jBIWSe1aFGbs1aragbIRbDjytUboGg_Ca5TaTPQ",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/jobs/job/:Vishal KothariAssociate-Software Engineer13",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {
+				"Vishal": ""
+			},
+			"pathVariableData": [
+				{
+					"key": "Vishal",
+					"value": ""
+				}
+			],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1630820351699,
+			"name": "http://localhost:3000/api/users/add-user Get job details of agiven job copy",
+			"description": "",
+			"collectionId": "cb8c4353-fa3b-e07a-fe98-eec580cc7bae",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"skill\" : \"React\",\r\n\t\"skill\" : \"Node\"\r\n}"
 		},
 		{
 			"id": "daee4d47-4942-8926-d452-e4d85a012b64",
