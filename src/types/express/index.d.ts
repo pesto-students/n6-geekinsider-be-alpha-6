@@ -4,6 +4,7 @@ import { ICandidate } from '@/interfaces/ICandidate';
 import { ICompany } from '@/interfaces/ICompany';
 import { IAbout } from '@/interfaces/IAbout';
 import { IJob } from '@/interfaces/IJob';
+import { IChat } from '@/interfaces/IChat';
 
 declare global {
   namespace Express {
@@ -18,5 +19,6 @@ declare global {
     export type CompanyModel = Model<ICompany & Document>;
     export type AboutModel = Model<IAbout & Document>;
     export type JobModel = Model<IJob & Document>;
+    export type ChatModel = Model<IChat & Document>;
   }
 }

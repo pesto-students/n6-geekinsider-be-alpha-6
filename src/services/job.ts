@@ -340,7 +340,8 @@ export default class JobService {
     }
     
 
-    public async GetJobsListBasedOnSkill(skills): Promise<any>{
+    public async GetJobsListBasedOnSkill(skills): Promise<any>
+    {
         try
         {
             // const jobRecord = await this.jobModel.find(token.sub);                                                        // console.log("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     

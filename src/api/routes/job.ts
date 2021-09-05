@@ -226,11 +226,13 @@ export default (app: Router) => {
 
         var jobRecords;
 
+        console.log(cname);
         // route for filter based on skills
         if(skills != null)
         {
             const jobServiceInstance = Container.get(JobService);
             jobRecords = await jobServiceInstance.GetJobsListBasedOnSkill(skills);
+            return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);
         }
 
         //GetJobDescriptionBySlug
@@ -247,21 +249,24 @@ export default (app: Router) => {
         // route for filter based on company name
         if(cname != null)
         {
+            console.log("searching job based on cname");
             const jobServiceInstance = Container.get(JobService);
             jobRecords = await jobServiceInstance.GetJobsListBasedOnCompanyName(cname);
+            return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);
         }
-        
         // route for job based on their id's
         if(cname == null && skills == null && jobslug == null && userDetails['cognito:groups'][0] == 'userRecruiter'){
             const jobServiceInstance = Container.get(JobService);
             console.log("Fetching jobs for recruiter");
-            jobRecords = await jobServiceInstance.GetJobsListRe(userDetails);    
+            jobRecords = await jobServiceInstance.GetJobsListRe(userDetails);  
+            return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);  
         }
   
         // route for job based on their id's
         if(userDetails['cognito:groups'][0] == 'userCandidate'){
             const jobServiceInstance = Container.get(JobService);
-            jobRecords = await jobServiceInstance.GetJobsListCan(userDetails);    
+            jobRecords = await jobServiceInstance.GetJobsListCan(userDetails); 
+            return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);   
         }    
     
         //console.log(jobRecords);
@@ -270,10 +275,10 @@ export default (app: Router) => {
         {
             return res.json({ "success" : true, "jobRecord" : [] }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
         }
-        else
-        {
-            return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
-        }
+        // else
+        // {
+        //     return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+        // }
     });
 
 };
