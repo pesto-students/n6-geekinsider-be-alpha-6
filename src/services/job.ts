@@ -320,13 +320,15 @@ export default class JobService {
             var query = { jobslug: jobslug };
             const jobRecord = await this.jobModel.findOne(query);
             console.log(jobRecord);
+            const aboutRecord = await this.aboutModel.findOne({ _id : jobRecord._id });
             const jobDetail = {
                 companyName: jobRecord.companyName,
                 jobTitle: jobRecord.jobTitle,
                 jobLocation: jobRecord.jobLocation,
                 skills: jobRecord.skills,
                 ctc: jobRecord.ctc,
-                exp: jobRecord.exp
+                exp: jobRecord.exp,
+                jobDescription : aboutRecord.about
             }
         
             return jobDetail ;
