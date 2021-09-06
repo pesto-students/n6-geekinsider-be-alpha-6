@@ -45,7 +45,9 @@ export default (app: Router) => {
         
         userDetails = await jwt_decode(req.header('authorization'));
 
-        if(userDetails['cognito:groups'][0] == 'userCandidate'){      //middlewares.submitCandidate(req, res, next, userDetails)
+        console.log(userDetails);
+        
+        if( userDetails['cognito:groups'][0] == 'userCandidate' ){      //middlewares.submitCandidate(req, res, next, userDetails)
 
           console.log("filling up the candiadte information ");
 
@@ -80,9 +82,80 @@ export default (app: Router) => {
         console.log("Failed to add the user data");
         return res.sendStatus(500);
       }
-    });
+  });
 
-    route.get('/getcans', middlewares.isAuth, async (req: Request, res: Response) =>{
+  /*
+   * Method to get full profile of a given user 
+   */
+  route.post(
+    '/apply',
+    middlewares.isAuth, 
+    async (req, res) => 
+    {
+      try
+      {
+
+        var jobid = req.query.jobid; 
+     
+        if(req.query.jobid != null)
+        {
+            jobid = req.query.jobid;    
+        }
+
+        console.log("Getting the user info");
+        var userDetails= {
+          ['cognito:groups']:null
+        }
+        
+        userDetails = await jwt_decode(req.header('authorization'));
+
+        //console.log(userDetails);
+        
+        if( userDetails['cognito:groups'][0] == 'userCandidate' ){      //middlewares.submitCandidate(req, res, next, userDetails)
+
+          console.log("filling up the candidate information ");
+
+          //console.log(CandidateService);
+          let candidateServiceInstance = Container.get(CandidateService);
+          
+          //console.log(candidateServiceInstance);
+          const candidateRecord = await candidateServiceInstance.ApplyJob(userDetails,jobid);    
+          
+          if(candidateRecord['_id'] == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+          {
+              return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
+          }
+          else
+          {
+            return res.json({ "success" : true }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+          }
+        }
+        if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
+        {        
+
+          console.log("filling up the recruiter information ");
+
+          const companyServiceInstance = Container.get(CompanyService);
+          const { companyRecord } = await companyServiceInstance.SetCompany(userDetails,req);    
+          if(companyRecord['_id'] == null)                             //console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+          {
+              return res.sendStatus(401);                             // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
+          }
+          else
+          {
+            return res.json({ "success" : true }).status(200);        //console.log("User role set successfully in Mongo Db");           // successful response             
+          }
+        }
+      }
+      catch(e)
+      {
+        console.log(e)
+        console.log("Failed to add the user data");
+        return res.sendStatus(500);
+      }
+  });
+  
+  route.get('/getcans', middlewares.isAuth, async (req: Request, res: Response) =>{
 
       var userDetails= {
         ['cognito:groups']:null
@@ -132,6 +205,9 @@ export default (app: Router) => {
 
     })
 
+
+
+    
     /*
      *   Method to get full profile of a given user
      */ 

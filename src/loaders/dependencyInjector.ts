@@ -7,6 +7,7 @@ import config from '../config';
 
 export default ({ mongoConnection, models }: { mongoConnection; models: { name: string; model: any }[] }) => {
   try {
+    //console.log(models);
     models.forEach(m => {
       Container.set(m.name, m.model);
     });

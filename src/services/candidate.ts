@@ -1,5 +1,6 @@
 import { Service, Inject } from 'typedi';
 import { ICandidate } from './../interfaces/ICandidate';
+import { IConnect } from '../interfaces/IConnect';
 import { IAbout } from './../interfaces/IAbout';
 import mongoose from 'mongoose';
 
@@ -8,6 +9,8 @@ export default class CandidateService {
   constructor(
     @Inject('candidateModel') private candidateModel: Models.CandidateModel,
     @Inject('aboutModel') private aboutModel: Models.AboutModel,
+    @Inject('connectModel') private connectModel: Models.ConnectModel,
+    @Inject('jobModel') private jobModel: Models.JobModel,
   ){
   }
     
@@ -81,5 +84,33 @@ export default class CandidateService {
     catch (e) {
       throw e;
     }
-  }  
+  }
+  
+  public async ApplyJob(token,jobid): Promise<any> {
+    try
+    {
+      console.log("Applying the Candidate Details with job slug : ",jobid);
+     
+      const jobRecord = await this.jobModel.find({
+        jobslug: jobid,
+      });
+
+      console.log(jobRecord);
+
+      var chatid = token.sub+"-"+jobid;
+      const chatRecord = await this.connectModel.create({
+        _id: chatid, // slug+1 // cognitoUsername will be used as the id parameter for the user table.
+        comid: jobRecord['companyId'],
+        conid: token.sub,
+        status: 1,
+      });
+
+      console.log(chatRecord);
+
+      return chatRecord;                                         // Need to update the data in the user model also need to remove console logs once upadted the method properly
+    }
+    catch (e) {
+      throw e;
+    }
+  }
 }

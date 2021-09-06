@@ -48,7 +48,11 @@ export default async ({ expressApp }) => {
     model: require('../models/job').default,
   };
 
-
+  const connectModel = {
+    name: 'connectModel',
+    // Notice the require syntax and the '.default'
+    model: require('../models/connect').default,
+  };
   // It returns the agenda instance because it's needed in the subsequent loaders
   const { agenda } = await dependencyInjectorLoader({
     mongoConnection,
@@ -57,7 +61,8 @@ export default async ({ expressApp }) => {
       candidateModel,
       companyModel,
       aboutModel,
-      jobModel
+      jobModel,
+      connectModel
     ],
   });
   Logger.info('✌️ Dependency Injector loaded');
