@@ -328,7 +328,8 @@ export default class JobService {
                 skills: jobRecord.skills,
                 ctc: jobRecord.ctc,
                 exp: jobRecord.exp,
-                jobDescription : aboutRecord.about
+                jobDescription : aboutRecord.about,
+                jobslug : jobRecord.jobslug
             }
         
             return jobDetail ;
