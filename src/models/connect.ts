@@ -7,10 +7,10 @@ const Connect = new mongoose.Schema(
       type: String,     // this will be used as email id attribute
       required: true,
     },
-    canid: {
+    candidateid: {
       type: String,
     },
-    conid: {
+    companyid: {
       type: String,
     },
     status: {

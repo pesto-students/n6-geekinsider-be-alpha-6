@@ -100,8 +100,8 @@ export default class CandidateService {
       var chatid = token.sub+"-"+jobid;
       const chatRecord = await this.connectModel.create({
         _id: chatid, // slug+1 // cognitoUsername will be used as the id parameter for the user table.
-        comid: jobRecord['companyId'],
-        conid: token.sub,
+        candidateid: token.sub,
+        companyid: jobRecord['companyId'],
         status: 1,
       });
 
