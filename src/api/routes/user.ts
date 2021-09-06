@@ -173,30 +173,6 @@ export default (app: Router) => {
 
         const candidateRecords = await companyServiceInstance.GetCanList(userDetails);           
         
-        // var i = 0; 
-        // var canRecords = [];
-        // for(;i<candidateRecords.length;i++) 
-        // {
-        //   canRecords[i] = {
-        //     candidateRecords[i]['skills']
-        //   }
-        // }
-
-        // console.log(candidateRecord);
-
-        // here we need to call another service th
-
-        // const companyInfo = {
-        //   'name':companyRecord.name,
-        //   'whatsappNumber':companyRecord.whatsappNumber,
-        //   'preferredIndustry':companyRecord.preferredIndustry,
-        //   'location':companyRecord.location,
-        //   'skills':companyRecord.skills,
-        //   'about':aboutRecord.about,
-        //   'empSize':companyRecord.empSize,
-        //   'site':companyRecord.site,
-        // };
-
         // const candidateList="";
         return res.json({ "success" : true , user: candidateRecords }).status(200);    
       }
@@ -282,6 +258,9 @@ export default (app: Router) => {
 
     });
 
+};
+
+
     /* Method to get the profile of a given user
     * if can then can get recruiter
     * if Recruiter then can get Candidate
@@ -289,4 +268,29 @@ export default (app: Router) => {
     // route.get('/:userid', middlewares.isAuth, middlewares.isRole, (req: Request, res: Response) => {
     //   return res.json({ user: req.currentUser }).status(200);
     // });
-};
+
+
+        // var i = 0; 
+        // var canRecords = [];
+        // for(;i<candidateRecords.length;i++) 
+        // {
+        //   canRecords[i] = {
+        //     candidateRecords[i]['skills']
+        //   }
+        // }
+
+        // console.log(candidateRecord);
+
+        // here we need to call another service th
+
+        // const companyInfo = {
+        //   'name':companyRecord.name,
+        //   'whatsappNumber':companyRecord.whatsappNumber,
+        //   'preferredIndustry':companyRecord.preferredIndustry,
+        //   'location':companyRecord.location,
+        //   'skills':companyRecord.skills,
+        //   'about':aboutRecord.about,
+        //   'empSize':companyRecord.empSize,
+        //   'site':companyRecord.site,
+        // };
+

@@ -3,6 +3,7 @@ import { ICandidate } from './../interfaces/ICandidate';
 import { IConnect } from '../interfaces/IConnect';
 import { IAbout } from './../interfaces/IAbout';
 import mongoose from 'mongoose';
+import candidate from '@/models/candidate';
 
 @Service()
 export default class CandidateService {
@@ -98,6 +99,11 @@ export default class CandidateService {
       console.log(jobRecord);
 
       var chatid = token.sub+"-"+jobid;
+
+      console.log(jobRecord['companyId'],token.sub);
+
+      console.log(token.sub," ",jobRecord['companyId']);
+
       const chatRecord = await this.connectModel.create({
         _id: chatid, // slug+1 // cognitoUsername will be used as the id parameter for the user table.
         candidateid: token.sub,
