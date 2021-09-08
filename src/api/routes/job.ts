@@ -68,26 +68,25 @@ export default (app: Router) => {
         var userDetails= {
             ['cognito:groups']:null
         }
-        
-        var cname = req.query.cname; 
-        var title = req.query.title;
+
+        var cname; 
+        var title;
+
+        // var cname = req.query.cname; 
+        // var title = req.query.title;
     
         var aboutRecord;
         
         userDetails = await jwt_decode(req.header('authorization'));
   
-        console.log(cname, title);
+        // console.log(cname, title);
     
-        if(req.query.cname != null && req.query.title)
+        if(req.query.cname != null && req.query.title !=null)
         {
             cname = req.query.cname;    
             title = req.query.title;    
             const jobServiceInstance = Container.get(JobService);
             aboutRecord = await jobServiceInstance.GetJobDescription(cname, title);
-        }
-
-        var JobDesc = {
-            "JobDescription" : aboutRecord.about
         }
 
         if(aboutRecord == null)                          
@@ -96,6 +95,9 @@ export default (app: Router) => {
         }
         else
         {
+            var JobDesc = {
+                "JobDescription" : aboutRecord.about
+            }    
             return res.json({ "success" : true, "jobDescription" : JobDesc , "result" : true }).status(200);
         }
     });
@@ -104,7 +106,7 @@ export default (app: Router) => {
     * Method to get jobs by jobdetail slug.
     */  
     route.get('/jobdetail', async (req: Request, res: Response) => {
-       
+        
         const jobslug = req.query.jobid;
         var jobRecords;
 
@@ -123,35 +125,10 @@ export default (app: Router) => {
             {
                 return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
             }
-       
-        }
-    });
-
-    /*
-     * Method to get jobs by recommendation..
-     */  
-    route.get('/reco', async (req: Request, res: Response) => {
-       
-        console.log("Fetching the job id");
-        
-        var jobRecords;
-
-        var userDetails = await jwt_decode(req.header('authorization'));
-
-        const jobServiceInstance = Container.get(JobService);
-        jobRecords = await jobServiceInstance.GetJobByReco(userDetails);
-        
-        //console.log(jobRecords);
-        if(jobRecords == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
-        {
-            return res.json({ "success" : true, "jobRecord" : [] }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
-        }
-        else
-        {
-            return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
-        }
     
+        }
     });
+
 
     /*
      * Method to get jobs by trend. GetJobByTrend.

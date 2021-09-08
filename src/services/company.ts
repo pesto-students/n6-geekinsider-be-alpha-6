@@ -12,8 +12,10 @@ export default class CompanyService {
   }
     
   public async SetCompany(token, req ): Promise<{ companyRecord: ICompany }> {
-    try{
+    try
+    {
       console.log("Submitting the Company Details");
+
       var skills = req.body.skills.split(",")
 
       const aboutRecord = await this.aboutModel.create({
@@ -45,6 +47,7 @@ export default class CompanyService {
     }
   }
 
+  // GetAppliedCan
 
   public async GetCanList(token): Promise<any> {
     try

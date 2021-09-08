@@ -95,14 +95,15 @@ export default (app: Router) => {
       try
       {
 
-        var jobid = req.query.jobid; 
-     
-        if(req.query.jobid != null)
+        //console.log(req.body);
+        var jobid;
+
+        if(req.body.jobid != null)
         {
-            jobid = req.query.jobid;    
+            jobid = req.body.jobid;    
         }
 
-        console.log("Getting the user info");
+        console.log("Applying for job based on job slug.");
         var userDetails= {
           ['cognito:groups']:null
         }
@@ -130,22 +131,6 @@ export default (app: Router) => {
             return res.json({ "success" : true }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
           }
         }
-        if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
-        {        
-
-          console.log("filling up the recruiter information ");
-
-          const companyServiceInstance = Container.get(CompanyService);
-          const { companyRecord } = await companyServiceInstance.SetCompany(userDetails,req);    
-          if(companyRecord['_id'] == null)                             //console.log(console.log(userRecord)) // to see the userRecord in the debug logs
-          {
-              return res.sendStatus(401);                             // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
-          }
-          else
-          {
-            return res.json({ "success" : true }).status(200);        //console.log("User role set successfully in Mongo Db");           // successful response             
-          }
-        }
       }
       catch(e)
       {
@@ -154,6 +139,8 @@ export default (app: Router) => {
         return res.sendStatus(500);
       }
   });
+
+  
   
   route.get('/getcans', middlewares.isAuth, async (req: Request, res: Response) =>{
 
@@ -258,9 +245,6 @@ export default (app: Router) => {
 
     });
 
-};
-
-
     /* Method to get the profile of a given user
     * if can then can get recruiter
     * if Recruiter then can get Candidate
@@ -268,6 +252,7 @@ export default (app: Router) => {
     // route.get('/:userid', middlewares.isAuth, middlewares.isRole, (req: Request, res: Response) => {
     //   return res.json({ user: req.currentUser }).status(200);
     // });
+};
 
 
         // var i = 0; 
