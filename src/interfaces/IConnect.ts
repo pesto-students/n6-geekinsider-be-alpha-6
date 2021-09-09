@@ -2,4 +2,5 @@ export interface IConnect {         // This will be used for the recruiter to fi
     candidateid: string;
     companyid: string;
     status: number;
+    jobslug: string;
 }

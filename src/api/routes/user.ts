@@ -140,6 +140,69 @@ export default (app: Router) => {
       }
   });
 
+
+    /*
+   * Method to get list of applied candidate for a given job in recruiter 
+   */
+    route.get(
+      '/applied',
+      middlewares.isAuth, 
+      async (req, res) => 
+      {
+        try
+        {
+  
+          console.log("fetching the candidates applied based on job id");
+          var jobid;
+  
+          // console.log(req.query);
+          if(req.query.jobid != null)
+          {
+              jobid = req.query.jobid;    
+          }
+
+          console.log(jobid);
+  
+          // console.log("Applying for job based on job slug.");
+          var userDetails= {
+            ['cognito:groups']:null
+          }
+          
+          userDetails = await jwt_decode(req.header('authorization'));
+  
+           console.log( userDetails['cognito:groups'][0]);
+          
+          if( userDetails['cognito:groups'][0] == 'userRecruiter' ){      //middlewares.submitCandidate(req, res, next, userDetails)
+  
+            console.log("filling up the candidate information ");
+  
+            //console.log(CandidateService);
+            let candidateServiceInstance = Container.get(CompanyService);
+            
+            //console.log(candidateServiceInstance);
+            console.log("Fetching the applied can");
+            
+            const candidateRecord = await candidateServiceInstance.AppliedApplicant(jobid, userDetails);    
+            
+            console.log(candidateRecord);
+
+            if(candidateRecord == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+            {
+                return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
+            }
+            else
+            {
+              return res.json({ "success" : true , "enrolledCandidate" : candidateRecord }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+            }
+          }
+        }
+        catch(e)
+        {
+          console.log(e)
+          console.log("Failed to add the user data");
+          return res.sendStatus(500);
+        }
+    });
   
   
   route.get('/getcans', middlewares.isAuth, async (req: Request, res: Response) =>{

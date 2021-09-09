@@ -8,9 +8,90 @@ export default class CompanyService {
     @Inject('companyModel') private companyModel: Models.CompanyModel,
     @Inject('candidateModel') private candidateModel: Models.CandidateModel,
     @Inject('aboutModel') private aboutModel: Models.AboutModel,
+    @Inject('connectModel') private connectModel: Models.ConnectModel,
   ){
   }
     
+  public async AppliedApplicant(jobid, userDetails): Promise<any> {
+    try
+    {
+      console.log("the applied applicatns are");
+      console.log(jobid);
+      // var query = { 'jobslug': jobid }; // companyRecord.name+"-"+req.body.jobTitle+count
+      //const connectRecord = await this.connectModel.find(query);
+      const connectRecord = await this.connectModel.find({$and: [{ 'jobslug': jobid }, { 'companyid': userDetails.sub }]});
+      
+      //console.log(connectRecord);
+      var connections = []; 
+      var i = 0;
+      for (;i<connectRecord.length-1;i++)
+      {
+        console.log(connectRecord.length);
+          var fetchCan = { '_id': connectRecord[i]['candidateid'] }; // companyRecord.name+"-"+req.body.jobTitle+count
+          const candidateRecord = await this.candidateModel.find(fetchCan);
+          console.log("The can record is : ",candidateRecord);
+          connections.push({
+            'skills' : candidateRecord[i]['skills'],
+            'name' : candidateRecord[i]['name'],
+            'jobTitle' : candidateRecord[i]['jobTitle'],
+            'location' : candidateRecord[i]['location'],
+            'exp' : candidateRecord[i]['exp']
+          })
+          console.log(connections);
+      }
+
+      console.log(connections);
+      return connections;
+      //     connections.push({
+      //       'name' : candidateRecord[i]['name'],
+      //       'whatsappNumber' : candidateRecord[i]['jobTitle'],
+      //       'location' : candidateRecord[i]['location'],
+      //       'ctc' : candidateRecord[i]['ctc'],
+      //       'exp' : candidateRecord[i]['exp']
+      //     })
+      //   }
+      //   else
+      //   {
+
+      //   }
+      //}
+      //   var fetchCan = { '_id': connectRecord[i]['candidateid'] }; // companyRecord.name+"-"+req.body.jobTitle+count
+
+      //   const candidateRecord = await this.candidateModel.find(fetchCan);
+       
+      //   const userDetailServiceInstance = Container.get(CandidateService);
+
+      //   const candidateRecord = await userDetailServiceInstance.GetCandidate(userDetails);           
+
+      //   const candidateInfo = {
+      //     'name':candidateRecord.name,
+      //     'jobtitle':candidateRecord.jobTitle,
+      //     'githubUrl':candidateRecord.githubUrl,
+      //     'skills':candidateRecord.skills,
+      //     'about':aboutRecord.about,
+      //     'whatsappNumber':candidateRecord.whatsappNumber,
+      //     'exp':candidateRecord.exp,
+      //     'ctc':candidateRecord.ctc,
+      //     'location':candidateRecord.location
+      //   };
+
+      //   connections.push({
+      //     candidateRecord
+      //   })
+      // }
+
+      //return connections;  
+
+      // return connections;  
+    }
+    catch(e)
+    {
+      console.log(e);
+      throw e;
+    }
+  }
+
+
   public async SetCompany(token, req ): Promise<{ companyRecord: ICompany }> {
     try
     {

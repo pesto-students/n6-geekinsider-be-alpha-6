@@ -15,6 +15,7 @@ export default class CandidateService {
   ){
   }
 
+  
   public async SetCandidate(token, req ): Promise<{ candidateRecord: ICandidate }> {
     try{
       console.log("Submitting the About Section For the Candidate");
@@ -134,6 +135,7 @@ export default class CandidateService {
       const candidateRecord = await this.candidateModel.findById(token.sub);
       //var ObjectId = mongoose.Types.ObjectId;                              
       //var query = { '_id': new ObjectId(candidateRecord.aboutid.toString()) };
+      
       const aboutRecord = await this.aboutModel.findById(token.sub);
       console.log(aboutRecord, candidateRecord);
       // const aboutRecord = await this.aboutModel.find({ "_id": mongoose.Types.ObjectId(candidateRecord['aboutid']) });                          //console.log(aboutRecord);
@@ -156,8 +158,6 @@ export default class CandidateService {
       });
       console.log(jobRecord);
 
-      console.log(jobRecord);
-
       var chatid = token.sub+"-"+jobid;
 
       console.log(jobRecord['companyId'],token.sub);
@@ -168,6 +168,7 @@ export default class CandidateService {
         _id: chatid, // slug+1 // cognitoUsername will be used as the id parameter for the user table.
         candidateid: token.sub,
         companyid: jobRecord['companyId'],
+        jobslug: jobid,
         status: 1,
       });
 

@@ -15,6 +15,9 @@ const Connect = new mongoose.Schema(
     },
     status: {
       type: Number,
+    },
+    jobslug: {
+      type: String,
     }
   },
 );

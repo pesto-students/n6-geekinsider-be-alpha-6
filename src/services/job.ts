@@ -14,39 +14,39 @@ export default class JobService {
         ){
     }
                                                                                                                                     // sanity check for data skill count has to be applied each skill not greater then 100 char and array size not greater then 50.
-    public async GetAppliedCan(token, req): Promise<any>
-    {
-        try
-        {         
-            // const jobRecord = await this.jobModel.find(token.sub);                                                        // console.log("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     
-            var query = { 'companyName': cname };
+    // public async GetAppliedCan(token, req): Promise<any>
+    // {
+    //     try
+    //     {         
+    //         // const jobRecord = await this.jobModel.find(token.sub);                                                        // console.log("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     
+    //         var query = { 'companyName': cname };
 
-            const jobRecord = await this.jobModel.find(query);          
-            console.log(jobRecord);
+    //         const jobRecord = await this.jobModel.find(query);          
+    //         console.log(jobRecord);
 
-            var jobList = [];
-            var i=0;
-            for(;i<jobRecord.length;i++)
-            {
-                var job = {
-                    companyName: jobRecord[i].companyName,
-                    jobTitle: jobRecord[i].jobTitle,
-                    jobLocation: jobRecord[i].jobLocation,
-                    jobStatus: jobRecord[i].jobStatus,
-                    skills: jobRecord[i].skills,
-                    jobslug: jobRecord[i].jobslug,
-                    ctc: jobRecord[i].ctc,
-                    exp: jobRecord[i].exp                
-                }        
-                jobList.push(job);
-            }
+    //         var jobList = [];
+    //         var i=0;
+    //         for(;i<jobRecord.length;i++)
+    //         {
+    //             var job = {
+    //                 companyName: jobRecord[i].companyName,
+    //                 jobTitle: jobRecord[i].jobTitle,
+    //                 jobLocation: jobRecord[i].jobLocation,
+    //                 jobStatus: jobRecord[i].jobStatus,
+    //                 skills: jobRecord[i].skills,
+    //                 jobslug: jobRecord[i].jobslug,
+    //                 ctc: jobRecord[i].ctc,
+    //                 exp: jobRecord[i].exp                
+    //             }        
+    //             jobList.push(job);
+    //         }
 
-            return jobList;                                                                                                          // Need to update the data in the user model also need to remove console logs once upadted the method properly
-        }
-        catch (e) {
-            throw e;
-        }
-    }
+    //         return jobList;                                                                                                          // Need to update the data in the user model also need to remove console logs once upadted the method properly
+    //     }
+    //     catch (e) {
+    //         throw e;
+    //     }
+    // }
                                                                                                                                     // sanity check for user whatsapp Number , jobtitle not more the 100 char, about not more then 1000 characters                                                                                                                                     // as it is both good for the recruiter to read and the candidate to describe in the reading aspect for the profile
     public async CreateJob(token, req): Promise<any> 
     {
@@ -81,7 +81,7 @@ export default class JobService {
             const jobRecord = await this.jobModel.create({
                 _id: token.sub+"-"+count,                                                                                                             // cognitoUsername will be used as the id parameter for the user table.
                 companyName: companyRecord.name,
-                jobTitle:req.body.jobTitle,
+                jobTitle: req.body.jobTitle,
                 jobLocation: req.body.jobLocation,
                 aboutid: token.sub+"-"+count,
                 companyId: companyRecord._id,

@@ -22,7 +22,7 @@ export default (app: Router) => {
     {
         try
         { 
-            console.log("Appling for a job");
+            console.log("Attaching the cognito user group");
 
             var userDetails= {
                 ['cognito:groups']:null
