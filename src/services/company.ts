@@ -35,7 +35,8 @@ export default class CompanyService {
             'name' : candidateRecord[i]['name'],
             'jobTitle' : candidateRecord[i]['jobTitle'],
             'location' : candidateRecord[i]['location'],
-            'exp' : candidateRecord[i]['exp']
+            'exp' : candidateRecord[i]['exp'],
+            'whatsappNumber' : candidateRecord[i]['whatsappNumber']
           })
           console.log(connections);
       }
