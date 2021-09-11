@@ -1,7 +1,7 @@
 {
-  "name": "bulletproof-nodejs",
+  "name": "geekinsider",
   "version": "1.0.0",
-  "description": "Bulletproof node.js",
+  "description": "GeekInsider node.js",
   "main": "src/app.ts",
   "scripts": {
     "build": "tsc",
@@ -14,21 +14,13 @@
     "lint:js": "npm run lint:eslint src/",
     "lint:fix": "npm run lint:js -- --fix"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/santiq/bulletproof-nodejs.git"
-  },
   "keywords": [
-    "boilerplay",
-    "cron",
-    "jobs",
-    "js",
-    "javascript",
-    "typescript",
-    "node",
-    "express"
+    "geekinsider",
+    "recruiter",
+    "candidate",
+    "jobportal"
   ],
-  "author": "Santiago Quinteros",
+  "author": "Vkk Abhishek",
   "license": "ISC",
   "dependencies": {
     "@useoptic/express-middleware": "^0.0.5",
@@ -80,9 +72,5 @@
     "ts-node": "^9.0.0",
     "tslint": "^5.20.1",
     "typescript": "^4.0.3"
-  },
-  "bugs": {
-    "url": "https://github.com/santiq/bulletproof-nodejs/issues"
-  },
-  "homepage": "https://github.com/santiq/bulletproof-nodejs#readme"
+  }
 }
