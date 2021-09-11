@@ -229,6 +229,30 @@ export default (app: Router) => {
       }
     })
 
+    route.get('/search-can', middlewares.isAuth, async (req: Request, res: Response) =>{
+
+      var userDetails= {
+        ['cognito:groups']:null
+      }
+      
+      userDetails = await jwt_decode(req.header('authorization'));
+
+      if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
+      {        
+        console.log("Fetching userdetails of recommended candidate");
+
+        userDetails = await jwt_decode(req.header('authorization'));
+
+        const companyServiceInstance = Container.get(CompanyService);
+
+        const candidateRecords = await companyServiceInstance.GetCanFromSearch(userDetails, req);           
+        
+        // const candidateList="";
+        return res.json({ "success" : true , user: candidateRecords }).status(200);    
+      }
+    })
+
+
     /*
      *   Method to get full profile of a given user
      */ 

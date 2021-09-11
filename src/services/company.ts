@@ -151,6 +151,24 @@ export default class CompanyService {
     }
   }
 
+
+  public async GetCanFromSearch(token, req): Promise<any> {
+    try
+    {
+      console.log("Fetching candidates based on skills");
+
+      var query = {skills: {$in: req.query.skills.split(",")}}
+      console.log(query);
+      const candidateRecord = await this.candidateModel.find(query);
+
+      // Need to update the data in the user model also need to remove console logs once upadted the method properly
+      return candidateRecord  
+    }
+    catch (e) {
+      throw e;
+    }
+  }
+
   public async GetCompany(token): Promise<{ companyRecord: ICompany  , aboutRecord: IAbout }> {
     try{
       console.log("Submitting the Company Details");
