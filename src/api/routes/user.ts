@@ -59,7 +59,11 @@ export default (app: Router) => {
               return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
           }
           else{
-            return res.json({ "success" : true }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+            res.json({ "success" : true }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response           
+            // Adding the data to the github model with candidateid in here
+            const canGitServiceInstance = Container.get(CandidateService);
+            const { candidateRecord } = await canGitServiceInstance.SetGithub(userDetails,req);
+            return candidateRecord;        
           }
         }
         if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
@@ -321,7 +325,7 @@ export default (app: Router) => {
 
         const candidateInfo = {
           'name':candidateRecord.name,
-          'jobtitle':candidateRecord.jobTitle,
+          'jobTitle':candidateRecord.jobTitle,
           'githubUrl':candidateRecord.githubUrl,
           'skills':candidateRecord.skills,
           'about':aboutRecord.about,

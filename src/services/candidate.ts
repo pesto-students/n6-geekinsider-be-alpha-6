@@ -4,6 +4,7 @@ import { IConnect } from '../interfaces/IConnect';
 import { IAbout } from './../interfaces/IAbout';
 import mongoose from 'mongoose';
 import candidate from '@/models/candidate';
+const axios = require('axios');
 
 @Service()
 export default class CandidateService {
@@ -57,6 +58,7 @@ export default class CandidateService {
         email: token.email 
       });
       console.log(candidateRecord);
+
       // Need to update the data in the user model also need to remove console logs once upadted the method properly
       return { candidateRecord }  
     }
@@ -64,6 +66,25 @@ export default class CandidateService {
       console.log(e);
       throw e;
     }
+  }
+
+  public async SetGithub(token,req):Promise<any>{
+    try
+    {
+      try {
+        //const response = await axios.get('/user?ID=12345');
+        const repoCount = await axios.get("https://api.github.com/users/"+req.body.githubUrl+"/expo-web/languages");            
+        console.log(repoCount);
+      } catch (error) {
+        console.error(error);
+      }
+      
+      const candidateRecords = await this.candidateModel.find(token.sub);            
+      return candidateRecords;                                        // Need to update the data in the user model also need to remove console logs once upadted the method properly
+    }
+    catch (e) {
+      throw e;
+    }    
   }
 
   public async GetRecoCanList(token): Promise<any> {

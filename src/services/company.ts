@@ -21,10 +21,10 @@ export default class CompanyService {
       //const connectRecord = await this.connectModel.find(query);
       const connectRecord = await this.connectModel.find({$and: [{ 'jobslug': jobid }, { 'companyid': userDetails.sub }]});
       
-      //console.log(connectRecord);
+      console.log(connectRecord.length);
       var connections = []; 
       var i = 0;
-      for (;i<connectRecord.length-1;i++)
+      for (;i<connectRecord.length;i++)
       {
           console.log(connectRecord.length);
           var fetchCan = { '_id': connectRecord[i]['candidateid'] }; // companyRecord.name+"-"+req.body.jobTitle+count
