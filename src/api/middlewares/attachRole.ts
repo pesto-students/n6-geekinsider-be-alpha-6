@@ -36,7 +36,7 @@ const attachRole = async (req, res, next) => {
         {
             return res.sendStatus(401);                                                 //console.log("Unintentional Behaviour : Some Paramter was missing form FE")
         }
-            
+
         // Set the user group param        
         var groupParam = {
             GroupName: req.body.groupName, /* required */

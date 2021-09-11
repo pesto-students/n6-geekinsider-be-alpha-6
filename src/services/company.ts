@@ -26,7 +26,7 @@ export default class CompanyService {
       var i = 0;
       for (;i<connectRecord.length-1;i++)
       {
-        console.log(connectRecord.length);
+          console.log(connectRecord.length);
           var fetchCan = { '_id': connectRecord[i]['candidateid'] }; // companyRecord.name+"-"+req.body.jobTitle+count
           const candidateRecord = await this.candidateModel.find(fetchCan);
           console.log("The can record is : ",candidateRecord);
@@ -36,9 +36,10 @@ export default class CompanyService {
             'jobTitle' : candidateRecord[i]['jobTitle'],
             'location' : candidateRecord[i]['location'],
             'exp' : candidateRecord[i]['exp'],
-            'whatsappNumber' : candidateRecord[i]['whatsappNumber']
+            'whatsappNumber' : candidateRecord[i]['whatsappNumber'],
+            'userId' : candidateRecord[i]['_id']
           })
-          console.log(connections);
+          // console.log(connections);
       }
 
       console.log(connections);

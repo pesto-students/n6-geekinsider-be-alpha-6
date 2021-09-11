@@ -53,6 +53,7 @@ export default (app: Router) => {
 
           const candidateServiceInstance = Container.get(CandidateService);
           const { candidateRecord } = await candidateServiceInstance.SetCandidate(userDetails,req);    
+
           if(candidateRecord['_id'] == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
           {
               return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
@@ -141,7 +142,7 @@ export default (app: Router) => {
   });
 
 
-    /*
+  /*
    * Method to get list of applied candidate for a given job in recruiter 
    */
     route.get(
@@ -170,7 +171,7 @@ export default (app: Router) => {
           
           userDetails = await jwt_decode(req.header('authorization'));
   
-           console.log( userDetails['cognito:groups'][0]);
+          console.log( userDetails['cognito:groups'][0]);
           
           if( userDetails['cognito:groups'][0] == 'userRecruiter' ){      //middlewares.submitCandidate(req, res, next, userDetails)
   
@@ -226,10 +227,46 @@ export default (app: Router) => {
         // const candidateList="";
         return res.json({ "success" : true , user: candidateRecords }).status(200);    
       }
-
-
-
     })
+
+    /*
+     *   Method to get full profile of a given user
+     */ 
+  
+    route.get('/getcan', middlewares.isAuth, async (req: Request, res: Response) => {
+  
+      var canid;
+      if(req.query.canid != null)
+      {
+        canid = req.query.canid;    
+      }
+
+      var userDetails= {
+        ['cognito:groups']:null
+      }
+
+      userDetails = await jwt_decode(req.header('authorization'));
+
+      if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
+      {        
+        console.log("fetching the userdetails for the company to view");
+
+        const candidateServiceInstance = Container.get(CandidateService);
+
+        const candidateRecord = await candidateServiceInstance.GetCandidateInfo(canid);           
+        
+        // here we need to call another service th
+
+        const candidateInfo = {
+          'about':candidateRecord.about,
+        };
+
+        console.log(candidateInfo)
+
+        return res.json({ "success" : true , user: candidateInfo }).status(200);    
+      }
+
+    });
 
 
 

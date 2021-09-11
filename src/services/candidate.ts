@@ -15,7 +15,19 @@ export default class CandidateService {
   ){
   }
 
-  
+  public async GetCandidateInfo(canid): Promise<any>{
+    try{
+      const aboutRecord = await this.aboutModel.findOne({
+        _id: canid
+      });
+      console.log(aboutRecord);
+      return aboutRecord;
+    }catch(e){
+      throw e;  
+    }
+  }  
+
+
   public async SetCandidate(token, req ): Promise<{ candidateRecord: ICandidate }> {
     try{
       console.log("Submitting the About Section For the Candidate");
@@ -41,7 +53,8 @@ export default class CandidateService {
         githubUrl: req.body.githubUrl,
         ctc:req.body.ctc,
         exp:req.body.exp,
-        aboutid: aboutRecord['_id']
+        aboutid: aboutRecord['_id'],
+        email: token.email 
       });
       console.log(candidateRecord);
       // Need to update the data in the user model also need to remove console logs once upadted the method properly

@@ -15,6 +15,9 @@ const Company = new mongoose.Schema(
     whatsappNumber: {
         type: String
     },
+    email: {
+        type: String
+    },
     location:{
         type: String
     },

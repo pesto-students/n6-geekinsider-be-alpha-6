@@ -277,10 +277,10 @@ export default (app: Router) => {
         {
             return res.json({ "success" : true, "jobRecord" : [] }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
         }
-        // else
-        // {
-        //     return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
-        // }
+        else
+        {
+            return res.json({ "success" : true, "jobRecord" : jobRecords }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+        }
     });
 
 };
