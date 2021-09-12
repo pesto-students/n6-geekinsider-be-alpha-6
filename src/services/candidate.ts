@@ -95,6 +95,8 @@ export default class CandidateService {
       var repoNameList = [];
       var languageList = [];
       var languageCounter = [];
+      var languageListSorted = [];
+      
       for(;i<response.data.length;i++)
       {
         repoNameList.push(response.data[i].name);
@@ -113,7 +115,26 @@ export default class CandidateService {
           languageCounter.push(1)
         }
       }
+
+      for (let i=0; i< languageCounter.length; i++)
+      {
+        for (let j=i; j<languageCounter.length;j++)
+        {
+          console.log(languageCounter[i],languageCounter[j]);
+          if (languageCounter[i] < languageCounter[j]) {
+            console.log(languageCounter[i],languageCounter[j]);
+            let temp = languageCounter[i];
+            languageCounter[i]= languageCounter[j]
+            languageCounter[j]= temp;
+            let templang = languageList[i];
+            languageList[i]= languageList[j]
+            languageList[j]= templang;
+          }
+        }
+      }
+
       // here we add the git data to our mongoose model
+
       const gitRecord = await this.gitModel.create({
         _id: token.sub, // slug+1 // cognitoUsername will be used as the id parameter for the user table.
         repoCount: getRepoCount.data.public_repos,
