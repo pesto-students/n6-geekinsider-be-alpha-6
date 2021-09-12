@@ -234,7 +234,7 @@ export default (app: Router) => {
         }
         catch(e)
         {
-          logger.debug("Failed to add the user data", e);
+          logger.debug("Failed to set the user data ", e);
           
           return res.json({ "success" : false , "message" : "Internal server error" }).status(500);             
         }
@@ -243,32 +243,33 @@ export default (app: Router) => {
   
   route.get('/getcans', middlewares.isAuth, async (req: Request, res: Response) =>
   {
-      var userDetails= {
-        ['cognito:groups']:null
-      }
-      
+    let userDetails= {
+      ['cognito:groups']:null
+    }
+    
+    userDetails = await jwt_decode(req.header('authorization'));
+
+    if(userDetails['cognito:groups'][0] == 'userRecruiter')
+    {        
+      console.log("Fetching userdetails of recommended candidate");
+
       userDetails = await jwt_decode(req.header('authorization'));
 
-      if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
-      {        
-        console.log("Fetching userdetails of recommended candidate");
+      const companyServiceInstance = Container.get(CompanyService);
 
-        userDetails = await jwt_decode(req.header('authorization'));
+      const candidateRecords = await companyServiceInstance.GetCanList(userDetails);           
+      
+      // const candidateList="";
+      return res.json({ "success" : true , user: candidateRecords }).status(200);    
+    }
+    else
+    {
+      res.json({ "success" : false , "message" : "Unauthorized" }).status(401);
+    }
+  })
 
-        const companyServiceInstance = Container.get(CompanyService);
-
-        const candidateRecords = await companyServiceInstance.GetCanList(userDetails);           
-        
-        // const candidateList="";
-        return res.json({ "success" : true , user: candidateRecords }).status(200);    
-      }
-      else
-      {
-        return res.json({ "success" : false }).status(401); 
-      }
-    })
-
-    route.get('/search-can', middlewares.isAuth, async (req: Request, res: Response) =>{
+    route.get('/search-can', middlewares.isAuth, async (req: Request, res: Response) =>
+    {
 
       var userDetails= {
         ['cognito:groups']:null
