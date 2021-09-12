@@ -19,10 +19,8 @@ export default ({ mongoConnection, models }: { mongoConnection; models: { name: 
     }
     
     Container.set('agendaInstance', agendaInstance);
-    Container.set('logger', LoggerInstance);
-    Container.set('awsconf', awsconf);
-    //Container.set('emailDomain', config.emails.domain);
-
+    Container.set('logger', LoggerInstance);                                                        // Container.set('awsconf', awsconf) need to be added in the optimizations further
+    
     LoggerInstance.info('✌️ Agenda injected into container');
 
     return { agenda: agendaInstance, awsconf : awsconf };

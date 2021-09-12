@@ -2,18 +2,17 @@ import { Router, Request, Response } from 'express';
 import middlewares from '../middlewares';
 import jwt_decode from 'jwt-decode'
 import { Container } from 'typedi';
-import { celebrate, Joi } from 'celebrate';
 import CandidateService from './../../services/candidate';
 import CompanyService from './../../services/company';
 import skillset from './../../utils/skills'
-import citiesset from './../../utils/cities'
 import cities from './../../utils/cities';
+import { Logger } from 'winston';
 
 const route = Router();
 
 export default (app: Router) => {
   /*
-  * Under the User Route we have both condidate and recruiter profile routes 
+  * Under the User Route we have user action of both candidate and recruiter apart from the job fetching options  
   */
   app.use('/users', route);
 
@@ -22,89 +21,94 @@ export default (app: Router) => {
   */
   route.post('/auth', middlewares.attachRole);
 
-
   /*
-  * Method to skills that can be applied aas a filter
+  * Method to get a list of predefined skills
   */
-  route.get('/skills', middlewares.isAuth, (req: Request, res: Response) => {
+  route.get('/skills', middlewares.isAuth, (req: Request, res: Response) => 
+  {
     return res.json({ skills: skillset }).status(200);
   });
 
   /*
-  * Method to skills that can be applied aas a filter
+  * Method to get a list of predefined cities
   */
-  route.get('/cities', middlewares.isAuth, (req: Request, res: Response) => {
+  route.get('/cities', middlewares.isAuth, (req: Request, res: Response) => 
+  {
     return res.json({ cities: cities }).status(200);
   });
 
   /*
-   * Method to get full profile of a given user 
-   */
+  * Method to get full profile of a given user 
+  */
   route.post(
     '/user',
-    // celebrate({                                            // we will use this celebrate to add the validation for the routes
-    //   body: Joi.object({
-    //     name: Joi.string().required(),
-    //     whatsappNumber: Joi.string(),
-    //     jobtitle: Joi.string(),
-    //     location: Joi.string()
-    //   }),
-    // }), 
     middlewares.isAuth, 
     async (req, res, next) => 
     {
+      const logger:Logger = Container.get('logger');
+
       try
       {
-        console.log("Getting the user info");
-        var userDetails= {
+        logger.debug('Updating the user info ', req.body );
+        
+        let userDetails = {
           ['cognito:groups']:null
         }
         
         userDetails = await jwt_decode(req.header('authorization'));
 
-        console.log(userDetails);
+        logger.debug('Id token for the following request : ', userDetails );
         
-        if( userDetails['cognito:groups'][0] == 'userCandidate' ){      //middlewares.submitCandidate(req, res, next, userDetails)
+        if( userDetails['cognito:groups'][0] == 'userCandidate' )
+        {
 
-          console.log("filling up the candidate information ");
+          logger.debug("Updating the candidate information.");
 
           const candidateServiceInstance = Container.get(CandidateService);
+
           const { candidateRecord } = await candidateServiceInstance.SetCandidate(userDetails,req);    
 
-          console.log(candidateRecord);
+          logger.debug("The uploaded information is ",candidateRecord);
 
-          if(candidateRecord['_id'] == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+          if(candidateRecord['_id'] == null)                             
           {
-              return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
+              return res.sendStatus(401);  
           }
-          else{
-            // Adding the data to the github model with candidateid in here
+          else
+          {
+            // Adding the github data for the given user.
             const canGitServiceInstance = Container.get(CandidateService);
+
             const canGitRecord = await canGitServiceInstance.SetGithub(userDetails,req);
-            console.log(canGitRecord);
-            return res.json({ "success" : true }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response           
+            
+            logger.debug("The uploaded candidate's git information is ",canGitRecord);
+
+            return res.json({ "success" : true }).status(200);    
           }
         }
-        if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
+        if(userDetails['cognito:groups'][0] == 'userRecruiter')
         {        
-
-          console.log("filling up the recruiter information ");
+          logger.debug("filling up the recruiter information ");
 
           const companyServiceInstance = Container.get(CompanyService);
+          
           const { companyRecord } = await companyServiceInstance.SetCompany(userDetails,req);    
-          if(companyRecord['_id'] == null)                             //console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+          
+          if(companyRecord['_id'] == null)                        
           {
-              return res.sendStatus(401);                             // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
+            return res.json({ "success" : false, message : "User already added to a given group" }).status(401);                             // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
           }
-          else{
+          else
+          {
             return res.json({ "success" : true }).status(200);        //console.log("User role set successfully in Mongo Db");           // successful response             
           }
         }
       }
       catch(e)
       {
-        console.log("Failed to add the user data");
-        return res.sendStatus(500);
+        logger.debug("Failed to add the user data");
+
+        return res.json({ "success" : false,  message : "Internal server error"  }).status(500);
       }
   });
 
@@ -116,51 +120,59 @@ export default (app: Router) => {
     middlewares.isAuth, 
     async (req, res) => 
     {
-      try
-      {
+      const logger:Logger = Container.get('logger');
 
-        //console.log(req.body);
-        var jobid;
+      try
+      {        
+        logger.debug('Updating the user info ', req.body );
+        
+        let jobid;
 
         if(req.body.jobid != null)
         {
             jobid = req.body.jobid;    
         }
 
-        console.log("Applying for job based on job slug.");
-        var userDetails= {
+        logger.debug("Applying for job based on job slug.");
+
+        let userDetails= {
           ['cognito:groups']:null
         }
         
         userDetails = await jwt_decode(req.header('authorization'));
 
-        //console.log(userDetails);
+        logger.debug("The user id token is ",userDetails);
         
-        if( userDetails['cognito:groups'][0] == 'userCandidate' ){      //middlewares.submitCandidate(req, res, next, userDetails)
+        if( userDetails['cognito:groups'][0] == 'userCandidate' )
+        { 
 
-          console.log("filling up the candidate information ");
+          logger.debug("Applying for a job post based on a given job slug.");
 
-          //console.log(CandidateService);
           let candidateServiceInstance = Container.get(CandidateService);
           
-          //console.log(candidateServiceInstance);
-          const candidateRecord = await candidateServiceInstance.ApplyJob(userDetails,jobid);    
+          const candidateAppliedJobRecord = await candidateServiceInstance.ApplyJob(userDetails,jobid);    
           
-          if(candidateRecord['_id'] == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+          logger.debug("The candidate Record added to the db is ",candidateAppliedJobRecord);
+
+          // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added
+
+          if(candidateAppliedJobRecord['_id'] == null)
           {
-              return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
+              return res.sendStatus(401);                                            
           }
           else
           {
-            return res.json({ "success" : true }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+            logger.debug("Job applied successfully and the mongo record is ",candidateAppliedJobRecord['_id']);
+
+            return res.json({ "success" : true }).status(200);
           }
         }
       }
       catch(e)
       {
-        console.log(e)
-        console.log("Failed to add the user data");
-        return res.sendStatus(500);
+        logger.debug("Failed to add the user data");
+
+        return res.json({ "success" : false,  message : "Internal server error"  }).status(500);
       }
   });
 
@@ -173,11 +185,12 @@ export default (app: Router) => {
       middlewares.isAuth, 
       async (req, res) => 
       {
+        const logger:Logger = Container.get('logger');
         try
         {
-  
-          console.log("fetching the candidates applied based on job id");
-          var jobid;
+          logger.debug("Fetching the candidates applied based on job id");
+          
+          let jobid;
   
           // console.log(req.query);
           if(req.query.jobid != null)
@@ -185,52 +198,51 @@ export default (app: Router) => {
               jobid = req.query.jobid;    
           }
 
-          console.log(jobid);
-  
-          // console.log("Applying for job based on job slug.");
-          var userDetails= {
+          logger.debug("The job slug id was ",jobid);
+          
+          let userDetails= {
             ['cognito:groups']:null
           }
           
           userDetails = await jwt_decode(req.header('authorization'));
   
-          console.log( userDetails['cognito:groups'][0]);
+          logger.debug( userDetails['cognito:groups'][0] );
           
           if( userDetails['cognito:groups'][0] == 'userRecruiter' ){      //middlewares.submitCandidate(req, res, next, userDetails)
   
-            console.log("filling up the candidate information ");
+            logger.debug("initializing the company service instance");
   
-            //console.log(CandidateService);
             let candidateServiceInstance = Container.get(CompanyService);
             
-            //console.log(candidateServiceInstance);
-            console.log("Fetching the applied can");
+            logger.debug("Fetching the applied can");
             
             const candidateRecord = await candidateServiceInstance.AppliedApplicant(jobid, userDetails);    
             
-            console.log(candidateRecord);
+            logger.debug("The recruiter for which the candidate info is fetched is ",candidateRecord);
 
-            if(candidateRecord == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
+            if(candidateRecord == null)
             {
-                return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
+              res.json({ "success" : false , "message" : "Unauthorized" }).status(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
             }
             else
             {
-              return res.json({ "success" : true , "enrolledCandidate" : candidateRecord }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response             
+              logger.debug("User role set successfully in Mongo Db");
+
+              return res.json({ "success" : true , "enrolledCandidate" : candidateRecord }).status(200);             
             }
           }
         }
         catch(e)
         {
-          console.log(e)
-          console.log("Failed to add the user data");
-          return res.sendStatus(500);
+          logger.debug("Failed to add the user data", e);
+          
+          return res.json({ "success" : false , "message" : "Internal server error" }).status(500);             
         }
     });
   
   
-  route.get('/getcans', middlewares.isAuth, async (req: Request, res: Response) =>{
-
+  route.get('/getcans', middlewares.isAuth, async (req: Request, res: Response) =>
+  {
       var userDetails= {
         ['cognito:groups']:null
       }
@@ -249,6 +261,10 @@ export default (app: Router) => {
         
         // const candidateList="";
         return res.json({ "success" : true , user: candidateRecords }).status(200);    
+      }
+      else
+      {
+        return res.json({ "success" : false }).status(401); 
       }
     })
 
@@ -272,6 +288,10 @@ export default (app: Router) => {
         
         // const candidateList="";
         return res.json({ "success" : true , user: candidateRecords }).status(200);    
+      }
+      else
+      {
+        return res.json({ "success" : false }).status(401); 
       }
     })
 
@@ -315,7 +335,10 @@ export default (app: Router) => {
 
         return res.json({ "success" : true , user: candidateInfo }).status(200);    
       }
-
+      else
+      {
+        return res.json({ "success" : false }).status(401); 
+      }
     });
 
 
@@ -327,6 +350,10 @@ export default (app: Router) => {
   
     route.get('/user', middlewares.isAuth, async (req: Request, res: Response) => {
       
+      const logger:Logger = Container.get('logger');
+
+      logger.debug('Fetching the candidate information.');
+
       var userDetails= {
         ['cognito:groups']:null
       }
@@ -393,11 +420,6 @@ export default (app: Router) => {
     });
 
     // GetJobByCan
-
-    route.put('/user', middlewares.isAuth, async (req, res, next) => 
-    {
-
-    });
 
     /* Method to get the profile of a given user
     * if can then can get recruiter
