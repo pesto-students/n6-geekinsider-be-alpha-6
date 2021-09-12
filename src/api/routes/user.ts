@@ -5,6 +5,9 @@ import { Container } from 'typedi';
 import { celebrate, Joi } from 'celebrate';
 import CandidateService from './../../services/candidate';
 import CompanyService from './../../services/company';
+import skillset from './../../utils/skills'
+import citiesset from './../../utils/cities'
+import cities from './../../utils/cities';
 
 const route = Router();
 
@@ -19,7 +22,21 @@ export default (app: Router) => {
   */
   route.post('/auth', middlewares.attachRole);
 
-  
+
+  /*
+  * Method to skills that can be applied aas a filter
+  */
+  route.get('/skills', middlewares.isAuth, (req: Request, res: Response) => {
+    return res.json({ skills: skillset }).status(200);
+  });
+
+  /*
+  * Method to skills that can be applied aas a filter
+  */
+  route.get('/cities', middlewares.isAuth, (req: Request, res: Response) => {
+    return res.json({ cities: cities }).status(200);
+  });
+
   /*
    * Method to get full profile of a given user 
    */

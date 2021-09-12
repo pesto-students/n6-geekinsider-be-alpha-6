@@ -94,7 +94,8 @@ export default class CompanyService {
   }
 
 
-  public async SetCompany(token, req ): Promise<{ companyRecord: ICompany }> {
+  public async SetCompany(token, req ): Promise<{ companyRecord: ICompany }> 
+  {
     try
     {
       console.log("Submitting the Company Details");
