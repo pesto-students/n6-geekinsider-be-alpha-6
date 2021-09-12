@@ -49,21 +49,23 @@ export default (app: Router) => {
         
         if( userDetails['cognito:groups'][0] == 'userCandidate' ){      //middlewares.submitCandidate(req, res, next, userDetails)
 
-          console.log("filling up the candiadte information ");
+          console.log("filling up the candidate information ");
 
           const candidateServiceInstance = Container.get(CandidateService);
           const { candidateRecord } = await candidateServiceInstance.SetCandidate(userDetails,req);    
+
+          console.log(candidateRecord);
 
           if(candidateRecord['_id'] == null)                             // console.log(console.log(userRecord)) // to see the userRecord in the debug logs
           {
               return res.sendStatus(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added         
           }
           else{
-            res.json({ "success" : true }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response           
             // Adding the data to the github model with candidateid in here
             const canGitServiceInstance = Container.get(CandidateService);
-            const { candidateRecord } = await canGitServiceInstance.SetGithub(userDetails,req);
-            return candidateRecord;        
+            const canGitRecord = await canGitServiceInstance.SetGithub(userDetails,req);
+            console.log(canGitRecord);
+            return res.json({ "success" : true }).status(200);  //console.log("User role set successfully in Mongo Db");           // successful response           
           }
         }
         if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
@@ -282,11 +284,14 @@ export default (app: Router) => {
         const candidateServiceInstance = Container.get(CandidateService);
 
         const candidateRecord = await candidateServiceInstance.GetCandidateInfo(canid);           
-        
+
+        const canGitRecord = await candidateServiceInstance.GetGitInfo(canid);           
+
         // here we need to call another service th
 
         const candidateInfo = {
           'about':candidateRecord.about,
+          'gitInfo': canGitRecord
         };
 
         console.log(candidateInfo)
@@ -321,6 +326,8 @@ export default (app: Router) => {
 
         const { candidateRecord , aboutRecord } = await candidateServiceInstance.GetCandidate(userDetails);           
 
+        const canGitRecord = await candidateServiceInstance.GetGitInfo(userDetails['sub']);           
+
         // here we need to call another service th
 
         const candidateInfo = {
@@ -332,7 +339,9 @@ export default (app: Router) => {
           'whatsappNumber':candidateRecord.whatsappNumber,
           'exp':candidateRecord.exp,
           'ctc':candidateRecord.ctc,
-          'location':candidateRecord.location
+          'location':candidateRecord.location,
+          'gitskills': canGitRecord.skills,
+          'skillsOrder' : canGitRecord.skillsOrder
         };
 
         return res.json({ "success" : true , user: candidateInfo }).status(200);

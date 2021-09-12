@@ -2,6 +2,7 @@ import { Service, Inject } from 'typedi';
 import { ICandidate } from './../interfaces/ICandidate';
 import { IConnect } from '../interfaces/IConnect';
 import { IAbout } from './../interfaces/IAbout';
+import { IGit } from './../interfaces/IGit';
 import mongoose from 'mongoose';
 import candidate from '@/models/candidate';
 const axios = require('axios');
@@ -13,7 +14,8 @@ export default class CandidateService {
     @Inject('aboutModel') private aboutModel: Models.AboutModel,
     @Inject('connectModel') private connectModel: Models.ConnectModel,
     @Inject('jobModel') private jobModel: Models.JobModel,
-  ){
+    @Inject('gitModel') private gitModel: Models.GitModel,
+    ){
   }
 
   public async GetCandidateInfo(canid): Promise<any>{
@@ -23,6 +25,18 @@ export default class CandidateService {
       });
       console.log(aboutRecord);
       return aboutRecord;
+    }catch(e){
+      throw e;  
+    }
+  }  
+
+  public async GetGitInfo(canid): Promise<any>{
+    try{
+      const gitRecord = await this.gitModel.findOne({
+        _id: canid
+      });
+      console.log(gitRecord);
+      return gitRecord;
     }catch(e){
       throw e;  
     }
@@ -68,19 +82,46 @@ export default class CandidateService {
     }
   }
 
-  public async SetGithub(token,req):Promise<any>{
-    try
+  public async SetGithub(token,req):Promise<any>
+  {
+    try 
     {
-      try {
-        //const response = await axios.get('/user?ID=12345');
-        const repoCount = await axios.get("https://api.github.com/users/"+req.body.githubUrl+"/expo-web/languages");            
-        console.log(repoCount);
-      } catch (error) {
-        console.error(error);
-      }
+      const getRepoCount = await axios.get('https://api.github.com/users/'+req.body.githubUrl) // https://api.github.com/users/vishaljkk/repos
+      console.log(getRepoCount.data.public_repos);
       
-      const candidateRecords = await this.candidateModel.find(token.sub);            
-      return candidateRecords;                                        // Need to update the data in the user model also need to remove console logs once upadted the method properly
+      const response = await axios.get('https://api.github.com/users/'+req.body.githubUrl+'/repos')
+
+      var i = 0;
+      var repoNameList = [];
+      var languageList = [];
+      var languageCounter = [];
+      for(;i<response.data.length;i++)
+      {
+        repoNameList.push(response.data[i].name);
+        if(response.data[i].language == null)
+        {
+          continue;
+        }
+        var index = languageList.indexOf(response.data[i].language)
+        if(index != -1)
+        {
+          languageCounter[index] = languageCounter[index]+1
+        }
+        else
+        {
+          languageList.push(response.data[i].language);
+          languageCounter.push(1)
+        }
+      }
+      // here we add the git data to our mongoose model
+      const gitRecord = await this.gitModel.create({
+        _id: token.sub, // slug+1 // cognitoUsername will be used as the id parameter for the user table.
+        repoCount: getRepoCount.data.public_repos,
+        repoName: repoNameList,
+        skills: languageList,
+        skillsOrder: languageCounter,
+      });
+      console.log(gitRecord);                                        // Need to update the data in the user model also need to remove console logs once upadted the method properly
     }
     catch (e) {
       throw e;

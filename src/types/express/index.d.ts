@@ -5,6 +5,7 @@ import { ICompany } from '@/interfaces/ICompany';
 import { IAbout } from '@/interfaces/IAbout';
 import { IJob } from '@/interfaces/IJob';
 import { IConnect } from '@/interfaces/IConnect';
+import { IGit } from '@/interfaces/IGit';
 
 declare global {
   namespace Express {
@@ -20,5 +21,6 @@ declare global {
     export type AboutModel = Model<IAbout & Document>;
     export type JobModel = Model<IJob & Document>;
     export type ConnectModel = Model<IConnect & Document>;
+    export type GitModel = Model<IGit & Document>;
   }
 }

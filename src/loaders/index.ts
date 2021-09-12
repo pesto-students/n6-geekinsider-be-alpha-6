@@ -24,6 +24,12 @@ export default async ({ expressApp }) => {
     model: require('../models/user').default,
   };
 
+  const gitModel = {
+    name: 'gitModel',
+    // Notice the require syntax and the '.default'
+    model: require('../models/git').default,
+  };
+
   const candidateModel = {
     name: 'candidateModel',
     // Notice the require syntax and the '.default'
@@ -62,7 +68,8 @@ export default async ({ expressApp }) => {
       companyModel,
       aboutModel,
       jobModel,
-      connectModel
+      connectModel,
+      gitModel
     ],
   });
   Logger.info('✌️ Dependency Injector loaded');
