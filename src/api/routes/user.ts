@@ -96,7 +96,7 @@ export default (app: Router) => {
           
           if(companyRecord['_id'] == null)                        
           {
-            return res.json({ "success" : false, message : "User already added to a given group" }).status(401);                             // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
+            return res.json({ "success" : false, "message" : "User already added to a given group" }).status(401);                             // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added            
           }
           else
           {
@@ -108,7 +108,7 @@ export default (app: Router) => {
       {
         logger.debug("Failed to add the user data");
 
-        return res.json({ "success" : false,  message : "Internal server error"  }).status(500);
+        return res.json({ "success" : false,  "message" : "Internal server error"  }).status(500);
       }
   });
 
@@ -172,7 +172,7 @@ export default (app: Router) => {
       {
         logger.debug("Failed to add the user data");
 
-        return res.json({ "success" : false,  message : "Internal server error"  }).status(500);
+        return res.json({ "success" : false,  "message" : "Internal server error"  }).status(500);
       }
   });
 
@@ -240,7 +240,11 @@ export default (app: Router) => {
         }
     });
   
-  
+
+  /*
+  *   Recommendation of candidates based on skills defined by recruiter during the onboarding process of the recruiter
+  */ 
+
   route.get('/getcans', middlewares.isAuth, async (req: Request, res: Response) =>
   {
     let userDetails= {
@@ -249,9 +253,11 @@ export default (app: Router) => {
     
     userDetails = await jwt_decode(req.header('authorization'));
 
+    const logger:Logger = Container.get('logger');
+
     if(userDetails['cognito:groups'][0] == 'userRecruiter')
     {        
-      console.log("Fetching userdetails of recommended candidate");
+      logger.debug("Fetching userdetails of recommended candidate for the given recruiter");
 
       userDetails = await jwt_decode(req.header('authorization'));
 
@@ -259,166 +265,183 @@ export default (app: Router) => {
 
       const candidateRecords = await companyServiceInstance.GetCanList(userDetails);           
       
-      // const candidateList="";
       return res.json({ "success" : true , user: candidateRecords }).status(200);    
     }
     else
     {
+      logger.debug("Unauthorised access is seen");
+
       res.json({ "success" : false , "message" : "Unauthorized" }).status(401);
     }
   })
 
-    route.get('/search-can', middlewares.isAuth, async (req: Request, res: Response) =>
-    {
+  /*
+  *   Recommendation of candidates based on skills searched by the recruiter
+  */ 
 
-      var userDetails= {
-        ['cognito:groups']:null
-      }
+  route.get('/search-can', middlewares.isAuth, async (req: Request, res: Response) =>
+  {
+    const logger:Logger = Container.get('logger');
+
+    let userDetails= {
+      ['cognito:groups']:null
+    }
+    
+    userDetails = await jwt_decode(req.header('authorization'));
+
+    if(userDetails['cognito:groups'][0] == 'userRecruiter')
+    {        
+      logger.debug("Fetching user details of recommended candidate");
+
+      userDetails = await jwt_decode(req.header('authorization'));
+
+      const companyServiceInstance = Container.get(CompanyService);
+
+      const candidateRecords = await companyServiceInstance.GetCanFromSearch(userDetails, req);           
       
-      userDetails = await jwt_decode(req.header('authorization'));
-
-      if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
-      {        
-        console.log("Fetching userdetails of recommended candidate");
-
-        userDetails = await jwt_decode(req.header('authorization'));
-
-        const companyServiceInstance = Container.get(CompanyService);
-
-        const candidateRecords = await companyServiceInstance.GetCanFromSearch(userDetails, req);           
-        
-        // const candidateList="";
-        return res.json({ "success" : true , user: candidateRecords }).status(200);    
-      }
-      else
-      {
-        return res.json({ "success" : false }).status(401); 
-      }
-    })
+      return res.json({ "success" : true , user: candidateRecords }).status(200);    
+    }
+    else
+    {
+      return res.json({ "success" : false, "message": "unuthorised access is seen" }).status(401); 
+    }
+  })
 
 
-    /*
-     *   Method to get full profile of a given user
-     */ 
-  
-    route.get('/getcan', middlewares.isAuth, async (req: Request, res: Response) => {
-  
-      var canid;
-      if(req.query.canid != null)
-      {
-        canid = req.query.canid;    
-      }
+  /*
+  *   Method to get full profile of a given candidate called by recruiter based on candidate id
+  */ 
 
-      var userDetails= {
-        ['cognito:groups']:null
-      }
+  route.get('/getcan', middlewares.isAuth, async (req: Request, res: Response) => 
+  {
+    const logger:Logger = Container.get('logger');
 
-      userDetails = await jwt_decode(req.header('authorization'));
+    let canid;
 
-      if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
-      {        
-        console.log("fetching the userdetails for the company to view");
+    if(req.query.canid != null)
+    {
+      canid = req.query.canid;    
+    }
 
-        const candidateServiceInstance = Container.get(CandidateService);
+    let userDetails= {
+      ['cognito:groups']:null
+    }
 
-        const candidateRecord = await candidateServiceInstance.GetCandidateInfo(canid);           
+    userDetails = await jwt_decode(req.header('authorization'));
 
-        const canGitRecord = await candidateServiceInstance.GetGitInfo(canid);           
+    if(userDetails['cognito:groups'][0] == 'userRecruiter')
+    {        
+      logger.debug("fetching the userdetails for the company to view candidates based on candidate id");
 
-        // here we need to call another service th
+      const candidateServiceInstance = Container.get(CandidateService);
 
-        const candidateInfo = {
-          'about':candidateRecord.about,
-          'gitInfo': canGitRecord
-        };
+      // Here we set up the candidate deatils dusing the onboarding process
 
-        console.log(candidateInfo)
+      const candidateRecord = await candidateServiceInstance.GetCandidateInfo(canid);           
 
-        return res.json({ "success" : true , user: candidateInfo }).status(200);    
-      }
-      else
-      {
-        return res.json({ "success" : false }).status(401); 
-      }
-    });
+      // Here we the git serivce to update the candidate's git profile
+
+      const canGitRecord = await candidateServiceInstance.GetGitInfo(canid);           
+
+      const candidateInfo = {
+        'about':candidateRecord.about,
+        'gitInfo': canGitRecord
+      };
+
+      logger.debug("The fetched candidate record is ", candidateInfo)
+
+      return res.json({ "success" : true , user: candidateInfo }).status(200);    
+    }
+    else
+    {
+      return res.json({ "success" : false, "message": "unuthorised access is seen" }).status(401); 
+    }
+  });
 
 
 
     
-    /*
-     *   Method to get full profile of a given user
-     */ 
-  
-    route.get('/user', middlewares.isAuth, async (req: Request, res: Response) => {
-      
-      const logger:Logger = Container.get('logger');
+  /*
+  *   Method to get full profile of a given user
+  */ 
 
-      logger.debug('Fetching the candidate information.');
+  route.get('/user', middlewares.isAuth, async (req: Request, res: Response) => {
+    
+    const logger:Logger = Container.get('logger');
 
-      var userDetails= {
-        ['cognito:groups']:null
-      }
+    logger.debug('Fetching the candidate information.');
+
+    var userDetails= {
+      ['cognito:groups']:null
+    }
+
+    userDetails = await jwt_decode(req.header('authorization'));
+
+    if(userDetails['cognito:groups'][0] == 'userCandidate'){      //middlewares.submitCandidate(req, res, next, userDetails)
+
+      logger.debug("Fetching userdetails of the candiadte");
 
       userDetails = await jwt_decode(req.header('authorization'));
 
-      if(userDetails['cognito:groups'][0] == 'userCandidate'){      //middlewares.submitCandidate(req, res, next, userDetails)
+      const candidateServiceInstance = Container.get(CandidateService);
 
-        console.log("fetching the userdetails the of the candiadte");
+      // here we get the candidate record the about record from the below service method
 
-        userDetails = await jwt_decode(req.header('authorization'));
+      const { candidateRecord , aboutRecord } = await candidateServiceInstance.GetCandidate(userDetails);           
 
-        const candidateServiceInstance = Container.get(CandidateService);
+      // here we get the git info for a given candidate
 
-        const { candidateRecord , aboutRecord } = await candidateServiceInstance.GetCandidate(userDetails);           
+      const canGitRecord = await candidateServiceInstance.GetGitInfo(userDetails['sub']);           
+      
+      const candidateInfo = {
+        'name':candidateRecord.name,
+        'jobTitle':candidateRecord.jobTitle,
+        'githubUrl':candidateRecord.githubUrl,
+        'skills':candidateRecord.skills,
+        'about':aboutRecord.about,
+        'whatsappNumber':candidateRecord.whatsappNumber,
+        'exp':candidateRecord.exp,
+        'ctc':candidateRecord.ctc,
+        'location':candidateRecord.location,
+        'gitskills': canGitRecord.skills,
+        'skillsOrder' : canGitRecord.skillsOrder
+      };
 
-        const canGitRecord = await candidateServiceInstance.GetGitInfo(userDetails['sub']);           
+      return res.json({ "success" : true , user: candidateInfo }).status(200);
 
-        // here we need to call another service th
+    }
+    if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
+    {        
+      logger.debug("fetching the userdetails the of the company");
 
-        const candidateInfo = {
-          'name':candidateRecord.name,
-          'jobTitle':candidateRecord.jobTitle,
-          'githubUrl':candidateRecord.githubUrl,
-          'skills':candidateRecord.skills,
-          'about':aboutRecord.about,
-          'whatsappNumber':candidateRecord.whatsappNumber,
-          'exp':candidateRecord.exp,
-          'ctc':candidateRecord.ctc,
-          'location':candidateRecord.location,
-          'gitskills': canGitRecord.skills,
-          'skillsOrder' : canGitRecord.skillsOrder
-        };
+      userDetails = await jwt_decode(req.header('authorization'));
 
-        return res.json({ "success" : true , user: candidateInfo }).status(200);
+      const companyServiceInstance = Container.get(CompanyService);
 
-      }
-      if(userDetails['cognito:groups'][0] == 'userRecruiter')       //middlewares.submitCompany(req, res, next, userDetails)
-      {        
-        console.log("fetching the userdetails the of the company");
+      // here we get the company record the about record from the below service method
 
-        userDetails = await jwt_decode(req.header('authorization'));
+      const { companyRecord, aboutRecord } = await companyServiceInstance.GetCompany(userDetails);           
+      
+      const companyInfo = {
+        'name':companyRecord.name,
+        'whatsappNumber':companyRecord.whatsappNumber,
+        'preferredIndustry':companyRecord.preferredIndustry,
+        'location':companyRecord.location,
+        'skills':companyRecord.skills,
+        'about':aboutRecord.about,
+        'empSize':companyRecord.empSize,
+        'site':companyRecord.site,
+      };
 
-        const companyServiceInstance = Container.get(CompanyService);
+      return res.json({ "success" : true , user: companyInfo }).status(200);    
+    }
 
-        const { companyRecord, aboutRecord } = await companyServiceInstance.GetCompany(userDetails);           
-        
-        // here we need to call another service th
+  });
 
-        const companyInfo = {
-          'name':companyRecord.name,
-          'whatsappNumber':companyRecord.whatsappNumber,
-          'preferredIndustry':companyRecord.preferredIndustry,
-          'location':companyRecord.location,
-          'skills':companyRecord.skills,
-          'about':aboutRecord.about,
-          'empSize':companyRecord.empSize,
-          'site':companyRecord.site,
-        };
+};
 
-        return res.json({ "success" : true , user: companyInfo }).status(200);    
-      }
 
-    });
+
 
     // GetJobByCan
 
@@ -429,30 +452,28 @@ export default (app: Router) => {
     // route.get('/:userid', middlewares.isAuth, middlewares.isRole, (req: Request, res: Response) => {
     //   return res.json({ user: req.currentUser }).status(200);
     // });
-};
 
+    // var i = 0; 
+    // var canRecords = [];
+    // for(;i<candidateRecords.length;i++) 
+    // {
+    //   canRecords[i] = {
+    //     candidateRecords[i]['skills']
+    //   }
+    // }
 
-        // var i = 0; 
-        // var canRecords = [];
-        // for(;i<candidateRecords.length;i++) 
-        // {
-        //   canRecords[i] = {
-        //     candidateRecords[i]['skills']
-        //   }
-        // }
+    // console.log(candidateRecord);
 
-        // console.log(candidateRecord);
+    // here we need to call another service th
 
-        // here we need to call another service th
-
-        // const companyInfo = {
-        //   'name':companyRecord.name,
-        //   'whatsappNumber':companyRecord.whatsappNumber,
-        //   'preferredIndustry':companyRecord.preferredIndustry,
-        //   'location':companyRecord.location,
-        //   'skills':companyRecord.skills,
-        //   'about':aboutRecord.about,
-        //   'empSize':companyRecord.empSize,
-        //   'site':companyRecord.site,
-        // };
+    // const companyInfo = {
+    //   'name':companyRecord.name,
+    //   'whatsappNumber':companyRecord.whatsappNumber,
+    //   'preferredIndustry':companyRecord.preferredIndustry,
+    //   'location':companyRecord.location,
+    //   'skills':companyRecord.skills,
+    //   'about':aboutRecord.about,
+    //   'empSize':companyRecord.empSize,
+    //   'site':companyRecord.site,
+    // };
 
