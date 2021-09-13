@@ -8,30 +8,30 @@ const Candidate = new mongoose.Schema(
       required: true,
       unique : true
     },
-    name:{
+    name:{              // Here we enter the name for a given candidate
       type: String,
       required: true
     },
-    whatsappNumber: {
+    whatsappNumber: {   // Here we enter the whatsapp number for a given candidate
       type: String
     },
-    jobTitle:{
+    jobTitle:{          // Here we enter the jobtitle for the current candidate
       type: String
     },
-    location:{
+    location:{          // Here we enter the cuurrent location of the candidate  
       type: String
     },
-    githubUrl:{
+    githubUrl:{         // the github url corresponds to the git url for the given candidate
       type: String
     },
-    ctc:{
+    ctc:{               // Here we enter the current ctc for a given candidate
       type: String
     },
-    exp:{
+    exp:{               // Here we enter the current exp for a given candidate
       type: String
     },
-    skills:[],  // we will hav eto add a limiting condition to the skills so as to advoid data flow conjestion
-    aboutid: {
+    skills:[],          // Here we enter the skills for a given candidate
+    aboutid: {          // Here we enter the about id for a given candidate which will link to the about of a given candidate
       type: String
     },
   },
