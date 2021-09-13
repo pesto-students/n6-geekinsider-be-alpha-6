@@ -7,13 +7,13 @@ const Git = new mongoose.Schema(
       type: String,     // this will be used as email id attribute
       required: true,
     },
-    repoCount:{ 
+    repoCount:{         // total public repo count of a givven git user
         type: Number,   // this will be used as email id attribute
         required: true, // https://api.github.com/users/vishaljkk
     },
-    repoName:[],        // https://api.github.com/repos/git-username/repos
-    skills: [],         // https://api.github.com/repos/git-username/repos
-    skillsOrder: [],
+    repoName:[],        //// To define reponames - https://api.github.com/repos/git-username/repos
+    skills: [],         // Skills in the order in which are feched from the github api
+    skillsOrder: [],    // Numeric factor to skills order
   },
 );
 

@@ -1,6 +1,8 @@
 import { Service, Inject } from 'typedi';
 import { ICompany } from './../interfaces/ICompany';
 import { IAbout } from './../interfaces/IAbout';
+import { Logger } from 'winston';
+import { Container } from 'typedi';
 
 @Service()
 export default class CompanyService {
@@ -12,24 +14,28 @@ export default class CompanyService {
   ){
   }
     
-  public async AppliedApplicant(jobid, userDetails): Promise<any> {
+  public async AppliedApplicant(jobid, userDetails): Promise<any> 
+  {
+    const logger:Logger = Container.get('logger');
+  
     try
     {
-      console.log("the applied applicatns are");
-      console.log(jobid);
-      // var query = { 'jobslug': jobid }; // companyRecord.name+"-"+req.body.jobTitle+count
-      //const connectRecord = await this.connectModel.find(query);
+    
+      logger.debug("the applied applicatns are", jobid);
+        
       const connectRecord = await this.connectModel.find({$and: [{ 'jobslug': jobid }, { 'companyid': userDetails.sub }]});
       
-      console.log(connectRecord.length);
-      var connections = []; 
-      var i = 0;
+      logger.debug(connectRecord.length);
+
+      let connections = []; 
+      let i = 0;
+
       for (;i<connectRecord.length;i++)
       {
-          console.log(connectRecord.length);
-          var fetchCan = { '_id': connectRecord[i]['candidateid'] }; // companyRecord.name+"-"+req.body.jobTitle+count
+          logger.debug(connectRecord.length);
+          let fetchCan = { '_id': connectRecord[i]['candidateid'] }; // companyRecord.name+"-"+req.body.jobTitle+count
           const candidateRecord = await this.candidateModel.find(fetchCan);
-          console.log("The can record is : ",candidateRecord);
+          logger.debug("The can record is : ",candidateRecord);
           connections.push({
             'skills' : candidateRecord[i]['skills'],
             'name' : candidateRecord[i]['name'],
@@ -39,56 +45,14 @@ export default class CompanyService {
             'whatsappNumber' : candidateRecord[i]['whatsappNumber'],
             'userId' : candidateRecord[i]['_id']
           })
-          // console.log(connections);
       }
 
-      console.log(connections);
+      logger.debug(connections);
       return connections;
-      //     connections.push({
-      //       'name' : candidateRecord[i]['name'],
-      //       'whatsappNumber' : candidateRecord[i]['jobTitle'],
-      //       'location' : candidateRecord[i]['location'],
-      //       'ctc' : candidateRecord[i]['ctc'],
-      //       'exp' : candidateRecord[i]['exp']
-      //     })
-      //   }
-      //   else
-      //   {
-
-      //   }
-      //}
-      //   var fetchCan = { '_id': connectRecord[i]['candidateid'] }; // companyRecord.name+"-"+req.body.jobTitle+count
-
-      //   const candidateRecord = await this.candidateModel.find(fetchCan);
-       
-      //   const userDetailServiceInstance = Container.get(CandidateService);
-
-      //   const candidateRecord = await userDetailServiceInstance.GetCandidate(userDetails);           
-
-      //   const candidateInfo = {
-      //     'name':candidateRecord.name,
-      //     'jobtitle':candidateRecord.jobTitle,
-      //     'githubUrl':candidateRecord.githubUrl,
-      //     'skills':candidateRecord.skills,
-      //     'about':aboutRecord.about,
-      //     'whatsappNumber':candidateRecord.whatsappNumber,
-      //     'exp':candidateRecord.exp,
-      //     'ctc':candidateRecord.ctc,
-      //     'location':candidateRecord.location
-      //   };
-
-      //   connections.push({
-      //     candidateRecord
-      //   })
-      // }
-
-      //return connections;  
-
-      // return connections;  
     }
     catch(e)
     {
-      console.log(e);
+      logger.debug(e);
       throw e;
     }
   }
@@ -96,20 +60,19 @@ export default class CompanyService {
 
   public async SetCompany(token, req ): Promise<{ companyRecord: ICompany }> 
   {
+    const logger:Logger = Container.get('logger');
+    
     try
     {
-      console.log("Submitting the Company Details");
+      logger.debug("Submitting the Company Details");
 
-      var skills = req.body.skills.split(",")
+      let skills = req.body.skills.split(",")
 
       const aboutRecord = await this.aboutModel.create({
         _id: token.sub,
         about: req.body.about
       });
 
-      // sanity check for data skill count has to be applied each skill not greater then 100 char and array size not greater then 50.
-      // sanity check for user whatsapp Number , jobtitle not more the 100 char, about not more then 1000 characters 
-      // as it is both good for the recruiter to read and the candidate to describe in the reading aspect for the profile
       const companyRecord = await this.companyModel.create({
         _id: token.sub,  // cognitoUsername will be used as the id parameter for the user table.
         name: req.body.name,
@@ -121,12 +84,12 @@ export default class CompanyService {
         site:req.body.site,
         aboutid: aboutRecord['_id']
       });
-      console.log(companyRecord);
+      logger.debug(companyRecord);
       // Need to update the data in the user model also need to remove console logs once upadted the method properly
       return { companyRecord }  
     }
     catch (e) {
-      console.log(e);
+      logger.debug(e);
       throw e;
     }
   }
@@ -134,14 +97,16 @@ export default class CompanyService {
   // GetAppliedCan
 
   public async GetCanList(token): Promise<any> {
+    const logger:Logger = Container.get('logger');
+    
     try
     {
-      console.log("Submitting the Company Details");
+      logger.debug("Submitting the Company Details");
 
       const companyRecord = await this.companyModel.findById(token.sub);
-      console.log(companyRecord);
+      logger.debug(companyRecord);
 
-      var query = {skills: {$in: companyRecord.skills}}
+      let query = {skills: {$in: companyRecord.skills}}
       const candidateRecord = await this.candidateModel.find(query);
 
       // Need to update the data in the user model also need to remove console logs once upadted the method properly
@@ -153,13 +118,16 @@ export default class CompanyService {
   }
 
 
-  public async GetCanFromSearch(token, req): Promise<any> {
+  public async GetCanFromSearch(token, req): Promise<any> 
+  {
+    const logger:Logger = Container.get('logger');
+    
     try
     {
-      console.log("Fetching candidates based on skills");
+      logger.debug("Fetching candidates based on skills");
 
-      var query = {skills: {$in: req.query.skills.split(",")}}
-      console.log(query);
+      let query = {skills: {$in: req.query.skills.split(",")}}
+      logger.debug(query);
       const candidateRecord = await this.candidateModel.find(query);
 
       // Need to update the data in the user model also need to remove console logs once upadted the method properly
@@ -170,15 +138,16 @@ export default class CompanyService {
     }
   }
 
-  public async GetCompany(token): Promise<{ companyRecord: ICompany  , aboutRecord: IAbout }> {
+  public async GetCompany(token): Promise<{ companyRecord: ICompany  , aboutRecord: IAbout }> 
+  {
+    
+    const logger:Logger = Container.get('logger');
+    
     try{
-      console.log("Submitting the Company Details");
+      logger.debug("Submitting the Company Details");
 
-      // sanity check for data skill count has to be applied each skill not greater then 100 char and array size not greater then 50.
-      // sanity check for user whatsapp Number , jobtitle not more the 100 char, about not more then 1000 characters 
-      // as it is both good for the recruiter to read and the candidate to describe in the reading aspect for the profile
       const companyRecord = await this.companyModel.findById(token.sub);
-      console.log(companyRecord);
+      logger.debug(companyRecord);
 
       const aboutRecord = await this.aboutModel.findById(token.sub);
 
@@ -192,131 +161,3 @@ export default class CompanyService {
 }
 
 
-// import { Service, Inject } from 'typedi';
-// import { ICompany } from './../interfaces/ICompany';
-// import { IAbout } from './../interfaces/IAbout';
-
-// @Service()
-// export default class CompanyService {
-//   constructor(
-//     @Inject('companyModel') private companyModel: Models.CompanyModel,
-//     @Inject('candidateModel') private candidateModel: Models.CandidateModel,
-//     @Inject('aboutModel') private aboutModel: Models.AboutModel,
-//   ){
-//   }
-    
-//   public async SetCompany(token, req ): Promise<{ companyRecord: ICompany }> {
-//     try{
-//       console.log("Submitting the Company Details");
-//       var skills = req.body.skills.split(",")
-
-//       const aboutRecord = await this.aboutModel.create({
-//         _id: token.sub,
-//         about: req.body.about
-//       });
-
-//       // sanity check for data skill count has to be applied each skill not greater then 100 char and array size not greater then 50.
-//       // sanity check for user whatsapp Number , jobtitle not more the 100 char, about not more then 1000 characters 
-//       // as it is both good for the recruiter to read and the candidate to describe in the reading aspect for the profile
-//       const companyRecord = await this.companyModel.create({
-//         _id: token.sub,  // cognitoUsername will be used as the id parameter for the user table.
-//         name: req.body.name,
-//         whatsappNumber: req.body.whatsappNumber,
-//         location: req.body.location,
-//         prefferedIndustry:req.body.prefferedIndustry,
-//         skills:skills,
-//         empSize:req.body.empSize,
-//         site:req.body.site,
-//         aboutid: aboutRecord['_id']
-//       });
-//       console.log(companyRecord);
-//       // Need to update the data in the user model also need to remove console logs once upadted the method properly
-//       return { companyRecord }  
-//     }
-//     catch (e) {
-//       console.log(e);
-//       throw e;
-//     }
-//   }
-
-
-//   public async GetCanList(token): Promise<any> {
-//     try
-//     {
-//       console.log("Submitting the Company Details");
-
-//       const companyRecord = this.companyModel.findById(token.sub);
-//       console.log(companyRecord);
-
-//       var query = {skills: {$in: companyRecord['skills']}}
-//       const candidateRecord = await this.candidateModel.find(query);
-
-//       return candidateRecord;
-
-//       // Need to add this part of the code to the main code base.
-
-//       // var i = 0; 
-//       // var candidateRecords = [];
-//       // for(;i<candidateRecords.length;i++) 
-//       // {
-//       //    const canRecords = {
-//       //     'name':candidateRecords['name'],
-//       //     'whatsappNumber':companyRecord['whatsappNumber'],
-//       //     'jobTitle':candidateRecords['jobTitle'],
-//       //     'location':candidateRecords['location'],
-//       //     'githubUrl':candidateRecords['githubUrl'],
-//       //     'ctc':candidateRecords['ctc'],
-//       //     'exp':candidateRecords['exp']
-//       //   };
-
-
-//       //   // canRecords[i].append({
-//       //   //   candidateRecords[i]['skills']
-//       //   // })
-//       // }
-//       // // var i = 0; 
-//       // var canRecords = [];
-//       // for(;i<candidateRecords.length;i++) 
-//       // {
-//       //   console.log(conRecords)
-//       //   const canRecord = {
-//       //     'name':candidateRecords['name'],
-//       //     'whatsappNumber':companyRecord['whatsappNumber'],
-//       //     'jobTitle':candidateRecords['jobTitle'],
-//       //     'location':candidateRecords['location'],
-//       //     'githubUrl':candidateRecords['githubUrl'],
-//       //     'ctc':candidateRecords['ctc'],
-//       //     'exp':candidateRecords['exp']
-//       //   };
-//       //   canRecords.push(canRecord)
-//       // }
-//       // // Need to update the data in the user model also need to remove console logs once upadted the method properly
-//       // return canRecords;
-//       // Need to update the data in the user model also need to remove console logs once upadted the method properly
-        
-//     }
-//     catch (e) {
-//       throw e;
-//     }
-//   }
-
-//   public async GetCompany(token): Promise<{ companyRecord: ICompany  , aboutRecord: IAbout }> {
-//     try{
-//       console.log("Submitting the Company Details");
-
-//       // sanity check for data skill count has to be applied each skill not greater then 100 char and array size not greater then 50.
-//       // sanity check for user whatsapp Number , jobtitle not more the 100 char, about not more then 1000 characters 
-//       // as it is both good for the recruiter to read and the candidate to describe in the reading aspect for the profile
-//       const companyRecord = await this.companyModel.findById(token.sub);
-//       console.log(companyRecord);
-
-//       const aboutRecord = await this.aboutModel.findById(token.sub);
-
-//       // Need to update the data in the user model also need to remove console logs once upadted the method properly
-//       return { companyRecord , aboutRecord }  
-//     }
-//     catch (e) {
-//       throw e;
-//     }
-//   }
-// }

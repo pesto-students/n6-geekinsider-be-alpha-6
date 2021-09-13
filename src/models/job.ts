@@ -4,16 +4,16 @@ import mongoose from 'mongoose';
 const Job = new mongoose.Schema(
   {
     _id: { 
-        type: String,     // this will be used as email id attribute
+        type: String,       // this will be used as email id attribute
         required: true,
     },
-    exp:{
+    exp:{                   // Here we enter the exp for a given job
         type: Number,
     },
-    ctc:{
+    ctc:{                   // Here we enter the current ctc for a given job
         type: Number,
     },
-    companyName:{
+    companyName:{           // Here we enter the company Name
         type: String,
         required: true
     },
@@ -31,14 +31,14 @@ const Job = new mongoose.Schema(
         type: Boolean,
         default: true
     },
-    skills:[],
+    skills:[],          // Here we define the tech skills for a given job
     jobAboutid: {
         type: String
     },
-    jobslug:{
+    jobslug:{           // Here we create a jobslug for a given job
         type:String
     },
-    canApplied:[],  // we will hav eto add a limiting condition to the skills so as to advoid data flow conjestion
+    canApplied:[],      // we will hav eto add a limiting condition to the skills so as to advoid data flow conjestion
   },
 );
 
