@@ -102,12 +102,12 @@ export default class CandidateService {
       
       const response = await axios.get('https://api.github.com/users/'+req.body.githubUrl+'/repos')
 
-      let i = 0;
+      
       let repoNameList = [];
       let languageList = [];
       let languageCounter = [];
       
-      for(;i<response.data.length;i++)
+      for(let i = 0; i<response.data.length; i++)
       {
         repoNameList.push(response.data[i].name);
         if(response.data[i].language == null)
@@ -126,7 +126,7 @@ export default class CandidateService {
         }
       }
 
-      for (let i=0; i< languageCounter.length; i++)
+      for (let i=0; i<languageCounter.length; i++)
       {
         for (let j=i; j<languageCounter.length;j++)
         {
@@ -143,6 +143,14 @@ export default class CandidateService {
         }
       }
 
+      let languagePercent = []
+
+      for (let i=0; i<languageCounter.length; i++)
+      {
+        languagePercent[i] = (languageCounter[i]/languageCounter[0])*100
+        console.log(languageCounter[i]);
+      }
+ 
       // here we add the git data to our mongoose model
 
       const gitRecord = await this.gitModel.create({
@@ -150,7 +158,7 @@ export default class CandidateService {
         repoCount: getRepoCount.data.public_repos,
         repoName: repoNameList,
         skills: languageList,
-        skillsOrder: languageCounter,
+        skillsOrder: languagePercent,
       });
       logger.debug(gitRecord);                                        // Need to update the data in the user model also need to remove console logs once upadted the method properly
     }
