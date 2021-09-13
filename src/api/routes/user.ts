@@ -208,6 +208,14 @@ export default (app: Router) => {
   
           logger.debug( userDetails['cognito:groups'][0] );
           
+          if( userDetails['cognito:groups'][0] == 'userCandidate' ){
+
+            logger.debug("User role set successfully in Mongo Db");
+
+            res.json({ "success" : false , "message" : "Unauthorized" }).status(401);     // Need to add a role back here if user role not succeefully set so as to loop again unless the role is added                     
+
+          }
+
           if( userDetails['cognito:groups'][0] == 'userRecruiter' ){      //middlewares.submitCandidate(req, res, next, userDetails)
   
             logger.debug("initializing the company service instance");
