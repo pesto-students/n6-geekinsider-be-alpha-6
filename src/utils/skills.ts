@@ -1,318 +1,120 @@
 const skills = [
-
     'Algorithms',
-   
-   
-    'Analytical Skills',
-   
-   
-    'Big Data',
-   
-   
+    'AnalyticalSkills',
+    'BigData',
     'Calculating',
-   
-   
-    'Compiling Statistics',
-   
-   
-    'Data Analytics',
-   
-   
-    'Data Mining',
-   
-   
-    'Database Design',
-   
-   
-    'Database Management',
-   
-   
+    'CompilingStatistics',
+    'DataAnalytics',
+    'DataMining',
+    'DatabaseDesign',
+    'DatabaseManagement',
     'Documentation',
-   
-   
     'Modeling',
-   
-   
     'Modification',
-   
-   
-    'Needs Analysis',
-   
-   
-    'Quantitative Research',
-   
-   
-    'Quantitative Reports',
-   
-   
-    'Statistical Analysis',
-   
-   
+    'NeedsAnalysis',
+    'QuantitativeResearch',
+    'QuantitativeReports',
+    'StatisticalAnalysis',
     'Applications',
-   
-   
     'Certifications',
-   
-   
     'Coding',
-   
-   
     'Computing',
-   
-   
     'Configuration',
-   
-   
-    'Customer Support',
-   
-   
+    'CustomerSupport',
     'Debugging',
-   
-   
     'Design',
-   
-   
     'Development',
-   
-   
     'Hardware',
-   
-   
     'Implementation',
-   
-   
-    'Information Technology',
-   
-   
+    'InformationTechnology',
     'Infrastructure',
-   
-   
     'Languages',
-   
-   
     'Maintenance',
-   
-   
-    'Network Architecture',
-   
-   
-    'Network Security',
-   
-   
+    'NetworkArchitecture',
+    'NetworkSecurity',
     'Networking',
-   
-   
-    'New Technologies',
-   
-   
-    'Operating Systems',
-   
-   
+    'NewTechnologies',
+    'OperatingSystems',
     'Programming',
-   
-   
     'Restoration',
-   
-   
     'Security',
-   
-   
     'Servers',
-   
-   
     'Software',
-   
-   
-    'Solution Delivery',
-   
-   
+    'SolutionDelivery',
     'Storage',
-   
-   
     'Structures',
-   
-   
-    'Systems Analysis',
-   
-   
-    'Technical Support',
-   
-   
+    'SystemsAnalysis',
+    'TechnicalSupport',
     'Technology',
-   
-   
     'Testing',
-   
-   
     'Tools',
-   
-   
     'Training',
-   
-   
     'Troubleshooting',
-   
-   
     'Usability',
-   
-   
     'Benchmarking',
-   
-   
-    'Budget Planning',
-   
-   
+    'BudgetPlanning',
     'Engineering',
-   
-   
     'Fabrication',
-   
-   
-    'Following Specifications',
-   
-   
+    'FollowingSpecifications',
     'Operations',
-   
-   
-    'Performance Review',
-   
-   
-    'Project Planning',
-   
-   
-    'Quality Assurance',
-   
-   
-    'Quality Control',
-   
-   
+    'PerformanceReview',
+    'ProjectPlanning',
+    'QualityAssurance',
+    'QualityControl',
     'Scheduling',
-   
-   
-    'Task Delegation',
-   
-   
-    'Task Management',
-   
-   
+    'TaskDelegation',
+    'TaskManagement',
     'Blogging',
-   
-   
-    'Digital Photography',
-   
-   
-    'Digital Media',
-   
-   
+    'DigitalPhotography',
+    'DigitalMedia',
     'Facebook',
-   
-   
     'Instagram',
-   
-   
-    'Networking',
-   
-   
     'Pinterest',
-   
-   
     'SEO',
-   
-   
-    'Social Media Platforms',
-   
-   
+    'SocialMediaPlatforms',
     'Twitter',
-   
-   
-    'Web Analytics',
-   
-   
-    'Client Relations',
-   
-   
+    'WebAnalytics',
+    'ClientRelations',
     'Email',
-   
-   
-    'Requirements Gathering',
-   
-   
+    'RequirementsGathering',
     'Research',
-   
-   
-    'Subject Matter Experts (SMEs)',
-   
-   
-    'Technical Documentation',
-   
-    'java', 
-    
+    'SubjectMatterExperts(SMEs)',
+    'TechnicalDocumentation',
+    'java',
     'c',
-    
-    ' python',
-    
-    ' c++', 
-    
+    'python',
+    'c++',
     '.net',
-    
     'c#',
-    
     'php',
-    
     'javascript',
-    
     'sql',
-    
     'objective-c',
-    
     'ruby',
-    
     'matlab',
-    
-    'assembly language',
-    
+    'assemblylanguage',
     'swift',
-    
     'go',
-    
     'pearl',
-    
     'r',
-    
-    'pl/sql','visual basic', 
-    
-    'sas', 
-    
-    'dart', 
-    
+    'pl/sql',
+    'visualbasic',
+    'sas',
+    'dart',
     'F#',
-    
     'cobol',
-    
-    'scala', 
-    
-    'abap', 
-    
+    'scala',
+    'abap',
     'fortran',
-    
     'lua',
-    
-    'rust', 
-    
+    'rust',
     'node',
-    
-    'react', 
-    
-    'vue', 
-    
-    'mean', 
-    
-    'mern', 
-    
-    'fullstack developer', 
-    
-    't-software developer'
-   ];
-   
-   
-   export default skills;
+    'react',
+    'vue',
+    'mean',
+    'mern',
+    'fullstackdeveloper',
+    't-softwaredeveloper',
+  ];
+export default skills;
+  

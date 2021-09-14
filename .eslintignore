@@ -1,2 +1,4 @@
 build/*
 
+/src/utils/cities
+/src/utils/skills
