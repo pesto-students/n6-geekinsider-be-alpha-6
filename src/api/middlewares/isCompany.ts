@@ -6,9 +6,9 @@ const isCompany = (req, res, next) => {
    */
   try 
   {
-      var token = req.header.Authorization
-      var userDetails = jwt_decode(token);   
-      var role = "userRecruiter"; 
+      let token = req.header.Authorization
+      let userDetails = jwt_decode(token);   
+      let role = "userRecruiter"; 
       if(userDetails['cognito:groups'][0] === role )           //console.log("User exits in a defined group");
       {
           return next();

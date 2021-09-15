@@ -1,4 +1,4 @@
 build/*
-
-/src/utils/cities
-/src/utils/skills
+.gitignore
+src/utils/cities.ts
+src/utils/skills.ts

@@ -34,7 +34,6 @@ export default class CompanyService {
       {
           logger.debug(connectRecord.length);
           let fetchCan = { '_id': connectRecord[i]['candidateid'] }; // companyRecord.name+"-"+req.body.jobTitle+count
-          logger.debug("The fetched can is : ",fetchCan);
           const candidateRecord = await this.candidateModel.find(fetchCan);
           logger.debug("The can record is : ",candidateRecord);
           connections.push({
@@ -44,7 +43,8 @@ export default class CompanyService {
             'location' : candidateRecord[i]['location'],
             'exp' : candidateRecord[i]['exp'],
             'whatsappNumber' : candidateRecord[i]['whatsappNumber'],
-            'userId' : candidateRecord[i]['_id']
+            'userId' : candidateRecord[i]['_id'],
+            'githubUrl' : candidateRecord[i]['githubUrl']
           })
       }
 
