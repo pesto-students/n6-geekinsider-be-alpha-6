@@ -1,6 +1,7 @@
+  
 {
   "compilerOptions": {
-    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "target": "es2017",
     "lib": [
       "es2017",
