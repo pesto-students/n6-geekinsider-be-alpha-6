@@ -412,7 +412,8 @@ export default (app: Router) => {
         'ctc':candidateRecord.ctc,
         'location':candidateRecord.location,
         'gitskills': canGitRecord.skills,
-        'skillsOrder' : canGitRecord.skillsOrder
+        'skillsOrder' : canGitRecord.skillsOrder,
+        'repoCount' : canGitRecord.repoCount
       };
 
       return res.json({ "success" : true , user: candidateInfo }).status(200);
