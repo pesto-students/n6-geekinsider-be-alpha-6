@@ -5,8 +5,8 @@ const isCandidate = (req, res, next) => {
    *   middlewares.isRole we will this middle ware to see the different actions
    */
   try {
-    var token = req.header.Authorization
-    var userDetails = jwt_decode(token);    
+    let token = req.header.Authorization
+    let userDetails = jwt_decode(token);    
     if(userDetails['cognito:groups'][0] == "userCandidate")           //console.log("User exits in a defined group");
     {
       return next();

@@ -379,7 +379,7 @@ export default (app: Router) => {
 
     logger.debug('Fetching the candidate information.');
 
-    var userDetails= {
+    let userDetails= {
       ['cognito:groups']:null
     }
 
@@ -412,7 +412,8 @@ export default (app: Router) => {
         'ctc':candidateRecord.ctc,
         'location':candidateRecord.location,
         'gitskills': canGitRecord.skills,
-        'skillsOrder' : canGitRecord.skillsOrder
+        'skillsOrder' : canGitRecord.skillsOrder,
+        'repoCount' : canGitRecord.repoCount
       };
 
       return res.json({ "success" : true , user: candidateInfo }).status(200);
@@ -449,39 +450,4 @@ export default (app: Router) => {
 };
 
 
-
-
-    // GetJobByCan
-
-    /* Method to get the profile of a given user
-    * if can then can get recruiter
-    * if Recruiter then can get Candidate
-    */
-    // route.get('/:userid', middlewares.isAuth, middlewares.isRole, (req: Request, res: Response) => {
-    //   return res.json({ user: req.currentUser }).status(200);
-    // });
-
-    // var i = 0; 
-    // var canRecords = [];
-    // for(;i<candidateRecords.length;i++) 
-    // {
-    //   canRecords[i] = {
-    //     candidateRecords[i]['skills']
-    //   }
-    // }
-
-    // console.log(candidateRecord);
-
-    // here we need to call another service th
-
-    // const companyInfo = {
-    //   'name':companyRecord.name,
-    //   'whatsappNumber':companyRecord.whatsappNumber,
-    //   'preferredIndustry':companyRecord.preferredIndustry,
-    //   'location':companyRecord.location,
-    //   'skills':companyRecord.skills,
-    //   'about':aboutRecord.about,
-    //   'empSize':companyRecord.empSize,
-    //   'site':companyRecord.site,
-    // };
 

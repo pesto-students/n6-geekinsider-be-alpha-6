@@ -4,7 +4,7 @@ import { IUser } from '@/interfaces/IUser';
 import { Logger } from 'winston';
 import jwt_decode from 'jwt-decode'
 
-var AWS = require('aws-sdk');
+let AWS = require('aws-sdk');
 
 
 // Need to do a clearner way to load the congif file via a loader or DI
@@ -15,15 +15,15 @@ var AWS = require('aws-sdk');
 const attachRole = async (req, res, next) => {
     try 
     {
-        var userDetails= {
+        let userDetails= {
             sub:"",
             email:""
         }
 
-        var awsRegion = await process.env.REGION.toString()
-        var userPoolId = await process.env.USER_POOL_ID.toString()
-        var awsIAMAccessKey =  await process.env.AWS_ACCESS_KEY_ID.toString()           // console.log("Listing the other config details ",awsRegion,",",userPoolId,",",awsIAMSecretKey,",",awsIAMAccessKey);
-        var awsIAMSecretKey = await process.env.AWS_SECRET_KEY.toString()               // console.log("The token setted up is ",token);
+        let awsRegion = await process.env.REGION.toString()
+        let userPoolId = await process.env.USER_POOL_ID.toString()
+        let awsIAMAccessKey =  await process.env.AWS_ACCESS_KEY_ID.toString()           // console.log("Listing the other config details ",awsRegion,",",userPoolId,",",awsIAMSecretKey,",",awsIAMAccessKey);
+        let awsIAMSecretKey = await process.env.AWS_SECRET_KEY.toString()               // console.log("The token setted up is ",token);
         
         userDetails = await jwt_decode(req.header('authorization'));
                                                                                         //console.log("Checking the cognito user group ",userDetails['cognito:groups'][0]);           
@@ -38,7 +38,7 @@ const attachRole = async (req, res, next) => {
         }
 
         // Set the user group param        
-        var groupParam = {
+        let groupParam = {
             GroupName: req.body.groupName, /* required */
             UserPoolId: userPoolId, /* required */
             Username: userDetails['sub'] /* required */
@@ -46,7 +46,7 @@ const attachRole = async (req, res, next) => {
                                                                                         //console.log("Group paramters set successfully");
                                                                                         // This piece of code below can be in the service section
         AWS.config.update({ 'region': awsRegion, 'accessKeyId': awsIAMAccessKey, 'secretAccessKey': awsIAMSecretKey });
-        var cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
+        let cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
         await cognitoidentityserviceprovider.adminAddUserToGroup(groupParam, async function(err) {
             if (err) {
                 return res.sendStatus(401)                                               //console.log("Un-Authorised acccess is seen");

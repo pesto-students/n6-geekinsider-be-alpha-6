@@ -24,7 +24,7 @@ export default class JobService {
             // fetched the company model for the given company 
             const companyRecord = await this.companyModel.findById(token.sub);
 
-            var count = companyRecord['jobCount'];
+            let count = companyRecord['jobCount'];
 
             logger.debug(count);
 
@@ -43,7 +43,7 @@ export default class JobService {
             // token.sub+"-"+companyRecord.jobcount+1
             // setting up the ojb model                                                                                                               
 
-            var skills = req.body.skills.split(",")
+            let skills = req.body.skills.split(",")
 
             const jobRecord = await this.jobModel.create({
                 _id: token.sub+"-"+count,                                                                                                             // cognitoUsername will be used as the id parameter for the user table.
@@ -99,18 +99,18 @@ export default class JobService {
 
         try
         {
-            // const jobRecord = await this.jobModel.find(token.sub);                                                        // logger.debug("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     
-            var query = { 'companyName': cname };
+            // const jobRecord = await this.jobModel.find(token.sub);                                                
+            let query = { 'companyName': cname };
             logger.debug(query);
 
             const jobRecord = await this.jobModel.find(query);          
             logger.debug(jobRecord);
 
-            var jobList = [];
-            var i=0;
+            let jobList = [];
+            let i=0;
             for(;i<jobRecord.length;i++)
             {
-                var job = {
+                let job = {
                     companyName: jobRecord[i].companyName,
                     jobTitle: jobRecord[i].jobTitle,
                     jobLocation: jobRecord[i].jobLocation,
@@ -137,22 +137,18 @@ export default class JobService {
         try
         {
             const candidateRecord = await this.candidateModel.findById(userDetails.sub);
-            var skills = candidateRecord.skills;
+            let skills = candidateRecord.skills;
 
             // below both the methods are valid for quering a search in mongo using moongoose for multiple search in inside an aaray of object
             const jobRecord = await this.jobModel.find({skills: {$in: skills}})
 
             //const jobRecord = this.jobModel.find(skillQueryString);
+            let jobList = [];
+            let i=0;
 
-            //logger.debug(jobRecord);
-            var jobList = [];
-            var i=0;
-
-            //logger.debug(jobRecord);
             for(;i<jobRecord.length;i++)
             {
-                // logger.debug(jobRecord)
-                var job = {
+                let job = {
                     companyName: jobRecord[i].companyName,
                     jobTitle: jobRecord[i].jobTitle,
                     jobLocation: jobRecord[i].jobLocation,
@@ -179,16 +175,16 @@ export default class JobService {
         {
             const candidateRecord = await this.candidateModel.findById(userDetails.sub);
 
-            var skills = candidateRecord.skills;
+            let skills = candidateRecord.skills;
 
             const jobRecord = await this.jobModel.find({skills: {$in: skills}})
 
-            var jobList = [];
-            var i=0;
+            let jobList = [];
+            let i=0;
 
             for(;i<jobRecord.length;i++)
             {
-                var job = {
+                let job = {
                     companyName: jobRecord[i].companyName,
                     jobTitle: jobRecord[i].jobTitle,
                     jobLocation: jobRecord[i].jobLocation,
@@ -212,16 +208,16 @@ export default class JobService {
 
         try
         {
-            // const jobRecord = await this.jobModel.find(token.sub);                                                        // logger.debug("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     
-            var query = { 'companyId': token.sub };
+            // const jobRecord = await this.jobModel.find(token.sub);                                                        // logger.debug("Fetching the Candidate Details");                                                                                                           //let ObjectId = mongoose.Types.ObjectId;                                                     
+            let query = { 'companyId': token.sub };
             logger.debug(query);
             const jobRecord = await this.jobModel.find(query);          
             logger.debug(jobRecord);
-            var jobList = [];
-            var i=0;
+            let jobList = [];
+            let i=0;
             for(;i<jobRecord.length;i++)
             {
-                var job = {
+                let job = {
                     companyName: jobRecord[i].companyName,
                     jobTitle: jobRecord[i].jobTitle,
                     jobLocation: jobRecord[i].jobLocation,
@@ -233,7 +229,6 @@ export default class JobService {
                 }
                 jobList.push(job);
             }
-            logger.debug(job);
             return jobList;                                                                                                          // Need to update the data in the user model also need to remove console logs once upadted the method properly
         }
         catch (e) {
@@ -247,16 +242,16 @@ export default class JobService {
 
         try
         {
-            // const jobRecord = await this.jobModel.find(token.sub);                                                        // logger.debug("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     
-            var query = { 'companyId': token.sub };
+            // const jobRecord = await this.jobModel.find(token.sub);                                                        // logger.debug("Fetching the Candidate Details");                                                                                                           //let ObjectId = mongoose.Types.ObjectId;                                                     
+            let query = { 'companyId': token.sub };
             logger.debug(query);
             const jobRecord = await this.jobModel.find(query);          
             logger.debug(jobRecord);
-            var jobList = [];
-            var i=0;
+            let jobList = [];
+            let i=0;
             for(;i<jobRecord.length;i++)
             {
-                var job = {
+                let job = {
                     companyName: jobRecord[i].companyName,
                     jobTitle: jobRecord[i].jobTitle,
                     jobLocation: jobRecord[i].jobLocation,
@@ -268,7 +263,6 @@ export default class JobService {
                 }
                 jobList.push(job);
             }
-            logger.debug(job);
             return jobList;                                                                                                          // Need to update the data in the user model also need to remove console logs once upadted the method properly
         }
         catch (e) {
@@ -283,15 +277,15 @@ export default class JobService {
         try
         {
             logger.debug("Fetching job list for recruiter");
-            // const jobRecord = await this.jobModel.find(token.sub);                                                        // logger.debug("Fetching the Candidate Details");                                                                                                           //var ObjectId = mongoose.Types.ObjectId;                                                     
-            var query = { 'companyId': token.sub };
+            // const jobRecord = await this.jobModel.find(token.sub);                                                        // logger.debug("Fetching the Candidate Details");                                                                                                           //let ObjectId = mongoose.Types.ObjectId;                                                     
+            let query = { 'companyId': token.sub };
             // logger.debug(query);
-            var jobRecord = await this.jobModel.find(query);          
-            var jobList = [];
-            var i=0;
+            let jobRecord = await this.jobModel.find(query);          
+            let jobList = [];
+            let i=0;
             for(;i<jobRecord.length;i++)
             {
-                var job = {
+                let job = {
                     companyName: jobRecord[i].companyName,
                     jobTitle: jobRecord[i].jobTitle,
                     jobLocation: jobRecord[i].jobLocation,
@@ -337,7 +331,7 @@ export default class JobService {
 
         try
         {
-            var query = { jobslug: jobslug };
+            let query = { jobslug: jobslug };
             const jobRecord = await this.jobModel.findOne(query);
             logger.debug(jobRecord);
             const aboutRecord = await this.aboutModel.findOne({ _id : jobRecord._id });
@@ -372,14 +366,14 @@ export default class JobService {
             //const jobRecord = this.jobModel.find(skillQueryString);
 
             //logger.debug(jobRecord);
-            var jobList = [];
-            var i=0;
+            let jobList = [];
+            let i=0;
 
             //logger.debug(jobRecord);
             for(;i<jobRecord.length;i++)
             {
                 // logger.debug(jobRecord)
-                var job = {
+                let job = {
                     companyName: jobRecord[i].companyName,
                     jobTitle: jobRecord[i].jobTitle,
                     jobLocation: jobRecord[i].jobLocation,

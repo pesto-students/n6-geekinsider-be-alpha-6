@@ -43,7 +43,8 @@ export default class CompanyService {
             'location' : candidateRecord[i]['location'],
             'exp' : candidateRecord[i]['exp'],
             'whatsappNumber' : candidateRecord[i]['whatsappNumber'],
-            'userId' : candidateRecord[i]['_id']
+            'userId' : candidateRecord[i]['_id'],
+            'githubUrl' : candidateRecord[i]['githubUrl']
           })
       }
 

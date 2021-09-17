@@ -30,7 +30,7 @@ const isAuth = (req, res, next) => {
   {
     try {
       //console.log("Validating the user ...");
-      var verifier = new Verifier(params);
+      let verifier = new Verifier(params);
       //console.log(req.headers.authorization);
       verifier.verify(req.headers.authorization)
       .then(result =>{
@@ -60,9 +60,3 @@ const isAuth = (req, res, next) => {
 
 export default isAuth;
 
-
-// var userPoolId = "";
-// userPoolId = process.env.USER_POOL_ID.toString()
-
-// var awsRegion = "";
-// awsRegion = process.env.REGION.toString()

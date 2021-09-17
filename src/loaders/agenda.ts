@@ -10,3 +10,11 @@ export default ({ mongoConnection }) => {
    * https://github.com/agenda/agenda#mongomongoclientinstance
    */
 };
+
+
+// return new Agenda(
+//   config.databaseURL, {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedTopology: true
+// });
