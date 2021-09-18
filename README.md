@@ -23,8 +23,6 @@ It is also a platform where IT professionals can showcase their work, search for
 
 * Nodejs.
 * Amazon Web services account
-* React.
-* Redux.
 
 ### Installing
 
